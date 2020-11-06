@@ -54,7 +54,6 @@ namespace WindowsFormsApp1
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tinhTienLuongDataSet = new WindowsFormsApp1.TinhTienLuongDataSet();
             this.tinhTienLuongDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.tableLayoutPanel3.SuspendLayout();
@@ -63,7 +62,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tinhTienLuongDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tinhTienLuongDataSetBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -206,7 +204,6 @@ namespace WindowsFormsApp1
             this.searchBar.Name = "searchBar";
             this.searchBar.Size = new System.Drawing.Size(390, 37);
             this.searchBar.TabIndex = 1;
-            this.searchBar.TextChanged += new System.EventHandler(this.searchTextBox_TextChanged);
             // 
             // button1
             // 
@@ -221,6 +218,7 @@ namespace WindowsFormsApp1
             this.button1.Size = new System.Drawing.Size(35, 35);
             this.button1.TabIndex = 2;
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // panel1
             // 
@@ -298,7 +296,7 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(1162, 599);
             this.bunifuCustomDataGrid1.TabIndex = 3;
-            this.bunifuCustomDataGrid1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellDoubleClick);
+            this.bunifuCustomDataGrid1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentDoubleClick);
             // 
             // Column1
             // 
@@ -352,16 +350,10 @@ namespace WindowsFormsApp1
             this.Column8.FillWeight = 90F;
             this.Column8.HeaderText = "Thời hạn HĐ";
             this.Column8.Name = "Column8";
-            this.Column8.ReadOnly = true;
-            // 
-            // tinhTienLuongDataSet
-            // 
-            this.tinhTienLuongDataSet.DataSetName = "TinhTienLuongDataSet";
-            this.tinhTienLuongDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.Column8.ReadOnly = true; 
             // 
             // tinhTienLuongDataSetBindingSource
             // 
-            this.tinhTienLuongDataSetBindingSource.DataSource = this.tinhTienLuongDataSet;
             this.tinhTienLuongDataSetBindingSource.Position = 0;
             // 
             // bunifuElipse1
@@ -383,7 +375,6 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel4.PerformLayout();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.bunifuCustomDataGrid1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tinhTienLuongDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tinhTienLuongDataSetBindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -395,7 +386,6 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.BindingSource tinhTienLuongDataSetBindingSource;
-        private TinhTienLuongDataSet tinhTienLuongDataSet;
         private System.Windows.Forms.Panel panel1;
         private Bunifu.Framework.UI.BunifuCustomDataGrid bunifuCustomDataGrid1;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;

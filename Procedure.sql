@@ -1,0 +1,54 @@
+﻿ALTER FUNCTION fnDisplayOFFDayFollowCondition
+(	
+	@NgayBatDau datetime,
+	@NgayKetThuc datetime, 
+	@HoVaTen nvarchar(255)
+)
+RETURNS TABLE RETURN 
+	SELECT 
+		NHANVIEN_LOAINGAYNGHI.ID,
+		NHANSU.UserName, 
+		NHANSU.UserID,
+		NHANSU.HoVaTen,
+		NHANVIEN_LOAINGAYNGHI.NgayBatDau,
+		NHANVIEN_LOAINGAYNGHI.NgayKetThuc, 
+		NHANVIEN_LOAINGAYNGHI.ID_LoaiNgayNghi, 
+		NHANVIEN_LOAINGAYNGHI.ID_NhanVien,
+		NHANVIEN_LOAINGAYNGHI.LyDo
+	FROM 
+		((NHANVIEN_LOAINGAYNGHI
+			INNER JOIN NHANSU ON NHANSU.ID = NHANVIEN_LOAINGAYNGHI.ID_NhanVien)
+			INNER JOIN LOAINGAYNGHI ON LOAINGAYNGHI.ID = NHANVIEN_LOAINGAYNGHI.ID_LoaiNgayNghi)
+	WHERE
+		(
+			(
+				NHANVIEN_LOAINGAYNGHI.NgayBatDau >= @NgayBatDau AND NHANVIEN_LOAINGAYNGHI.NgayBatDau <= @NgayKetThuc
+			)
+			OR 
+			(
+				NHANVIEN_LOAINGAYNGHI.NgayKetThuc >= @NgayBatDau AND NHANVIEN_LOAINGAYNGHI.NgayKetThuc <= @NgayKetThuc
+			)
+			OR 
+			(
+				NHANVIEN_LOAINGAYNGHI.NgayBatDau <= @NgayBatDau AND NHANVIEN_LOAINGAYNGHI.NgayKetThuc >= @NgayKetThuc
+			)
+			OR
+			(
+				NHANVIEN_LOAINGAYNGHI.NgayBatDau >= @NgayBatDau AND NHANVIEN_LOAINGAYNGHI.NgayKetThuc >= @NgayKetThuc
+			)
+		)
+		AND 
+		NHANSU.TrangThaiLamViec NOT LIKE N'%Nghĩ việc %'
+		AND 
+		NHANSU.HoVaTen LIKE N'%' + @HoVaTen + '%'
+GO
+CREATE FUNCTION fnDisplayTitleOFFDay 
+(
+)
+RETURNS TABLE RETURN 
+	SELECT * 
+	FROM 
+		LOAINGAYNGHI
+go
+--select * from fnDisplayOFFDayFollowCondition('20201101','20201130','')
+--select * from fnDisplayTitleOFFDay()

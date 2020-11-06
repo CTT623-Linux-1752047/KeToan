@@ -234,14 +234,7 @@ namespace WindowsFormsApp1
             this.tamungluong1.Size = new System.Drawing.Size(1232, 773);
             this.tamungluong1.TabIndex = 4;
             this.tamungluong1.Load += new System.EventHandler(this.tamungluong1_Load);
-            // 
-            // bangluong1
-            // 
-            this.bangluong1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bangluong1.Location = new System.Drawing.Point(0, 0);
-            this.bangluong1.Name = "bangluong1";
-            this.bangluong1.Size = new System.Drawing.Size(1232, 773);
-            this.bangluong1.TabIndex = 3;
+            
             // 
             // ngaynghi1
             // 
@@ -272,7 +265,7 @@ namespace WindowsFormsApp1
             this.panel2.Controls.Add(this.setting1);
             this.panel2.Controls.Add(this.quanlynhansu1);
             this.panel2.Controls.Add(this.tamungluong1);
-            this.panel2.Controls.Add(this.bangluong1);
+            //this.panel2.Controls.Add(this.bangluong1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 35);
             this.panel2.Name = "panel2";

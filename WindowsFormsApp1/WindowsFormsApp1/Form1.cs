@@ -36,7 +36,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Show();
             this.ngaynghi1.Hide();
-            this.bangluong1.Hide();
+            //this.bangluong1.Hide();
             this.tamungluong1.Hide();
             this.setting1.Hide();
 
@@ -52,7 +52,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Show();
-            this.bangluong1.Hide();
+            //this.bangluong1.Hide();
             this.tamungluong1.Hide();
             this.setting1.Hide();
 
@@ -68,7 +68,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            this.bangluong1.Show();
+            //this.bangluong1.Show();
             this.tamungluong1.Hide();
             this.setting1.Hide();
 
@@ -84,7 +84,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            this.bangluong1.Hide();
+            //this.bangluong1.Hide();
             this.tamungluong1.setTitle("THÔNG TIN ĐI TRỄ VỀ SỚM ");
             this.tamungluong1.Show();
             this.setting1.Hide();
@@ -101,7 +101,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Show();
             this.ngaynghi1.Hide();
-            this.bangluong1.Hide();
+            //this.bangluong1.Hide();
             this.tamungluong1.Hide();
             this.setting1.Hide();
         }
@@ -115,7 +115,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            this.bangluong1.Hide();
+            //this.bangluong1.Hide();
             this.tamungluong1.setTitle("THÔNG TIN OVER TIME");
             this.tamungluong1.Show();
             this.setting1.Hide();
@@ -132,7 +132,7 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            this.bangluong1.Hide();
+           // this.bangluong1.Hide();
             this.tamungluong1.Hide();
             this.setting1.Show();
 
@@ -149,12 +149,6 @@ namespace WindowsFormsApp1
         {
 
         }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void button8_Click(object sender, EventArgs e)
         {
             Close();
