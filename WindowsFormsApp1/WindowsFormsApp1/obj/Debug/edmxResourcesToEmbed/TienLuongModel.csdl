@@ -331,6 +331,24 @@
       <Parameter Name="Date" Mode="In" Type="DateTime" />
     </FunctionImport>
     <FunctionImport Name="fnDisplayTitleOFFDay" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayTitleOFFDay_Result)" />
+    <FunctionImport Name="fnDisplayEmployeeFollowCodition" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayEmployeeFollowCodition_Result)">
+      <Parameter Name="HoVaTen" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spCreateOFFDayForStaff">
+      <Parameter Name="IDNhanVien" Mode="In" Type="Int32" />
+      <Parameter Name="IDLoaiNgayNghi" Mode="In" Type="Int32" />
+      <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+      <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+      <Parameter Name="LyDo" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="spUpdateOFFDayForStaff">
+      <Parameter Name="IDNhanVienNgayNghi" Mode="In" Type="Int32" />
+      <Parameter Name="IDNhanVien" Mode="In" Type="Int32" />
+      <Parameter Name="IDNgayNghi" Mode="In" Type="Int32" />
+      <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
+      <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
+      <Parameter Name="LyDo" Mode="In" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -348,5 +366,37 @@
     <Property Type="String" Name="LoaiNgayNghi" Nullable="true" MaxLength="20" />
     <Property Type="String" Name="TenNgayNghi" Nullable="true" MaxLength="50" />
     <Property Type="Double" Name="ThoiGian" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="fnDisplayEmployeeFollowCodition_Result">
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="UserID" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="UserName" Nullable="false" MaxLength="10" />
+    <Property Type="String" Name="HoVaTen" Nullable="false" MaxLength="50" />
+    <Property Type="DateTime" Name="NgaySinh" Nullable="true" Precision="10" />
+    <Property Type="String" Name="DiaChiThuongTru" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="DiaChiTamTru" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="CMND" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="GioiTinh" Nullable="true" MaxLength="10" />
+    <Property Type="String" Name="SoTKNganHang" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TrinhDo" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MaSoThue" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="TinhTrangHonNhan" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SoHDLD" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="LoaiHDLD" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="ThoiHanHDLD" Nullable="true" />
+    <Property Type="String" Name="SoDT" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="ChucDanh" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="TrangThaiLamViec" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="NguoiPhuTrach" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="EmailCongTy" Nullable="true" MaxLength="255" />
+    <Property Type="DateTime" Name="NgayBatDau" Nullable="true" Precision="10" />
+    <Property Type="String" Name="NoiLamViec" Nullable="true" MaxLength="255" />
+    <Property Type="Decimal" Name="LuongCB" Nullable="true" Precision="19" Scale="4" />
+    <Property Type="String" Name="HoTenNguoiLienQuan" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="SDTNguoiLienQuan" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="DiaChiNguoiLienQuan" Nullable="true" MaxLength="255" />
+    <Property Type="String" Name="MoiQuanHe" Nullable="true" MaxLength="50" />
+    <Property Type="DateTime" Name="NgaySinhNguoiLienQuan" Nullable="true" Precision="10" />
+    <Property Type="String" Name="GioiTinhNguoiLienQuan" Nullable="true" MaxLength="10" />
   </ComplexType>
 </Schema>

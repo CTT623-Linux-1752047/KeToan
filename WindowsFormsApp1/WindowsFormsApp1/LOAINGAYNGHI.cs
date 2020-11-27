@@ -19,12 +19,7 @@ namespace WindowsFormsApp1
         {
             this.NHANVIEN_LOAINGAYNGHI = new HashSet<NHANVIEN_LOAINGAYNGHI>();
         }
-
-        public static explicit operator LOAINGAYNGHI(List<fnDisplayTitleOFFDay_Result> v)
-        {
-            throw new NotImplementedException();
-        }
-
+    
         public int ID { get; set; }
         public string LoaiNgayNghi1 { get; set; }
         public string TenNgayNghi { get; set; }

@@ -15,28 +15,38 @@ namespace WindowsFormsApp1
 {
     public partial class QUANLYNHANSU : UserControl
     {
-        private DataTable dt;
-        private List<NHANVIEN> ListEmployee;
+        private TinhTienLuongEntities data = new TinhTienLuongEntities();
+        private List<fnDisplayStaffFollowName_Result> lstStaff;
         public QUANLYNHANSU()
         {
             InitializeComponent();
-            string query = "SELECT * FROM NHANSU WHERE TrangThaiLamViec != N'Nghĩ việc'";
-            GetDataToGridView(query);
         }
-        public void GetDataToGridView(string query)
+        public void LoadData()
         {
-            CONNECT_DB conn = new CONNECT_DB();
-            DataSet ds = conn.GetDBToDS(query, "Employee");
-            conn.CloseDB();
-
-            this.bunifuCustomDataGrid1.Rows.Clear();
-            dt = ds.Tables["Employee"];
-            this.ListEmployee = new List<NHANVIEN>();
-            foreach (DataRow row in dt.Rows)
+            if(this.searchBar.Text == "" || this.searchBar.Text == null)
             {
-                this.ListEmployee.Add(new NHANVIEN(row));
-                string[] temp = new string[] { (string)row["UserName"], (string)row["HoVaTen"], ((DateTime)row["NgaySinh"]).ToString("dd/MM/yyyy"), (string)row["GioiTinh"], (string)row["SoHDLD"], (string)row["LoaiHDLD"], ((DateTime)row["NgayBatDau"]).ToString("dd/MM/yyyy"), Convert.ToString(row["ThoiHanHDLD"]) };
-                this.bunifuCustomDataGrid1.Rows.Add(temp);
+                lstStaff = data.fnDisplayStaffFollowName("").ToList();
+            }
+            else
+            {
+                lstStaff = data.fnDisplayStaffFollowName(this.searchBar.Text).ToList();
+            }
+            this.bunifuCustomDataGrid1.Rows.Clear();
+            
+            for(int i = 0 ; i < this.lstStaff.Count ; i++)
+            {
+                string[] Fullname = this.lstStaff[i].HoVaTen.Split(' ');
+                string Firstname = "";
+                for (int j = 0; j < Fullname.Length - 1 ; j++)
+                {
+                    Firstname += Fullname[j] + " ";
+                }
+                this.bunifuCustomDataGrid1.Rows.Add(i + 1,
+                                                    this.lstStaff[i].UserName,
+                                                    Firstname,
+                                                    Fullname[Fullname.Length-1],
+                                                    ((DateTime)this.lstStaff[i].NgaySinh).ToString("dd/MM/yyyy")
+                                                    );     
             }
         }
         //button add user 
@@ -44,35 +54,45 @@ namespace WindowsFormsApp1
         {
             THONGTINNHANVIEN InformationEmployee = new THONGTINNHANVIEN();
             InformationEmployee.ShowDialog();
-            GetDataToGridView("SELECT * FROM NHANSU WHERE TrangThaiLamViec != N'Nghĩ việc'");
+            LoadData();
         }
         //multi selected được lưu theo nguyên tắc LIFO - button delete user
         private void button2_Click(object sender, EventArgs e)
         {
-            CONNECT_DB conn = new CONNECT_DB();
-            for(int i =0; i < this.bunifuCustomDataGrid1.SelectedRows.Count; i++)
+            try
             {
-                //update lai trang thai cua cac row selected = Nghĩ việc -> thực hiện chức năng xóa delete User 
-                
-                string query = "UPDATE NHANSU SET TrangThaiLamViec = N'Nghĩ việc' WHERE ID = " + this.ListEmployee[this.bunifuCustomDataGrid1.SelectedRows[i].Index].ID;
-                conn.ExecuteNonQuery(query);
-                this.ListEmployee.RemoveAt(this.bunifuCustomDataGrid1.SelectedRows[i].Index);
+                for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count; i++)
+                {
+                    int index = this.lstStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i].Cells[0].Value - 1].ID;
+                    NHANSU temp = data.NHANSUs.SingleOrDefault(id => id.ID == index);
+                    int j = 1;
+                    if (temp != null)
+                    {
+                        temp.TrangThaiLamViec = 1;
+                        data.SaveChanges();
+                    }
+                }
             }
-            conn.CloseDB();
-            GetDataToGridView("SELECT * FROM NHANSU WHERE TrangThaiLamViec != N'Nghĩ việc'");
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            LoadData();
         }
         //nút tìm kiếm 
         private void button1_Click(object sender, EventArgs e)
         {
-            string query = "SELECT * FROM NHANSU WHERE TrangThaiLamViec != N'Nghĩ việc' AND HoVaTen LIKE N'%" + this.searchBar.Text + "%'";
-            GetDataToGridView(query);
+            LoadData();                           
         }
         //double click để mở form Thông tin chi tiết nhân viên 
         private void bunifuCustomDataGrid1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            THONGTINNHANVIEN updateUser1 = new THONGTINNHANVIEN(this.ListEmployee[e.RowIndex].ID);
+            MessageBox.Show(this.lstStaff[(int)this.bunifuCustomDataGrid1.CurrentRow.Cells[0].Value - 1].ID + "");
+            THONGTINNHANVIEN updateUser1 = new THONGTINNHANVIEN(this.lstStaff[(int)this.bunifuCustomDataGrid1.CurrentRow.Cells[0].Value-1].ID);
             updateUser1.ShowDialog();
-            GetDataToGridView("SELECT * FROM NHANSU WHERE TrangThaiLamViec != N'Nghĩ việc'");
+
+            LoadData();
         }
     }
 }
+                                                                                                                                                                  

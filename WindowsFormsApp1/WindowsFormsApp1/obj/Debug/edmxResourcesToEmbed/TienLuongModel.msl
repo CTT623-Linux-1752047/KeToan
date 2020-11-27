@@ -186,5 +186,43 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="fnDisplayEmployeeFollowCodition" FunctionName="TinhTienLuongModel.Store.fnDisplayEmployeeFollowCodition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayEmployeeFollowCodition_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+          <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
+          <ScalarProperty Name="DiaChiThuongTru" ColumnName="DiaChiThuongTru" />
+          <ScalarProperty Name="DiaChiTamTru" ColumnName="DiaChiTamTru" />
+          <ScalarProperty Name="CMND" ColumnName="CMND" />
+          <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
+          <ScalarProperty Name="SoTKNganHang" ColumnName="SoTKNganHang" />
+          <ScalarProperty Name="TrinhDo" ColumnName="TrinhDo" />
+          <ScalarProperty Name="MaSoThue" ColumnName="MaSoThue" />
+          <ScalarProperty Name="TinhTrangHonNhan" ColumnName="TinhTrangHonNhan" />
+          <ScalarProperty Name="SoHDLD" ColumnName="SoHDLD" />
+          <ScalarProperty Name="LoaiHDLD" ColumnName="LoaiHDLD" />
+          <ScalarProperty Name="ThoiHanHDLD" ColumnName="ThoiHanHDLD" />
+          <ScalarProperty Name="SoDT" ColumnName="SoDT" />
+          <ScalarProperty Name="ChucDanh" ColumnName="ChucDanh" />
+          <ScalarProperty Name="TrangThaiLamViec" ColumnName="TrangThaiLamViec" />
+          <ScalarProperty Name="NguoiPhuTrach" ColumnName="NguoiPhuTrach" />
+          <ScalarProperty Name="EmailCongTy" ColumnName="EmailCongTy" />
+          <ScalarProperty Name="NgayBatDau" ColumnName="NgayBatDau" />
+          <ScalarProperty Name="NoiLamViec" ColumnName="NoiLamViec" />
+          <ScalarProperty Name="LuongCB" ColumnName="LuongCB" />
+          <ScalarProperty Name="HoTenNguoiLienQuan" ColumnName="HoTenNguoiLienQuan" />
+          <ScalarProperty Name="SDTNguoiLienQuan" ColumnName="SDTNguoiLienQuan" />
+          <ScalarProperty Name="DiaChiNguoiLienQuan" ColumnName="DiaChiNguoiLienQuan" />
+          <ScalarProperty Name="MoiQuanHe" ColumnName="MoiQuanHe" />
+          <ScalarProperty Name="NgaySinhNguoiLienQuan" ColumnName="NgaySinhNguoiLienQuan" />
+          <ScalarProperty Name="GioiTinhNguoiLienQuan" ColumnName="GioiTinhNguoiLienQuan" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="spCreateOFFDayForStaff" FunctionName="TinhTienLuongModel.Store.spCreateOFFDayForStaff" />
+    <FunctionImportMapping FunctionImportName="spUpdateOFFDayForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateOFFDayForStaff" />
   </EntityContainerMapping>
 </Mapping>

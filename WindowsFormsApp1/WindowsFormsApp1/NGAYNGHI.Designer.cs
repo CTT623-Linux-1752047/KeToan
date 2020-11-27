@@ -49,7 +49,7 @@ namespace WindowsFormsApp1
             this.btnSearch = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuCustomDataGrid1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
-            this.UserID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.UserName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FullName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Start_Day = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -65,6 +65,7 @@ namespace WindowsFormsApp1
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.BackColor = System.Drawing.SystemColors.Control;
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 2);
@@ -234,6 +235,7 @@ namespace WindowsFormsApp1
             this.txtNgayBatDau.Name = "txtNgayBatDau";
             this.txtNgayBatDau.Size = new System.Drawing.Size(220, 32);
             this.txtNgayBatDau.TabIndex = 2;
+            this.txtNgayBatDau.ValueChanged += new System.EventHandler(this.txtNgayBatDau_ValueChanged);
             // 
             // txtNgayKetThuc
             // 
@@ -300,6 +302,7 @@ namespace WindowsFormsApp1
             // 
             // bunifuCustomDataGrid1
             // 
+            this.bunifuCustomDataGrid1.AllowUserToAddRows = false;
             this.bunifuCustomDataGrid1.AllowUserToOrderColumns = true;
             this.bunifuCustomDataGrid1.AllowUserToResizeColumns = false;
             this.bunifuCustomDataGrid1.AllowUserToResizeRows = false;
@@ -320,7 +323,7 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.bunifuCustomDataGrid1.ColumnHeadersHeight = 60;
             this.bunifuCustomDataGrid1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.UserID,
+            this.STT,
             this.UserName,
             this.FullName,
             this.Start_Day,
@@ -362,13 +365,14 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(978, 673);
             this.bunifuCustomDataGrid1.TabIndex = 4;
+            this.bunifuCustomDataGrid1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentDoubleClick);
             // 
-            // UserID
+            // STT
             // 
-            this.UserID.FillWeight = 60F;
-            this.UserID.HeaderText = "User ID";
-            this.UserID.Name = "UserID";
-            this.UserID.ReadOnly = true;
+            this.STT.FillWeight = 60F;
+            this.STT.HeaderText = "STT";
+            this.STT.Name = "STT";
+            this.STT.ReadOnly = true;
             // 
             // UserName
             // 
@@ -441,7 +445,7 @@ namespace WindowsFormsApp1
         private Bunifu.Framework.UI.BunifuMaterialTextbox txtSearchName;
         private System.Windows.Forms.Button btnSearch;
         private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn UserID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn UserName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Start_Day;

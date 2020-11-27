@@ -117,23 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="buttonCalendar2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALNJREFUSEvt
-        ldEJwkAQRO8jX/6bnrQoTTnBJuzAIrQQnTFZuJhd1uwaBPHBIznYmyEhXMo3uY96vDs3Y5WCPbxB2bRU
-        7t1Bk0y4eIUm2oaIJtpwRBNtOKKJO+DwL3D5jYJ+uNXJFpxgM9zqZAsk/AAvsH2uKrIFZAPPkDksmZAt
-        6CDDt+OVTzIhU8Bw2c9wPsmMJcc1vxZ553U45VqFPwue5/WwZig8wmv4EX6UVcOJE17KA/wXsw86I0p0
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
-  <data name="buttonCalendar1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAALNJREFUSEvt
-        ldEJwkAQRO8jX/6bnrQoTTnBJuzAIrQQnTFZuJhd1uwaBPHBIznYmyEhXMo3uY96vDs3Y5WCPbxB2bRU
-        7t1Bk0y4eIUm2oaIJtpwRBNtOKKJO+DwL3D5jYJ+uNXJFpxgM9zqZAsk/AAvsH2uKrIFZAPPkDksmZAt
-        6CDDt+OVTzIhU8Bw2c9wPsmMJcc1vxZ553U45VqFPwue5/WwZig8wmv4EX6UVcOJE17KA/wXsw86I0p0
-        AAAAAElFTkSuQmCC
-</value>
-  </data>
 </root>

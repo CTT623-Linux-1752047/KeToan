@@ -12,12 +12,12 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class NHAVIEN_GIOCONG
+    public partial class HISTORY_RESET_DAY_OF_TAKE_LEAVE
     {
         public int ID { get; set; }
-        public System.DateTime Ngay { get; set; }
         public Nullable<int> ID_NhanVien { get; set; }
-        public double ThoiGianDiTreVeSom { get; set; }
+        public Nullable<System.DateTime> ThangNam { get; set; }
+        public Nullable<int> ID_LoaiNgayNghi { get; set; }
     
         public virtual NHANSU NHANSU { get; set; }
     }

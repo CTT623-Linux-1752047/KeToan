@@ -222,6 +222,45 @@
     </ReferentialConstraint>
   </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fnDisplayEmployeeFollowCodition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HoVaTen" Type="nvarchar" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="UserID" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserName" Type="nchar" MaxLength="10" Nullable="false" />
+          <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NgaySinh" Type="date" />
+          <Property Name="DiaChiThuongTru" Type="nvarchar" MaxLength="255" />
+          <Property Name="DiaChiTamTru" Type="nvarchar" MaxLength="255" />
+          <Property Name="CMND" Type="nchar" MaxLength="20" />
+          <Property Name="GioiTinh" Type="nvarchar" MaxLength="10" />
+          <Property Name="SoTKNganHang" Type="nchar" MaxLength="20" />
+          <Property Name="TrinhDo" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaSoThue" Type="nchar" MaxLength="20" />
+          <Property Name="TinhTrangHonNhan" Type="nvarchar" MaxLength="50" />
+          <Property Name="SoHDLD" Type="nchar" MaxLength="20" />
+          <Property Name="LoaiHDLD" Type="nchar" MaxLength="20" />
+          <Property Name="ThoiHanHDLD" Type="int" />
+          <Property Name="SoDT" Type="nchar" MaxLength="20" />
+          <Property Name="ChucDanh" Type="nvarchar" MaxLength="50" />
+          <Property Name="TrangThaiLamViec" Type="nvarchar" MaxLength="50" />
+          <Property Name="NguoiPhuTrach" Type="nvarchar" MaxLength="255" />
+          <Property Name="EmailCongTy" Type="nvarchar" MaxLength="255" />
+          <Property Name="NgayBatDau" Type="date" />
+          <Property Name="NoiLamViec" Type="nvarchar" MaxLength="255" />
+          <Property Name="LuongCB" Type="money" />
+          <Property Name="HoTenNguoiLienQuan" Type="nvarchar" MaxLength="255" />
+          <Property Name="SDTNguoiLienQuan" Type="nchar" MaxLength="20" />
+          <Property Name="DiaChiNguoiLienQuan" Type="nvarchar" MaxLength="255" />
+          <Property Name="MoiQuanHe" Type="nvarchar" MaxLength="50" />
+          <Property Name="NgaySinhNguoiLienQuan" Type="date" />
+          <Property Name="GioiTinhNguoiLienQuan" Type="nvarchar" MaxLength="10" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
   <Function Name="fnDisplayOFFDayFollowCondition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
     <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
@@ -284,6 +323,21 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+  <Function Name="spCreateOFFDayForStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDNhanVien" Type="int" Mode="In" />
+    <Parameter Name="IDLoaiNgayNghi" Type="int" Mode="In" />
+    <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
+    <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
+    <Parameter Name="LyDo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="spUpdateOFFDayForStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="IDNhanVienNgayNghi" Type="int" Mode="In" />
+    <Parameter Name="IDNhanVien" Type="int" Mode="In" />
+    <Parameter Name="IDNgayNghi" Type="int" Mode="In" />
+    <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
+    <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
+    <Parameter Name="LyDo" Type="nvarchar" Mode="In" />
+  </Function>
   <Function Name="TinhLuongCBTheoThang" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="UserID" Type="nchar" Mode="In" />
     <Parameter Name="Date" Type="date" Mode="In" />

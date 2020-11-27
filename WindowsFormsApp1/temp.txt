@@ -1,0 +1,46 @@
+
+            StringBuilder query = new StringBuilder();
+            query.Append("SELECT ");
+            query.Append("  NHANSU.UserName,");
+            query.Append("  NHANSU.HoVaTen,");
+            query.Append("  NHANVIEN_LOAINGAYNGHI.NgayBatDau,");
+            query.Append("  NHANVIEN_LOAINGAYNGHI.NgayKetThuc,");
+            query.Append("  NHANVIEN_LOAINGAYNGHI.LyDo,");
+            query.Append("  NHANVIEN_LOAINGAYNGHI.ID_LoaiNgayNghi,");
+            query.Append("  LOAINGAYNGHI.LoaiNgayNghi");
+            query.Append("FROM ");
+            query.Append("  NHANVIEN_LOAINGAYNGHI");
+            query.Append("LEFT JOIN NHANSU ON NHANVIEN_LOAINGAYNGHI.ID_NhanVien = NHANSU.ID ");
+            query.Append("LEFT JOIN LOAINGAYNGHI ON NHANVIEN_LOAINGAYNGHI.ID_LoaiNgayNghi = LOAINGAYNGHI.ID");
+            string abc = query.ToString();
+            
+            ToString("#,##0.###")
+
+
+            string birthPer = (this.txtBirth.Value == DateTime.Today) ? null : this.txtBirth.Value.ToString("yyyy/MM/dd").Replace("/", "");
+            string dayStartWorking = (this.dateStartWorking.Value < new DateTime(0001, 01, 01) || this.dateStartWorking.Value > new DateTime(9998, 12, 31)) ? null : this.dateStartWorking.Value.ToString("yyyy/MM/dd").Replace("/", "");
+            string birthOfPersonalRelation = this.birthPerRela.Value == new DateTime(9998, 12, 31) ? null : this.birthPerRela.Value.ToString("yyyy/MM/dd").Replace("/", "") ;
+            string sexPersonalRelation = this.checkSexPerRela.SelectedItem == "Không xác định" ? null : this.checkSexPerRela.SelectedItem.ToString(); 
+            string sexPer = this.txtSex.SelectedItem == "Không xác định" ? null : this.txtSex.SelectedItem.ToString();
+            string query = "UPDATE NHANSU SET UserName = '" + this.txtUserName.Text.Replace("  ", "") +
+                 "', HoVaTen = N'" + this.txtName.Text.Replace("  ", "") + "', NgaySinh = '" + birthPer +
+                 "', DiaChiThuongTru = N'" + this.txtAddressPermanent.Text.Replace("  ", "") + "', DiaChiTamTru = N'" + this.txtAddressTemp.Text.Replace("  ", "") +
+                 "', CMND = '" + this.txtIdentify.Text.Replace("  ", "") + "', GioiTinh = N'" + sexPer +
+                 "', SoTKNganHang = '" + this.txtNumBank.Text.Replace("  ", "") + "', TrinhDo = N'" + this.txtLevel.Text.Replace("  ", "") + "', MaSoThue ='" + this.textTaxCode.Text.Replace("  ", "") +
+                 "', TinhTrangHonNhan = N'" + this.ComboBoxStateMarie.SelectedItem + "', SoHDLD = '" + this.txtNumLarbourContract.Text.Replace("  ", "") +
+                 "', LoaiHDLD = '" + this.txtTitleLabourContract.Text.Replace("  ", "") + "', ThoiHanHDLD = " + this.txtDateLimit.Text.Replace("  ", "").Replace("Tháng", "") + ", SoDT = '" + this.txtPhonePer.Text.Replace("  ", "") +
+                 "', ChucDanh = N'" + this.txtTitle.Text.Replace("  ", "") + "', TrangThaiLamViec = N'" + this.txtStateWorking.Text.Replace("  ", "") + "', NguoiPhuTrach = N'" + this.txtSuperviser.Text.Replace("  ", "") +
+                 "', EmailCongTy = '" + this.txtEmailCo.Text.Replace("  ", "") + "', NgayBatDau ='" + dayStartWorking +
+                 "', NoiLamViec = N'" + this.txtAddCo.Text.Replace("  ", "") + "', LuongCB = " + this.txtSalary.Text.Replace("  ", "").Replace(",", "") + ",HoTenNguoiLienQuan = N'" + this.txtNamePerRela.Text.Replace("  ", "") +
+                 "', SDTNguoiLienQuan = '" + this.txtPhonePerRela.Text.Replace("  ", "") + "', DiaChiNguoiLienQuan = N'" + this.txtPhonePerRela.Text.Replace("  ", "") + "', MoiQuanHe = N'" + this.txtRelationship.Text.Replace("  ", "") +
+                 "', NgaySinhNguoiLienQuan = '" + birthOfPersonalRelation + "', GioiTinhNguoiLienQuan = N'" + sexPersonalRelation +
+                 "' WHERE ID = " + this.id;
+            CONNECT_DB conn = new CONNECT_DB();
+            DialogResult confirm = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (confirm == DialogResult.Yes)
+            {
+                //data.NHANSUs.AddOrUpdate()
+                conn.ExecuteNonQuery(query);
+                conn.CloseDB();
+                Close();
+            }

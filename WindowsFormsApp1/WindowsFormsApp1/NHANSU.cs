@@ -18,11 +18,12 @@ namespace WindowsFormsApp1
         public NHANSU()
         {
             this.BANGLUONGs = new HashSet<BANGLUONG>();
+            this.HISTORY_RESET_DAY_OF_TAKE_LEAVE = new HashSet<HISTORY_RESET_DAY_OF_TAKE_LEAVE>();
             this.KHAUTRULUONGs = new HashSet<KHAUTRULUONG>();
             this.NHANVIEN_OT = new HashSet<NHANVIEN_OT>();
             this.NHANVIEN_LOAINGAYNGHI = new HashSet<NHANVIEN_LOAINGAYNGHI>();
             this.NHANVIEN_LOAIPHUCAP = new HashSet<NHANVIEN_LOAIPHUCAP>();
-            this.NHAVIEN_GIOCONG = new HashSet<NHAVIEN_GIOCONG>();
+            this.NHANVIEN_GIOCONG = new HashSet<NHANVIEN_GIOCONG>();
         }
     
         public int ID { get; set; }
@@ -42,9 +43,9 @@ namespace WindowsFormsApp1
         public string LoaiHDLD { get; set; }
         public Nullable<int> ThoiHanHDLD { get; set; }
         public string SoDT { get; set; }
-        public string ChucDanh { get; set; }
-        public string TrangThaiLamViec { get; set; }
-        public string NguoiPhuTrach { get; set; }
+        public Nullable<int> ChucDanh { get; set; }
+        public Nullable<int> TrangThaiLamViec { get; set; }
+        public Nullable<int> NguoiPhuTrach { get; set; }
         public string EmailCongTy { get; set; }
         public Nullable<System.DateTime> NgayBatDau { get; set; }
         public string NoiLamViec { get; set; }
@@ -55,11 +56,17 @@ namespace WindowsFormsApp1
         public string MoiQuanHe { get; set; }
         public Nullable<System.DateTime> NgaySinhNguoiLienQuan { get; set; }
         public string GioiTinhNguoiLienQuan { get; set; }
+        public Nullable<int> SoNgayNghiPhep { get; set; }
+        public Nullable<System.DateTime> NgayResetNghiCoPhep { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BANGLUONG> BANGLUONGs { get; set; }
+        public virtual CHUCDANH CHUCDANH1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<HISTORY_RESET_DAY_OF_TAKE_LEAVE> HISTORY_RESET_DAY_OF_TAKE_LEAVE { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<KHAUTRULUONG> KHAUTRULUONGs { get; set; }
+        public virtual TRANGTHAILAMVIEC TRANGTHAILAMVIEC1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN_OT> NHANVIEN_OT { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -67,6 +74,6 @@ namespace WindowsFormsApp1
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN_LOAIPHUCAP> NHANVIEN_LOAIPHUCAP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHAVIEN_GIOCONG> NHAVIEN_GIOCONG { get; set; }
+        public virtual ICollection<NHANVIEN_GIOCONG> NHANVIEN_GIOCONG { get; set; }
     }
 }

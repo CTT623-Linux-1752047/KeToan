@@ -12,12 +12,17 @@ namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
+        private TinhTienLuongEntities data = new TinhTienLuongEntities();
         bool drag = false;
         Point start_point = new Point(0, 0);
         public Form1()
         {
+            //var watch = new System.Diagnostics.Stopwatch();
+            //watch.Start();
             InitializeComponent();
-            
+            data.spUpdateDayOfTakeLeaveForStaff();
+            //watch.Stop();
+            //MessageBox.Show($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
         protected override void WndProc(ref Message m)
         {
@@ -36,10 +41,8 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Show();
             this.ngaynghi1.Hide();
-            //this.bangluong1.Hide();
-            this.tamungluong1.Hide();
-            this.setting1.Hide();
-
+            this.bangluongnhanvien1.Hide();
+            this.quanlygiocong1.Hide();
             this.button1.BackColor = Color.FromArgb(69, 69, 69);            
             this.button2.BackColor = Color.FromArgb(21, 23, 22);           
             this.button3.BackColor = Color.FromArgb(21, 23, 22);            
@@ -52,10 +55,9 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Show();
-            //this.bangluong1.Hide();
-            this.tamungluong1.Hide();
-            this.setting1.Hide();
-
+            this.ngaynghi1.LoadData();
+            this.bangluongnhanvien1.Hide();
+            this.quanlygiocong1.Hide();
             this.button2.BackColor = Color.FromArgb(69, 69, 69);
             this.button1.BackColor = Color.FromArgb(21, 23, 22);
             this.button3.BackColor = Color.FromArgb(21, 23, 22);
@@ -68,10 +70,8 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            //this.bangluong1.Show();
-            this.tamungluong1.Hide();
-            this.setting1.Hide();
-
+            this.bangluongnhanvien1.Show();
+            this.quanlygiocong1.Hide();
             this.button3.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
             this.button1.BackColor = Color.FromArgb(21, 23, 22);
@@ -84,10 +84,8 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            //this.bangluong1.Hide();
-            this.tamungluong1.setTitle("THÔNG TIN ĐI TRỄ VỀ SỚM ");
-            this.tamungluong1.Show();
-            this.setting1.Hide();
+            this.quanlygiocong1.Show();
+            this.bangluongnhanvien1.Hide();
 
             this.button4.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
@@ -100,25 +98,17 @@ namespace WindowsFormsApp1
         private void Form1_Load(object sender, EventArgs e)
         {
             this.quanlynhansu1.Show();
+            this.quanlynhansu1.LoadData();
             this.ngaynghi1.Hide();
-            //this.bangluong1.Hide();
-            this.tamungluong1.Hide();
-            this.setting1.Hide();
+            this.quanlygiocong1.Hide();
+            this.bangluongnhanvien1.Hide();
         }
-
-        private void quanlynhansu1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void button6_Click(object sender, EventArgs e)
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-            //this.bangluong1.Hide();
-            this.tamungluong1.setTitle("THÔNG TIN OVER TIME");
-            this.tamungluong1.Show();
-            this.setting1.Hide();
+            this.quanlygiocong1.Hide();
+            this.bangluongnhanvien1.Hide();
 
             this.button6.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
@@ -132,10 +122,8 @@ namespace WindowsFormsApp1
         {
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
-           // this.bangluong1.Hide();
-            this.tamungluong1.Hide();
-            this.setting1.Show();
-
+            this.quanlygiocong1.Hide();
+            this.bangluongnhanvien1.Hide();
 
             this.button5.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
@@ -144,22 +132,11 @@ namespace WindowsFormsApp1
             this.button1.BackColor = Color.FromArgb(21, 23, 22);
             this.button6.BackColor = Color.FromArgb(21, 23, 22);
         }
-
-        private void tamungluong1_Load(object sender, EventArgs e)
-        {
-
-        }
-        private void button8_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void header_MouseDown(object sender, MouseEventArgs e)
         {
             drag = true;
             start_point = new Point(e.X, e.Y);
         }
-
         private void header_MouseMove(object sender, MouseEventArgs e)
         {
             if(drag)
@@ -172,6 +149,20 @@ namespace WindowsFormsApp1
         private void header_MouseUp(object sender, MouseEventArgs e)
         {
             drag = false;
+        }
+
+        private void MinimumWindow_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void CloseWindow_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+        private void MaximumSize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Maximized;
         }
     }
 }

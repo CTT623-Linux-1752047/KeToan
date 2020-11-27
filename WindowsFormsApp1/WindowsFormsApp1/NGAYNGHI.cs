@@ -16,17 +16,15 @@ namespace WindowsFormsApp1
 {
     public partial class NGAYNGHI : UserControl
     {
-        private TinhTienLuongEntities data;
-        private FormWindowState WindowState;
+        private TinhTienLuongEntities data = new TinhTienLuongEntities();
         private DataTable dt;
         private List<fnDisplayOFFDayFollowCondition_Result> listOFFStaff;
         public NGAYNGHI()
         {
-            data = new TinhTienLuongEntities();
             InitializeComponent();
             this.txtSearchName.GotFocus += TxtSearchName_GotFocus;
-            LoadData();
         }
+        
         public void LoadData()
         {
             if (this.txtSearchName.Text == "họ và tên ....")
@@ -40,14 +38,15 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.Rows.Clear();
             for (int i = 0; i < this.listOFFStaff.Count; i++)
             {
-                this.bunifuCustomDataGrid1.Rows.Add(this.listOFFStaff[i].UserID,
+                this.bunifuCustomDataGrid1.Rows.Add(i + 1,
                                                    this.listOFFStaff[i].UserName,
                                                    this.listOFFStaff[i].HoVaTen,
-                                                   this.listOFFStaff[i].NgayBatDau.Value.ToString("dd/MM/yyyy - [HH:mm]"),
-                                                   this.listOFFStaff[i].NgayKetThuc.Value.ToString("dd/MM/yyyy - [HH:mm]"),
+                                                   this.listOFFStaff[i].NgayBatDau.Value.Minute == 00 && this.listOFFStaff[i].NgayBatDau.Value.Hour == 00 ?
+                                                   this.listOFFStaff[i].NgayBatDau.Value.ToString("dd/MM/yyyy") : this.listOFFStaff[i].NgayBatDau.Value.ToString("dd/MM/yyyy - [HH:mm]"),
+                                                   this.listOFFStaff[i].NgayKetThuc.Value.Minute == 00 && this.listOFFStaff[i].NgayKetThuc.Value.Hour == 00 ?
+                                                   this.listOFFStaff[i].NgayKetThuc.Value.ToString("dd/MM/yyyy ") : this.listOFFStaff[i].NgayKetThuc.Value.ToString("dd/MM/yyyy - [HH:mm]"),
                                                    this.listOFFStaff[i].LyDo);
             }
-            
         }
         private void TxtSearchName_GotFocus(object sender, EventArgs e)
         {
@@ -57,6 +56,7 @@ namespace WindowsFormsApp1
         //nút tạo thêm ngày nghỉ cho nhân viên
         private void button9_Click(object sender, EventArgs e)
         {
+            /*
             Form formBackground = new Form();
             try
             {
@@ -82,41 +82,76 @@ namespace WindowsFormsApp1
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);
-
-            }
+            }*/
+            CREATEOFFDAY frmOffDay = new CREATEOFFDAY();
+            frmOffDay.Show();
             LoadData();
         }
         //nút cập nhật cho 1 (hoặc 1 số ) nhân viên 
         private void button1_Click(object sender, EventArgs e)
         {
-            Form formBackground = new Form();
-            DataSet ds = new DataSet();
-            try
+            //Form formBackground = new Form();
+            List<int> temp = new List<int> ();
+            //Kiểm tra các dòng selected có cùng nhau hay không 
+            bool checkDuplicate = false;
+            for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count - 1; i++)
             {
-                using (CREATEOFFDAY frmOffDay = new CREATEOFFDAY(ds))
+                if (this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i].Cells[0].Value - 1].ID_LoaiNgayNghi !=
+                    this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i + 1].Cells[0].Value - 1].ID_LoaiNgayNghi)
+                    checkDuplicate = true;
+            }
+            for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count - 1; i++)
+            {
+                if (this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i].Cells[0].Value - 1].NgayBatDau !=
+                    this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i + 1].Cells[0].Value - 1].NgayBatDau)
+                    checkDuplicate = true;
+            }
+            for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count - 1; i++)
+            {
+                if (this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i].Cells[0].Value - 1].NgayKetThuc !=
+                    this.listOFFStaff[(int)this.bunifuCustomDataGrid1.SelectedRows[i + 1].Cells[0].Value - 1].NgayKetThuc)
+                    checkDuplicate = true;
+            }
+            if (checkDuplicate == false)
+            {
+                for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count; i++)
                 {
-                    formBackground.StartPosition = FormStartPosition.CenterScreen;
-                    formBackground.FormBorderStyle = FormBorderStyle.None;
-                    formBackground.Size = new Size(1484, 811);
-                    formBackground.Opacity = .80d;
-                    formBackground.BackColor = Color.Black;
-                    formBackground.WindowState = FormWindowState.Normal;
-                    formBackground.TopMost = true;
-                    formBackground.Location = this.Location;
-                    formBackground.ShowInTaskbar = false;
-                    formBackground.Show();
+                    temp.Add(this.listOFFStaff[this.bunifuCustomDataGrid1.SelectedRows[i].Index].ID);
+                }
+                try
+                {
+                    using (CREATEOFFDAY frmOffDay = new CREATEOFFDAY(temp))
+                    {
+                        /*
+                        formBackground.StartPosition = FormStartPosition.CenterScreen;
+                        formBackground.FormBorderStyle = FormBorderStyle.None;
+                        formBackground.Size = new Size(1484, 811);
+                        formBackground.Opacity = .80d;
+                        formBackground.BackColor = Color.Black;
+                        formBackground.WindowState = FormWindowState.Normal;
+                        formBackground.TopMost = true;
+                        formBackground.Location = this.Location;
+                        formBackground.ShowInTaskbar = false;
+                        formBackground.Show();
+                       
+                        frmOffDay.Owner = formBackground;
 
-                    frmOffDay.Owner = formBackground;
-
-                    frmOffDay.ShowDialog();
-                    formBackground.Dispose();
+                        frmOffDay.ShowDialog();
+                        formBackground.Dispose();
+                        */
+                        frmOffDay.Show();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
                 }
             }
-            catch (Exception ex)
+            else
             {
-                MessageBox.Show(ex.Message);
-
+                MessageBox.Show("Các ngày lựa chọn không hợp lệ !!! Xin nhập lại ");
             }
+            LoadData();
         }
         private void dateTimePicker2_ValueChanged(object sender, EventArgs e)
         {
@@ -130,23 +165,73 @@ namespace WindowsFormsApp1
                 LoadData();
             }
         }
+        //Khi click mouse vào textbox thì text Họ và tên biến mất vì textbox ko có placeholder
         private void txtSearchName_Enter(object sender, EventArgs e)
         {
             this.txtSearchName.Text = "";
         }
-
+        //nút tìm kiếm họ và tên 
         private void btnSearch_Click(object sender, EventArgs e)
         {
             LoadData();
         }
+        //nút xóa ngày nghỉ 
         private void btnDelete_Click(object sender, EventArgs e)
         {
             for (int i =0; i < this.bunifuCustomDataGrid1.SelectedRows.Count; i++)
             {
-                data.NHANVIEN_LOAINGAYNGHI.Remove(data.NHANVIEN_LOAINGAYNGHI.Find(this.listOFFStaff[this.bunifuCustomDataGrid1.SelectedRows[i].Index].ID));
+                data.NHANVIEN_LOAINGAYNGHI.Remove(data.NHANVIEN_LOAINGAYNGHI.Find(this.listOFFStaff[(int)this.bunifuCustomDataGrid1.CurrentRow.Cells[0].Value - 1].ID));
                 data.SaveChanges();
             }
             LoadData();
+        }
+        //Click double để mở màn hình chỉnh sửa thông tin 
+        private void bunifuCustomDataGrid1_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Form formBackground = new Form();
+            List<int> temp = new List<int>();
+            for (int i = 0; i < this.bunifuCustomDataGrid1.SelectedRows.Count; i++)
+            {
+                temp.Add(this.listOFFStaff[(int)this.bunifuCustomDataGrid1.CurrentRow.Cells[0].Value - 1].ID);
+            }
+            try
+            {
+                using (CREATEOFFDAY frmOffDay = new CREATEOFFDAY(temp))
+                {
+                    
+                    formBackground.StartPosition = FormStartPosition.CenterScreen;
+                    formBackground.FormBorderStyle = FormBorderStyle.None;
+                    formBackground.Size = new Size(1484, 811);
+                    formBackground.Opacity = .80d;
+                    formBackground.BackColor = Color.Black;
+                    formBackground.WindowState = FormWindowState.Normal;
+                    formBackground.TopMost = true;
+                    formBackground.Location = this.Location;
+                    formBackground.ShowInTaskbar = false;
+                    formBackground.Show();
+                   
+                    frmOffDay.Owner = formBackground;
+
+                    frmOffDay.ShowDialog();
+                    formBackground.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void txtNgayBatDau_ValueChanged(object sender, EventArgs e)
+        {
+            if (this.txtNgayKetThuc.Value < this.txtNgayBatDau.Value)
+            {
+                MessageBox.Show("Ngày không đúng định dạng ");
+                this.txtNgayBatDau.Value = this.txtNgayKetThuc.Value;
+            }
+            else
+            {
+                LoadData();
+            }
         }
     }
 }
