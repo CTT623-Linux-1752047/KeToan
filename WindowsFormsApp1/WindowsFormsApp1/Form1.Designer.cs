@@ -33,24 +33,25 @@ namespace WindowsFormsApp1
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.button6 = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.bangluongnhanvien1 = new WindowsFormsApp1.BANGLUONGNHANVIEN();
-            this.quanlynhansu1 = new WindowsFormsApp1.QUANLYNHANSU();
-            this.ngaynghi1 = new WindowsFormsApp1.NGAYNGHI();
             this.header = new System.Windows.Forms.TableLayoutPanel();
             this.MaximumSize = new System.Windows.Forms.Button();
             this.MinimumWindow = new System.Windows.Forms.Button();
             this.CloseWindow = new System.Windows.Forms.Button();
-            this.quanlygiocong1 = new WindowsFormsApp1.QUANLYGIOCONG();
             this.process1 = new System.Diagnostics.Process();
             this.button7 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
+            this.quanlyot1 = new WindowsFormsApp1.QUANLYOT();
+            this.quanlygiocong1 = new WindowsFormsApp1.QUANLYGIOCONG();
+            this.bangluongnhanvien1 = new WindowsFormsApp1.BANGLUONGNHANVIEN();
+            this.quanlynhansu1 = new WindowsFormsApp1.QUANLYNHANSU();
+            this.ngaynghi1 = new WindowsFormsApp1.NGAYNGHI();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
@@ -94,6 +95,44 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 811);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // button6
+            // 
+            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(36)))), ((int)(((byte)(52)))));
+            this.button6.FlatAppearance.BorderSize = 0;
+            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button6.Image = global::WindowsFormsApp1.Properties.Resources.icons8_time_to_pay_48;
+            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button6.Location = new System.Drawing.Point(0, 486);
+            this.button6.Margin = new System.Windows.Forms.Padding(0);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(246, 81);
+            this.button6.TabIndex = 7;
+            this.button6.Text = "OVER TIME";
+            this.button6.UseVisualStyleBackColor = true;
+            this.button6.Click += new System.EventHandler(this.button6_Click);
+            // 
+            // button5
+            // 
+            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.button5.FlatAppearance.BorderSize = 0;
+            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.icons8_gear_48;
+            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button5.Location = new System.Drawing.Point(0, 567);
+            this.button5.Margin = new System.Windows.Forms.Padding(0);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(246, 81);
+            this.button5.TabIndex = 6;
+            this.button5.Text = "THIẾT LẬP ";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // button1
             // 
@@ -189,6 +228,7 @@ namespace WindowsFormsApp1
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.quanlyot1);
             this.panel2.Controls.Add(this.quanlygiocong1);
             this.panel2.Controls.Add(this.bangluongnhanvien1);
             this.panel2.Controls.Add(this.quanlynhansu1);
@@ -198,32 +238,6 @@ namespace WindowsFormsApp1
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1232, 773);
             this.panel2.TabIndex = 0;
-            // 
-            // bangluongnhanvien1
-            // 
-            this.bangluongnhanvien1.BackColor = System.Drawing.Color.Maroon;
-            this.bangluongnhanvien1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bangluongnhanvien1.Location = new System.Drawing.Point(0, 0);
-            this.bangluongnhanvien1.Margin = new System.Windows.Forms.Padding(0);
-            this.bangluongnhanvien1.Name = "bangluongnhanvien1";
-            this.bangluongnhanvien1.Size = new System.Drawing.Size(1232, 773);
-            this.bangluongnhanvien1.TabIndex = 6;
-            // 
-            // quanlynhansu1
-            // 
-            this.quanlynhansu1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quanlynhansu1.Location = new System.Drawing.Point(0, 0);
-            this.quanlynhansu1.Name = "quanlynhansu1";
-            this.quanlynhansu1.Size = new System.Drawing.Size(1232, 773);
-            this.quanlynhansu1.TabIndex = 5;
-            // 
-            // ngaynghi1
-            // 
-            this.ngaynghi1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ngaynghi1.Location = new System.Drawing.Point(0, 0);
-            this.ngaynghi1.Name = "ngaynghi1";
-            this.ngaynghi1.Size = new System.Drawing.Size(1232, 773);
-            this.ngaynghi1.TabIndex = 7;
             // 
             // header
             // 
@@ -296,7 +310,7 @@ namespace WindowsFormsApp1
             this.CloseWindow.Size = new System.Drawing.Size(32, 32);
             this.CloseWindow.TabIndex = 7;
             this.CloseWindow.UseVisualStyleBackColor = false;
-            this.CloseWindow.Click += new System.EventHandler(this.CloseWindow_Click);            
+            this.CloseWindow.Click += new System.EventHandler(this.CloseWindow_Click);
             // 
             // process1
             // 
@@ -322,51 +336,47 @@ namespace WindowsFormsApp1
             this.button7.TabIndex = 4;
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // quanlygiocong2
+            // quanlyot1
+            // 
+            this.quanlyot1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlyot1.Location = new System.Drawing.Point(0, 0);
+            this.quanlyot1.Name = "quanlyot1";
+            this.quanlyot1.Size = new System.Drawing.Size(1232, 773);
+            this.quanlyot1.TabIndex = 9;
+            // 
+            // quanlygiocong1
             // 
             this.quanlygiocong1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.quanlygiocong1.Location = new System.Drawing.Point(0, 0);
-            this.quanlygiocong1.Name = "quanlygiocong2";
+            this.quanlygiocong1.Name = "quanlygiocong1";
             this.quanlygiocong1.Size = new System.Drawing.Size(1232, 773);
             this.quanlygiocong1.TabIndex = 8;
             // 
-            // button5
+            // bangluongnhanvien1
             // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.icons8_gear_48;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 567);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(246, 81);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "THIẾT LẬP ";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.bangluongnhanvien1.BackColor = System.Drawing.Color.Maroon;
+            this.bangluongnhanvien1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bangluongnhanvien1.Location = new System.Drawing.Point(0, 0);
+            this.bangluongnhanvien1.Margin = new System.Windows.Forms.Padding(0);
+            this.bangluongnhanvien1.Name = "bangluongnhanvien1";
+            this.bangluongnhanvien1.Size = new System.Drawing.Size(1232, 773);
+            this.bangluongnhanvien1.TabIndex = 6;
             // 
-            // button6
+            // quanlynhansu1
             // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(36)))), ((int)(((byte)(52)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Image = global::WindowsFormsApp1.Properties.Resources.icons8_time_to_pay_48;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 486);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(246, 81);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "OVER TIME";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.quanlynhansu1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlynhansu1.Location = new System.Drawing.Point(0, 0);
+            this.quanlynhansu1.Name = "quanlynhansu1";
+            this.quanlynhansu1.Size = new System.Drawing.Size(1232, 773);
+            this.quanlynhansu1.TabIndex = 5;
+            // 
+            // ngaynghi1
+            // 
+            this.ngaynghi1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ngaynghi1.Location = new System.Drawing.Point(0, 0);
+            this.ngaynghi1.Name = "ngaynghi1";
+            this.ngaynghi1.Size = new System.Drawing.Size(1232, 773);
+            this.ngaynghi1.TabIndex = 7;
             // 
             // Form1
             // 
@@ -410,6 +420,7 @@ namespace WindowsFormsApp1
         private QUANLYGIOCONG quanlygiocong1;
         private Button button6;
         private Button button5;
+        private QUANLYOT quanlyot1;
     }
 }
 

@@ -38,9 +38,10 @@ namespace WindowsFormsApp1
         public virtual DbSet<NHANVIEN_GIOCONG> NHANVIEN_GIOCONG { get; set; }
         public virtual DbSet<NHANVIEN_LOAINGAYNGHI> NHANVIEN_LOAINGAYNGHI { get; set; }
         public virtual DbSet<NHANVIEN_LOAIPHUCAP> NHANVIEN_LOAIPHUCAP { get; set; }
-        public virtual DbSet<NHANVIEN_OT> NHANVIEN_OT { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TRANGTHAILAMVIEC> TRANGTHAILAMVIECs { get; set; }
+        public virtual DbSet<TYPE_RANGE_HOURS_OT> TYPE_RANGE_HOURS_OT { get; set; }
+        public virtual DbSet<NHANVIEN_OT> NHANVIEN_OT { get; set; }
     
         [DbFunction("TinhTienLuongEntities", "fnDisplayOFFDayFollowCondition")]
         public virtual IQueryable<fnDisplayOFFDayFollowCondition_Result> fnDisplayOFFDayFollowCondition(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc, string hoVaTen)
@@ -303,6 +304,34 @@ namespace WindowsFormsApp1
                 new ObjectParameter("ThangNam", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayWorkingDaysStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayWorkingDaysStaffOfMonth](@HoVaTen, @ThangNam)", hoVaTenParameter, thangNamParameter);
+        }
+    
+        [DbFunction("TinhTienLuongEntities", "fnDisplayInfoStaffWorkingDayInMonth")]
+        public virtual IQueryable<fnDisplayInfoStaffWorkingDayInMonth_Result> fnDisplayInfoStaffWorkingDayInMonth(Nullable<int> iD_NhanVien, Nullable<System.DateTime> thangNam)
+        {
+            var iD_NhanVienParameter = iD_NhanVien.HasValue ?
+                new ObjectParameter("ID_NhanVien", iD_NhanVien) :
+                new ObjectParameter("ID_NhanVien", typeof(int));
+    
+            var thangNamParameter = thangNam.HasValue ?
+                new ObjectParameter("ThangNam", thangNam) :
+                new ObjectParameter("ThangNam", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayInfoStaffWorkingDayInMonth_Result>("[TinhTienLuongEntities].[fnDisplayInfoStaffWorkingDayInMonth](@ID_NhanVien, @ThangNam)", iD_NhanVienParameter, thangNamParameter);
+        }
+    
+        [DbFunction("TinhTienLuongEntities", "fnDisplayOT_AmountOTStaffOfMonth")]
+        public virtual IQueryable<fnDisplayOT_AmountOTStaffOfMonth_Result> fnDisplayOT_AmountOTStaffOfMonth(string hoVaTen, Nullable<System.DateTime> date)
+        {
+            var hoVaTenParameter = hoVaTen != null ?
+                new ObjectParameter("HoVaTen", hoVaTen) :
+                new ObjectParameter("HoVaTen", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayOT_AmountOTStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayOT_AmountOTStaffOfMonth](@HoVaTen, @Date)", hoVaTenParameter, dateParameter);
         }
     }
 }

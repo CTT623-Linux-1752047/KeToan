@@ -470,7 +470,7 @@ namespace WindowsFormsApp1
             this.dateStart.Name = "dateStart";
             this.dateStart.Size = new System.Drawing.Size(246, 26);
             this.dateStart.TabIndex = 1;
-            this.dateStart.Value = new System.DateTime(2020, 11, 25, 10, 22, 32, 883);
+            this.dateStart.Value = DateTime.Now;
             // 
             // panel3
             // 
@@ -495,7 +495,7 @@ namespace WindowsFormsApp1
             this.dateEnd.Name = "dateEnd";
             this.dateEnd.Size = new System.Drawing.Size(246, 26);
             this.dateEnd.TabIndex = 0;
-            this.dateEnd.Value = new System.DateTime(2020, 11, 25, 10, 22, 32, 887);
+            this.dateEnd.Value = DateTime.Now;
             // 
             // panel4
             // 

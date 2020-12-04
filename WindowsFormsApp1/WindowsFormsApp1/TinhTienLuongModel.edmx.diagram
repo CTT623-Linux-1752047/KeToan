@@ -16,7 +16,6 @@
         <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_GIOCONG" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
         <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_LOAINGAYNGHI" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
         <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_LOAIPHUCAP" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_OT" Width="1.5" PointX="5.25" PointY="25.25" IsExpanded="true" />
         <EntityTypeShape EntityType="TinhTienLuongModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="TinhTienLuongModel.TRANGTHAILAMVIEC" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
         <AssociationConnector Association="TinhTienLuongModel.FK__BANGLUONG__ID_Nh__48CFD27E" ManuallyRouted="false" />
@@ -27,10 +26,13 @@
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Lo__3D5E1FD2" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_LO__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANSU__TrangTha__6A30C649" ManuallyRouted="false" />
-        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHAVIEN_G__ID_Nh__37A5467C" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.TYPE_RANGE_HOURS_OT" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_OT" Width="1.5" PointX="8.25" PointY="3" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -17,5 +17,6 @@ namespace WindowsFormsApp1
         public Nullable<int> WFH { get; set; }
         public Nullable<int> LEAVES { get; set; }
         public Nullable<int> TotalOFFDays { get; set; }
+        public Nullable<int> ID_NhanVien { get; set; }
     }
 }

@@ -10,18 +10,13 @@
 namespace WindowsFormsApp1
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class NHANVIEN_OT
+    public partial class fnDisplayInfoStaffWorkingDayInMonth_Result
     {
         public int ID { get; set; }
-        public System.DateTime DateDangKy { get; set; }
-        public double SoGioOT { get; set; }
-        public Nullable<int> ID_Project { get; set; }
+        public Nullable<System.DateTime> NgayGioKetThuc { get; set; }
         public Nullable<int> ID_NhanVien { get; set; }
-        public Nullable<int> ID_Range_Hours_OT { get; set; }
-    
-        public virtual NHANSU NHANSU { get; set; }
-        public virtual TYPE_RANGE_HOURS_OT TYPE_RANGE_HOURS_OT { get; set; }
+        public Nullable<System.DateTime> NgayGioBatDau { get; set; }
+        public Nullable<int> ID_GioCong { get; set; }
     }
 }

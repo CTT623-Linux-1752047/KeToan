@@ -20,10 +20,10 @@ namespace WindowsFormsApp1
             this.BANGLUONGs = new HashSet<BANGLUONG>();
             this.HISTORY_RESET_DAY_OF_TAKE_LEAVE = new HashSet<HISTORY_RESET_DAY_OF_TAKE_LEAVE>();
             this.KHAUTRULUONGs = new HashSet<KHAUTRULUONG>();
-            this.NHANVIEN_OT = new HashSet<NHANVIEN_OT>();
             this.NHANVIEN_LOAINGAYNGHI = new HashSet<NHANVIEN_LOAINGAYNGHI>();
             this.NHANVIEN_LOAIPHUCAP = new HashSet<NHANVIEN_LOAIPHUCAP>();
             this.NHANVIEN_GIOCONG = new HashSet<NHANVIEN_GIOCONG>();
+            this.NHANVIEN_OT = new HashSet<NHANVIEN_OT>();
         }
     
         public int ID { get; set; }
@@ -68,12 +68,12 @@ namespace WindowsFormsApp1
         public virtual ICollection<KHAUTRULUONG> KHAUTRULUONGs { get; set; }
         public virtual TRANGTHAILAMVIEC TRANGTHAILAMVIEC1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN_OT> NHANVIEN_OT { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN_LOAINGAYNGHI> NHANVIEN_LOAINGAYNGHI { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN_LOAIPHUCAP> NHANVIEN_LOAIPHUCAP { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<NHANVIEN_GIOCONG> NHANVIEN_GIOCONG { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<NHANVIEN_OT> NHANVIEN_OT { get; set; }
     }
 }

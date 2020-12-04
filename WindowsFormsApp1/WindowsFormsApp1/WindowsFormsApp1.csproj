@@ -155,12 +155,17 @@
     <Compile Include="CHUCDANH.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="CONNECT_DB.cs" />
-    <Compile Include="CREATEOFFDAY.cs">
+    <Compile Include="CREATE_OFF_DAY.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CREATEOFFDAY.Designer.cs">
-      <DependentUpon>CREATEOFFDAY.cs</DependentUpon>
+    <Compile Include="CREATE_OFF_DAY.Designer.cs">
+      <DependentUpon>CREATE_OFF_DAY.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CREATE_HOURS_OT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CREATE_HOURS_OT.Designer.cs">
+      <DependentUpon>CREATE_HOURS_OT.cs</DependentUpon>
     </Compile>
     <Compile Include="CREATE_WORKING_HOURS.cs">
       <SubType>Form</SubType>
@@ -174,6 +179,15 @@
     <Compile Include="EDIT_WORKING_DAY_OF_STAFF.Designer.cs">
       <DependentUpon>EDIT_WORKING_DAY_OF_STAFF.cs</DependentUpon>
     </Compile>
+    <Compile Include="EDIT_WORKING_OT_OF_STAFF.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EDIT_WORKING_OT_OF_STAFF.Designer.cs">
+      <DependentUpon>EDIT_WORKING_OT_OF_STAFF.cs</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayInfoStaffWorkingDayInMonth_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="fnDisplayOFFDayFollowCondition_Result.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
@@ -181,6 +195,9 @@
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fnDisplayOptionTitle_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayOT_AmountOTStaffOfMonth_Result.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fnDisplayStaffFollowID_Result.cs">
@@ -225,7 +242,6 @@
     <Compile Include="NHANSU.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="NHANVIEN.cs" />
     <Compile Include="NHANVIEN_GIOCONG.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
@@ -251,6 +267,12 @@
     </Compile>
     <Compile Include="QUANLYNHANSU.Designer.cs">
       <DependentUpon>QUANLYNHANSU.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYOT.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QUANLYOT.Designer.cs">
+      <DependentUpon>QUANLYOT.cs</DependentUpon>
     </Compile>
     <Compile Include="SETTING.cs">
       <SubType>UserControl</SubType>
@@ -309,17 +331,26 @@
     <Compile Include="TRANGTHAILAMVIEC.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="TYPE_RANGE_HOURS_OT.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="BANGLUONGNHANVIEN.resx">
       <DependentUpon>BANGLUONGNHANVIEN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="CREATEOFFDAY.resx">
-      <DependentUpon>CREATEOFFDAY.cs</DependentUpon>
+    <EmbeddedResource Include="CREATE_OFF_DAY.resx">
+      <DependentUpon>CREATE_OFF_DAY.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CREATE_HOURS_OT.resx">
+      <DependentUpon>CREATE_HOURS_OT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CREATE_WORKING_HOURS.resx">
       <DependentUpon>CREATE_WORKING_HOURS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EDIT_WORKING_DAY_OF_STAFF.resx">
       <DependentUpon>EDIT_WORKING_DAY_OF_STAFF.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EDIT_WORKING_OT_OF_STAFF.resx">
+      <DependentUpon>EDIT_WORKING_OT_OF_STAFF.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
@@ -342,6 +373,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="QUANLYNHANSU.resx">
       <DependentUpon>QUANLYNHANSU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="QUANLYOT.resx">
+      <DependentUpon>QUANLYOT.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SETTING.resx">
       <DependentUpon>SETTING.cs</DependentUpon>
@@ -545,6 +579,13 @@
     <None Include="Resources\icons8-delete-bin-16 %281%29.png" />
     <None Include="Resources\icons8-edit-24.png" />
     <None Include="Resources\icons8-delete-bin-241.png" />
+    <None Include="Resources\icons8-edit-property-24.png" />
+    <None Include="Resources\icons8-edit-property-162.png" />
+    <None Include="Resources\icons8-no-data-availible-24.png" />
+    <None Include="Resources\icons8-time-machine-96.png" />
+    <None Include="Resources\icons8-create-48.png" />
+    <None Include="Resources\icons8-create-241.png" />
+    <None Include="Resources\icons8-create-32.png" />
     <Content Include="TinhTienLuongModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TinhTienLuongModel.edmx</DependentUpon>

@@ -17,12 +17,8 @@ namespace WindowsFormsApp1
         Point start_point = new Point(0, 0);
         public Form1()
         {
-            //var watch = new System.Diagnostics.Stopwatch();
-            //watch.Start();
             InitializeComponent();
             data.spUpdateDayOfTakeLeaveForStaff();
-            //watch.Stop();
-            //MessageBox.Show($"Execution Time: {watch.ElapsedMilliseconds} ms");
         }
         protected override void WndProc(ref Message m)
         {
@@ -43,6 +39,8 @@ namespace WindowsFormsApp1
             this.ngaynghi1.Hide();
             this.bangluongnhanvien1.Hide();
             this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+
             this.button1.BackColor = Color.FromArgb(69, 69, 69);            
             this.button2.BackColor = Color.FromArgb(21, 23, 22);           
             this.button3.BackColor = Color.FromArgb(21, 23, 22);            
@@ -58,6 +56,8 @@ namespace WindowsFormsApp1
             this.ngaynghi1.LoadData();
             this.bangluongnhanvien1.Hide();
             this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+
             this.button2.BackColor = Color.FromArgb(69, 69, 69);
             this.button1.BackColor = Color.FromArgb(21, 23, 22);
             this.button3.BackColor = Color.FromArgb(21, 23, 22);
@@ -72,6 +72,8 @@ namespace WindowsFormsApp1
             this.ngaynghi1.Hide();
             this.bangluongnhanvien1.Show();
             this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+
             this.button3.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
             this.button1.BackColor = Color.FromArgb(21, 23, 22);
@@ -85,7 +87,9 @@ namespace WindowsFormsApp1
             this.quanlynhansu1.Hide();
             this.ngaynghi1.Hide();
             this.quanlygiocong1.Show();
+            this.quanlygiocong1.LoadData();
             this.bangluongnhanvien1.Hide();
+            this.quanlyot1.Hide();
 
             this.button4.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
@@ -102,6 +106,7 @@ namespace WindowsFormsApp1
             this.ngaynghi1.Hide();
             this.quanlygiocong1.Hide();
             this.bangluongnhanvien1.Hide();
+            this.quanlyot1.Hide();
         }
         private void button6_Click(object sender, EventArgs e)
         {
@@ -109,6 +114,8 @@ namespace WindowsFormsApp1
             this.ngaynghi1.Hide();
             this.quanlygiocong1.Hide();
             this.bangluongnhanvien1.Hide();
+            this.quanlyot1.Show();
+            this.quanlyot1.LoadData();
 
             this.button6.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);
@@ -124,6 +131,7 @@ namespace WindowsFormsApp1
             this.ngaynghi1.Hide();
             this.quanlygiocong1.Hide();
             this.bangluongnhanvien1.Hide();
+            this.quanlyot1.Hide();
 
             this.button5.BackColor = Color.FromArgb(69, 69, 69);
             this.button2.BackColor = Color.FromArgb(21, 23, 22);

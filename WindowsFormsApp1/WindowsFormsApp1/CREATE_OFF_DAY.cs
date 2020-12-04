@@ -14,14 +14,14 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class CREATEOFFDAY : Form
+    public partial class CREATE_OFF_DAY : Form
     {
         private TinhTienLuongEntities data;
         private List<fnDisplayStaffFollowName_Result> listEmployeeTemp;
         private List<fnDisplayTitleOFFDay_Result> listTitleOFFDay;
         private List<int> lstIDNhanVienNgayNghi;
         private List<int> lstIDNhanVien = new List<int>();
-        public CREATEOFFDAY()
+        public CREATE_OFF_DAY()
         {
             InitializeComponent();
             this.btnTaoNgay.Show();
@@ -34,7 +34,7 @@ namespace WindowsFormsApp1
            
             ShowInfoEmployee();
         }
-        public CREATEOFFDAY(List<int> lstIDNhanVienNgayNghi)
+        public CREATE_OFF_DAY(List<int> lstIDNhanVienNgayNghi)
         {
             this.lstIDNhanVienNgayNghi = lstIDNhanVienNgayNghi;
             data = new TinhTienLuongEntities();
@@ -147,7 +147,7 @@ namespace WindowsFormsApp1
                 if( this.listTitleOFFDay[this.TitleOFFDay.SelectedIndex].ThoiGian != null)
                 {
                     checkBoxOFFAllDay.Checked = true;
-                    this.txtNgayKetThuc.Value = this.txtNgayBatDau.Value.AddDays((double)this.listTitleOFFDay[this.TitleOFFDay.SelectedIndex].ThoiGian);
+                    this.txtNgayKetThuc.Value = this.txtNgayBatDau.Value.AddDays((double)this.listTitleOFFDay[this.TitleOFFDay.SelectedIndex].ThoiGian - 1);
                 }
                 else
                 {

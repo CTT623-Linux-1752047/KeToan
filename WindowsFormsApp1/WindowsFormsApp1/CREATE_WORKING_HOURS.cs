@@ -74,10 +74,16 @@ namespace WindowsFormsApp1
                     temp.ID_NhanVien = this.listEmployeeTemp[Convert.ToInt32(this.bunifuCustomDataGrid1.SelectedRows[0].Cells[0].Value) - 1].ID;
                     temp.NgayGioBatDau = this.dateStart.Value;
                     temp.NgayGioKetThuc = this.dateEnd.Value;
-                   
-                        data.NHANVIEN_GIOCONG.Add(temp);
-                        data.SaveChanges();
-                    
+                    data.NHANVIEN_GIOCONG.Add(temp);
+                    int resultCreate = data.SaveChanges();
+                    if(resultCreate < 1)
+                    {
+                        MessageBox.Show("Thêm thất bại !!!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm thành công");
+                    }
                 }
             }
         }

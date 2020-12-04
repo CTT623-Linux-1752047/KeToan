@@ -83,7 +83,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }*/
-            CREATEOFFDAY frmOffDay = new CREATEOFFDAY();
+            CREATE_OFF_DAY frmOffDay = new CREATE_OFF_DAY();
             frmOffDay.Show();
             LoadData();
         }
@@ -120,7 +120,7 @@ namespace WindowsFormsApp1
                 }
                 try
                 {
-                    using (CREATEOFFDAY frmOffDay = new CREATEOFFDAY(temp))
+                    using (CREATE_OFF_DAY frmOffDay = new CREATE_OFF_DAY(temp))
                     {
                         /*
                         formBackground.StartPosition = FormStartPosition.CenterScreen;
@@ -196,7 +196,7 @@ namespace WindowsFormsApp1
             }
             try
             {
-                using (CREATEOFFDAY frmOffDay = new CREATEOFFDAY(temp))
+                using (CREATE_OFF_DAY frmOffDay = new CREATE_OFF_DAY(temp))
                 {
                     
                     formBackground.StartPosition = FormStartPosition.CenterScreen;
@@ -220,6 +220,7 @@ namespace WindowsFormsApp1
             {
                 MessageBox.Show(ex.Message);
             }
+            LoadData();
         }
         private void txtNgayBatDau_ValueChanged(object sender, EventArgs e)
         {

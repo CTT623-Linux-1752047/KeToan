@@ -38,12 +38,7 @@ namespace WindowsFormsApp1
             CREATE_WORKING_HOURS crtWorkingH = new CREATE_WORKING_HOURS();
             crtWorkingH.ShowDialog();
         }
-
-        private void QUANLYGIOCONG_Load(object sender, EventArgs e)
-        {
-            LoadData();
-        }
-        private void LoadData()
+        public void LoadData()
         {
 
             if (this.searchBar.Text == "" || this.searchBar.Text == null)
@@ -68,6 +63,12 @@ namespace WindowsFormsApp1
                                                     this.lstWorkingDaysForStaffOfMonth[i].LEAVES
                                                     );
             }
+            if (lstWorkingDaysForStaffOfMonth.Count == 0)
+                this.lbNoData.Show();
+            else
+            {
+                this.lbNoData.Hide();
+            }
             
         }
 
@@ -82,8 +83,13 @@ namespace WindowsFormsApp1
         }
         private void bunifuCustomDataGrid1_CellContentDoubleClick_1(object sender, DataGridViewCellEventArgs e)
         {
-            EDIT_WORKING_DAY_OF_STAFF edit = new EDIT_WORKING_DAY_OF_STAFF();
-            edit.ShowDialog();
+            if (Convert.ToInt32(lstWorkingDaysForStaffOfMonth[Convert.ToInt32(this.bunifuCustomDataGrid1.SelectedRows[0].Cells[0].Value) - 1].ID_NhanVien) != -1)
+            {
+                EDIT_WORKING_DAY_OF_STAFF edit = new EDIT_WORKING_DAY_OF_STAFF(Convert.ToInt32(lstWorkingDaysForStaffOfMonth[Convert.ToInt32(this.bunifuCustomDataGrid1.SelectedRows[0].Cells[0].Value) - 1].ID_NhanVien), this.MonthYear.Value);
+                edit.ShowDialog();
+                LoadData();
+            }
+           
         }
     }
 }

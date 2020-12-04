@@ -80,13 +80,15 @@ C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\Sy
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\System.Threading.Tasks.Extensions.xml
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.BANGLUONGNHANVIEN.resources
-C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CREATEOFFDAY.resources
+C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CREATE_HOURS_OT.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CREATE_WORKING_HOURS.resources
+C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.EDIT_WORKING_DAY_OF_STAFF.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.NGAYNGHI.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.QUANLYGIOCONG.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.QUANLYNHANSU.resources
+C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.QUANLYOT.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.SETTING.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.THIETLAPNGAYNGHI.resources
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.THIETLAPPHUCAP.resources
@@ -98,4 +100,5 @@ C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\Wi
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
 C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csprojAssemblyReference.cache
-C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.EDIT_WORKING_DAY_OF_STAFF.resources
+C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.CREATE_OFF_DAY.resources
+C:\Users\toanlm\Desktop\TinhLuong\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.EDIT_WORKING_OT_OF_STAFF.resources

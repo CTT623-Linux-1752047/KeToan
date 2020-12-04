@@ -136,10 +136,11 @@
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="NgayThangNam" Type="date" Nullable="false" />
+    <Property Name="DateDangKy" Type="date" Nullable="false" />
     <Property Name="SoGioOT" Type="float" Nullable="false" />
-    <Property Name="DuAnOT" Type="nvarchar" MaxLength="255" />
+    <Property Name="ID_Project" Type="int" />
     <Property Name="ID_NhanVien" Type="int" />
+    <Property Name="ID_Range_Hours_OT" Type="int" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -157,6 +158,14 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenTrangThai" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="TYPE_RANGE_HOURS_OT">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RangeHours" Type="nchar" MaxLength="255" />
+    <Property Name="PercentAmountOT" Type="float" />
   </EntityType>
   <Association Name="FK__BANGLUONG__ID_Nh__48CFD27E">
     <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
@@ -290,6 +299,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__NHANVIEN___ID_Ra__18EBB532">
+    <End Role="TYPE_RANGE_HOURS_OT" Type="Self.TYPE_RANGE_HOURS_OT" Multiplicity="0..1" />
+    <End Role="NHANVIEN_OT" Type="Self.NHANVIEN_OT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TYPE_RANGE_HOURS_OT">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NHANVIEN_OT">
+        <PropertyRef Name="ID_Range_Hours_OT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__NHAVIEN_G__ID_Nh__37A5467C">
     <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="0..1" />
     <End Role="NHANVIEN_GIOCONG" Type="Self.NHANVIEN_GIOCONG" Multiplicity="*" />
@@ -303,12 +324,31 @@
     </ReferentialConstraint>
   </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="fnCalculteOFFDayTakeLeaveAStaffForMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
+    <Parameter Name="ID_NhanVien" Type="int" Mode="In" />
+    <Parameter Name="ThangNam" Type="datetime" Mode="In" />
+  </Function>
   <Function Name="fnCheckOffDayDuplicate" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="IDNhanVien" Type="int" Mode="In" />
     <Parameter Name="IDLoaiNgayNghi" Type="int" Mode="In" />
     <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
     <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
     <Parameter Name="LyDo" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="fnDisplayInfoStaffWorkingDayInMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_NhanVien" Type="int" Mode="In" />
+    <Parameter Name="ThangNam" Type="datetime" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="ID_NhanVien" Type="int" />
+          <Property Name="ID_GioCong" Type="int" />
+          <Property Name="NgayGioBatDau" Type="datetime" />
+          <Property Name="NgayGioKetThuc" Type="datetime" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
   </Function>
   <Function Name="fnDisplayOFFDayFollowCondition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="NgayBatDau" Type="datetime" Mode="In" />
@@ -346,6 +386,28 @@
         <RowType>
           <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="TenChucDanh" Type="nvarchar" MaxLength="255" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
+  </Function>
+  <Function Name="fnDisplayOT_AmountOTStaffOfMonth" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HoVaTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="Date" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="17h - 21h" Type="float" />
+          <Property Name="21h - 5h" Type="float" />
+          <Property Name="Saturday &amp; Sunday" Type="float" />
+          <Property Name="Total hours" Type="float" />
+          <Property Name="Amount 17h - 21h" Type="float" />
+          <Property Name="Amount 21h - 5h" Type="float" />
+          <Property Name="Amount Saturday &amp; Sunday" Type="float" />
+          <Property Name="TotalWithoutTax" Type="float" />
+          <Property Name="Tax" Type="float" />
+          <Property Name="TotalAmountWithTax" Type="float" />
         </RowType>
       </CollectionType>
     </ReturnType>
@@ -461,6 +523,7 @@
       <CollectionType>
         <RowType>
           <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ID_NhanVien" Type="int" />
           <Property Name="WFH" Type="int" />
           <Property Name="LEAVES" Type="int" />
           <Property Name="TotalOFFDays" Type="int" />
@@ -537,6 +600,7 @@
     <EntitySet Name="NHANVIEN_OT" EntityType="Self.NHANVIEN_OT" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TRANGTHAILAMVIEC" EntityType="Self.TRANGTHAILAMVIEC" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TYPE_RANGE_HOURS_OT" EntityType="Self.TYPE_RANGE_HOURS_OT" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK__BANGLUONG__ID_Nh__48CFD27E" Association="Self.FK__BANGLUONG__ID_Nh__48CFD27E">
       <End Role="NHANSU" EntitySet="NHANSU" />
       <End Role="BANGLUONG" EntitySet="BANGLUONG" />
@@ -580,6 +644,10 @@
     <AssociationSet Name="FK__NHANVIEN___ID_Nh__44FF419A" Association="Self.FK__NHANVIEN___ID_Nh__44FF419A">
       <End Role="NHANSU" EntitySet="NHANSU" />
       <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NHANVIEN___ID_Ra__18EBB532" Association="Self.FK__NHANVIEN___ID_Ra__18EBB532">
+      <End Role="TYPE_RANGE_HOURS_OT" EntitySet="TYPE_RANGE_HOURS_OT" />
+      <End Role="NHANVIEN_OT" EntitySet="NHANVIEN_OT" />
     </AssociationSet>
     <AssociationSet Name="FK__NHAVIEN_G__ID_Nh__37A5467C" Association="Self.FK__NHAVIEN_G__ID_Nh__37A5467C">
       <End Role="NHANSU" EntitySet="NHANSU" />
