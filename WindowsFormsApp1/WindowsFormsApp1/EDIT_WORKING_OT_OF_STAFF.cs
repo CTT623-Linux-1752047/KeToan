@@ -16,7 +16,8 @@ namespace WindowsFormsApp1
         List<NHANVIEN_OT> lstDateOTOfStaffInMonth;
         private int ID;
         private DateTime dateSelected;
-        private bool stateTextChanged = false;
+        private List<int> lstIndexRowChanged = new List<int>();
+
         public EDIT_WORKING_OT_OF_STAFF(int ID, DateTime NgayThang)
         {
             InitializeComponent();
@@ -63,7 +64,7 @@ namespace WindowsFormsApp1
             this.lbAmountOTWithTax.Text = (data.fnDisplayOT_AmountOTStaffOfMonth(data.NHANSUs.Find(this.ID).HoVaTen, this.dateSelected).FirstOrDefault().TotalAmountWithTax.HasValue) ?
                                           data.fnDisplayOT_AmountOTStaffOfMonth(data.NHANSUs.Find(this.ID).HoVaTen, this.dateSelected).FirstOrDefault().TotalAmountWithTax.Value.ToString("#,##0") : "0";
 
-
+            this.bunifuCustomDataGrid1.Rows.Clear();
             for (int i = 0; i < lstDateOTOfStaffInMonth.Count; i++)
             {
                 this.bunifuCustomDataGrid1.Rows.Add(i + 1,
@@ -116,16 +117,33 @@ namespace WindowsFormsApp1
         //btn Edit 
         private void button1_Click(object sender, EventArgs e)
         {
+            DialogResult confirm = MessageBox.Show("Do you want to save changes?", "Confirmation", MessageBoxButtons.YesNoCancel);
+            if (confirm == DialogResult.Yes)
+            {
+                try
+                {
+                    lstIndexRowChanged = lstIndexRowChanged.Distinct().ToList();
+                    foreach (int item in lstIndexRowChanged)
+                    {
+                        Updating(lstDateOTOfStaffInMonth[item - 1].ID,
+                                    0,
+                                    (int)this.bunifuCustomDataGrid1.Rows[FindIndexRowFollowClmnSTT(item)].Cells["RangeTimeOT"].Value,
+                                    (double)this.bunifuCustomDataGrid1.Rows[FindIndexRowFollowClmnSTT(item)].Cells["HoursOT"].Value,
+                                    DateTime.Parse((string)this.bunifuCustomDataGrid1.Rows[FindIndexRowFollowClmnSTT(item)].Cells["DateApproved"].Value));
+                    }
+                    MessageBox.Show("Update success");
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show("Action error");
+                }
 
+            }
+            else
+            {
+
+            }
         }
-
-        private void bunifuCustomDataGrid1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
-        {
-            this.stateTextChanged = true;
-            this.btnEdit.Enabled = true;
-            this.btnEdit.BackColor = Color.Orange;
-        }
-
         private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 4)
@@ -141,6 +159,42 @@ namespace WindowsFormsApp1
 
                 }
             }
+        }
+        public void Updating(int ID_staff, int ID_project, int ID_RangeTimesOT, double SoGioOT, DateTime DateDangKy)
+        {
+            NHANVIEN_OT temp = data.NHANVIEN_OT.SingleOrDefault(id => id.ID == ID_staff);
+            if(temp != null)
+            {
+                temp.ID_Project = ID_project;
+                temp.ID_Range_Hours_OT = ID_RangeTimesOT;
+                temp.SoGioOT = SoGioOT;
+                temp.DateDangKy = DateDangKy;
+                data.SaveChanges();
+            }
+        }
+        private void bunifuCustomDataGrid1_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            this.btnEdit.Enabled = true;
+            this.btnEdit.BackColor = Color.Orange;
+            if (this.bunifuCustomDataGrid1.Rows.Count > 0)
+                lstIndexRowChanged.Add((int)this.bunifuCustomDataGrid1.SelectedRows[0].Cells[0].Value);
+        }
+        private void bunifuCustomDataGrid1_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            this.btnEdit.Enabled = true;
+            this.btnEdit.BackColor = Color.Orange;
+            if (this.bunifuCustomDataGrid1.Rows.Count > 0)
+                lstIndexRowChanged.Add((int)this.bunifuCustomDataGrid1.SelectedRows[0].Cells[0].Value);
+        }
+        private int FindIndexRowFollowClmnSTT(int STT)
+        {
+            int temp = -1;
+            for(int i =0; i < this.bunifuCustomDataGrid1.Rows.Count; i++)
+            {
+                if ((int)this.bunifuCustomDataGrid1.Rows[i].Cells["STT"].Value == STT)
+                    temp = i;
+            }
+            return temp;
         }
     }
 }

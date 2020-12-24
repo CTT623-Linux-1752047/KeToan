@@ -14,6 +14,7 @@ namespace WindowsFormsApp1
     {
         private TinhTienLuongEntities data = new TinhTienLuongEntities();
         private List<fnDisplayStaffFollowName_Result> listEmployeeTemp;
+        public EventHandler eventAddDataSuccess;
         public CREATE_WORKING_HOURS()
         {
             InitializeComponent();
@@ -83,6 +84,8 @@ namespace WindowsFormsApp1
                     else
                     {
                         MessageBox.Show("Thêm thành công");
+                        if (eventAddDataSuccess != null)
+                            eventAddDataSuccess(this, null);
                     }
                 }
             }

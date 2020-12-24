@@ -146,14 +146,85 @@
     <Compile Include="BANGLUONG.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BANGLUONGNHANVIEN.cs">
-      <SubType>UserControl</SubType>
+    <Compile Include="BAOHIEM_THUE.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="BANGLUONGNHANVIEN.Designer.cs">
-      <DependentUpon>BANGLUONGNHANVIEN.cs</DependentUpon>
-    </Compile>
+    <Compile Include="BenefitStaff.cs" />
     <Compile Include="CHUCDANH.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayInfoStaffWorkingDayInMonth_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayOFFDayFollowCondition_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayOptionStateWorking_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayOptionTitle_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayOT_AmountOTStaffOfMonth_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayStaffFollowID_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayStaffFollowName_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayTitleOFFDay_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayWorkingDaysForStaff_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnDisplayWorkingDaysStaffOfMonth_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="fnGetAmountBenefit_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HISTORY_RESET_DAY_OF_TAKE_LEAVE.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="KHAUTRULUONG.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAINGAYNGHI.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LOAI_GIO_CONG.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANSU.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN_BAOHIEM_THUE.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN_GIOCONG.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN_LOAINGAYNGHI.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN_OT.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="NHANVIEN_PHUCAP.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Payroll.cs" />
+    <Compile Include="PHUCAP.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYLUONG.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QUANLYLUONG.Designer.cs">
+      <DependentUpon>QUANLYLUONG.cs</DependentUpon>
     </Compile>
     <Compile Include="CREATE_OFF_DAY.cs">
       <SubType>Form</SubType>
@@ -185,77 +256,26 @@
     <Compile Include="EDIT_WORKING_OT_OF_STAFF.Designer.cs">
       <DependentUpon>EDIT_WORKING_OT_OF_STAFF.cs</DependentUpon>
     </Compile>
-    <Compile Include="fnDisplayInfoStaffWorkingDayInMonth_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayOFFDayFollowCondition_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayOptionStateWorking_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayOptionTitle_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayOT_AmountOTStaffOfMonth_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayStaffFollowID_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayStaffFollowName_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayTitleOFFDay_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="fnDisplayWorkingDaysStaffOfMonth_Result.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="HISTORY_RESET_DAY_OF_TAKE_LEAVE.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="KHAUTRULUONG.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOAINGAYNGHI.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOAIPHUCAP.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="LOAI_GIO_CONG.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NGAYNGHI.cs">
+    <Compile Include="QUANLYNGAYNGHI.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NGAYNGHI.Designer.cs">
-      <DependentUpon>NGAYNGHI.cs</DependentUpon>
-    </Compile>
-    <Compile Include="NHANSU.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NHANVIEN_GIOCONG.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NHANVIEN_LOAINGAYNGHI.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NHANVIEN_LOAIPHUCAP.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="NHANVIEN_OT.cs">
-      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    <Compile Include="QUANLYNGAYNGHI.Designer.cs">
+      <DependentUpon>QUANLYNGAYNGHI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QUANLYBAOHIEM.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QUANLYBAOHIEM.Designer.cs">
+      <DependentUpon>QUANLYBAOHIEM.cs</DependentUpon>
+    </Compile>
     <Compile Include="QUANLYGIOCONG.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -274,11 +294,17 @@
     <Compile Include="QUANLYOT.Designer.cs">
       <DependentUpon>QUANLYOT.cs</DependentUpon>
     </Compile>
-    <Compile Include="SETTING.cs">
+    <Compile Include="QUANLYTHIETLAP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="SETTING.Designer.cs">
-      <DependentUpon>SETTING.cs</DependentUpon>
+    <Compile Include="QUANLYTHIETLAP.Designer.cs">
+      <DependentUpon>QUANLYTHIETLAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="QUANLYTHUETNCN.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="QUANLYTHUETNCN.Designer.cs">
+      <DependentUpon>QUANLYTHUETNCN.cs</DependentUpon>
     </Compile>
     <Compile Include="sp_helpdiagramdefinition_Result.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
@@ -289,17 +315,17 @@
     <Compile Include="sysdiagram.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="THIETLAPNGAYNGHI.cs">
+    <Compile Include="THIET_LAP_GIO_CONG.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="THIETLAPNGAYNGHI.Designer.cs">
-      <DependentUpon>THIETLAPNGAYNGHI.cs</DependentUpon>
+    <Compile Include="THIET_LAP_GIO_CONG.Designer.cs">
+      <DependentUpon>THIET_LAP_GIO_CONG.cs</DependentUpon>
     </Compile>
-    <Compile Include="THIETLAPPHUCAP.cs">
+    <Compile Include="THIET_LAP_PHU_CAP.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="THIETLAPPHUCAP.Designer.cs">
-      <DependentUpon>THIETLAPPHUCAP.cs</DependentUpon>
+    <Compile Include="THIET_LAP_PHU_CAP.Designer.cs">
+      <DependentUpon>THIET_LAP_PHU_CAP.cs</DependentUpon>
     </Compile>
     <Compile Include="THONGTINLUONGCHITIET.cs">
       <SubType>Form</SubType>
@@ -312,6 +338,12 @@
     </Compile>
     <Compile Include="THONGTINNHANVIEN.Designer.cs">
       <DependentUpon>THONGTINNHANVIEN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ListColumnName.cs" />
+    <Compile Include="TinhTienLuongDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TinhTienLuongDataSet.xsd</DependentUpon>
     </Compile>
     <Compile Include="TinhTienLuongModel.Context.cs">
       <AutoGen>True</AutoGen>
@@ -334,8 +366,8 @@
     <Compile Include="TYPE_RANGE_HOURS_OT.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="BANGLUONGNHANVIEN.resx">
-      <DependentUpon>BANGLUONGNHANVIEN.cs</DependentUpon>
+    <EmbeddedResource Include="QUANLYLUONG.resx">
+      <DependentUpon>QUANLYLUONG.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CREATE_OFF_DAY.resx">
       <DependentUpon>CREATE_OFF_DAY.cs</DependentUpon>
@@ -355,8 +387,8 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NGAYNGHI.resx">
-      <DependentUpon>NGAYNGHI.cs</DependentUpon>
+    <EmbeddedResource Include="QUANLYNGAYNGHI.resx">
+      <DependentUpon>QUANLYNGAYNGHI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -368,6 +400,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="QUANLYBAOHIEM.resx">
+      <DependentUpon>QUANLYBAOHIEM.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="QUANLYGIOCONG.resx">
       <DependentUpon>QUANLYGIOCONG.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,15 +412,17 @@
     <EmbeddedResource Include="QUANLYOT.resx">
       <DependentUpon>QUANLYOT.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="SETTING.resx">
-      <DependentUpon>SETTING.cs</DependentUpon>
+    <EmbeddedResource Include="QUANLYTHIETLAP.resx">
+      <DependentUpon>QUANLYTHIETLAP.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="THIETLAPNGAYNGHI.resx">
-      <DependentUpon>THIETLAPNGAYNGHI.cs</DependentUpon>
+    <EmbeddedResource Include="QUANLYTHUETNCN.resx">
+      <DependentUpon>QUANLYTHUETNCN.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="THIETLAPPHUCAP.resx">
-      <DependentUpon>THIETLAPPHUCAP.cs</DependentUpon>
-      <SubType>Designer</SubType>
+    <EmbeddedResource Include="THIET_LAP_GIO_CONG.resx">
+      <DependentUpon>THIET_LAP_GIO_CONG.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="THIET_LAP_PHU_CAP.resx">
+      <DependentUpon>THIET_LAP_PHU_CAP.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="THONGTINLUONGCHITIET.resx">
       <DependentUpon>THONGTINLUONGCHITIET.cs</DependentUpon>
@@ -409,6 +446,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TinhTienLuongModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="TinhTienLuongDataSet.xsc">
+      <DependentUpon>TinhTienLuongDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="TinhTienLuongDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>TinhTienLuongDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="TinhTienLuongDataSet.xss">
+      <DependentUpon>TinhTienLuongDataSet.xsd</DependentUpon>
+    </None>
     <None Include="TinhTienLuongModel.edmx.diagram">
       <DependentUpon>TinhTienLuongModel.edmx</DependentUpon>
     </None>
@@ -586,6 +634,37 @@
     <None Include="Resources\icons8-create-48.png" />
     <None Include="Resources\icons8-create-241.png" />
     <None Include="Resources\icons8-create-32.png" />
+    <None Include="Resources\icons8-money-bag-90.png" />
+    <None Include="Resources\icons8-growing-money-90 %281%29.png" />
+    <None Include="Resources\icons8-growing-money-90 %282%29.png" />
+    <None Include="Resources\icons8-day-off-90.png" />
+    <None Include="Resources\icons8-meeting-time-90.png" />
+    <None Include="Resources\icons8-time-to-pay-90.png" />
+    <None Include="Resources\icons8-insurance-agent-48.png" />
+    <None Include="Resources\icons8-personal-growth-48.png" />
+    <None Include="Resources\icons8-chevron-up-24.png" />
+    <None Include="Resources\icons8-chevron-down-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-send-96 %281%29.png" />
+    <None Include="Resources\icons8-forward-button-16.png" />
+    <None Include="Resources\icons8-forward-button-16 %281%29.png" />
+    <None Include="Resources\icons8-add-user-male-96.png" />
+    <None Include="Resources\icons8-add-user-male-72.png" />
+    <None Include="Resources\icons8-add-user-male-72 %281%29.png" />
+    <None Include="Resources\icons8-right-161.png" />
+    <None Include="Resources\icons8-cancel-subscription-96 %281%29.png" />
+    <None Include="Resources\icons8-cancel-subscription-72.png" />
+    <None Include="Resources\icons8-bank-building-72.png" />
+    <None Include="Resources\icons8-right-16 %281%291.png" />
+    <None Include="Resources\icons8-right-16 %282%291.png" />
+    <None Include="Resources\icons8-add-property-32.png" />
+    <None Include="Resources\icons8-add-property-28.png" />
+    <None Include="Resources\icons8-delete-document-29.png" />
+    <None Include="Resources\icons8-delete-document-28.png" />
+    <None Include="Resources\icons8-save-all-28.png" />
+    <None Include="Resources\icons8-delete-bin-28.png" />
+    <None Include="Resources\icons8-edit-file-28.png" />
     <Content Include="TinhTienLuongModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TinhTienLuongModel.edmx</DependentUpon>

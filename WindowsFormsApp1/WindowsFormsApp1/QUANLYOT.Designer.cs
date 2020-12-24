@@ -35,11 +35,17 @@ namespace WindowsFormsApp1
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.create_HOURS_OT1 = new WindowsFormsApp1.CREATE_HOURS_OT();
             this.panel1 = new System.Windows.Forms.Panel();
             this.bunifuCustomDataGrid1 = new Bunifu.Framework.UI.BunifuCustomDataGrid();
             this.STT = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -63,9 +69,11 @@ namespace WindowsFormsApp1
             this.lbNoData = new System.Windows.Forms.Label();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.create_HOURS_OT1 = new WindowsFormsApp1.CREATE_HOURS_OT();
             this.bunifuElipse1 = new Bunifu.Framework.UI.BunifuElipse(this.components);
             this.tableLayoutPanel5.SuspendLayout();
+            this.tableLayoutPanel6.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -86,6 +94,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 2F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 1F));
+            this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel6, 3, 1);
             this.tableLayoutPanel5.Controls.Add(this.tableLayoutPanel8, 1, 1);
             this.tableLayoutPanel5.Controls.Add(this.create_HOURS_OT1, 5, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -93,11 +102,93 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.30303F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.60606F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1038, 172);
             this.tableLayoutPanel5.TabIndex = 13;
+            // 
+            // tableLayoutPanel6
+            // 
+            this.tableLayoutPanel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(143)))), ((int)(((byte)(7)))));
+            this.tableLayoutPanel6.ColumnCount = 1;
+            this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.label15, 0, 1);
+            this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(278, 17);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel6.Name = "tableLayoutPanel6";
+            this.tableLayoutPanel6.RowCount = 2;
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(207, 137);
+            this.tableLayoutPanel6.TabIndex = 18;
+            // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 96F));
+            this.tableLayoutPanel7.Controls.Add(this.pictureBox1, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.label14, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(0);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(207, 96);
+            this.tableLayoutPanel7.TabIndex = 0;
+            this.tableLayoutPanel7.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.tableLayoutPanel7.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::WindowsFormsApp1.Properties.Resources.icons8_microsoft_excel_2019_96;
+            this.pictureBox1.Location = new System.Drawing.Point(111, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(96, 96);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label14.Font = new System.Drawing.Font("Segoe UI Black", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label14.Location = new System.Drawing.Point(3, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(105, 40);
+            this.label14.TabIndex = 1;
+            this.label14.Text = "EXCEL";
+            this.label14.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.label14.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(6)))), ((int)(((byte)(103)))), ((int)(((byte)(25)))));
+            this.label15.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label15.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.label15.Image = global::WindowsFormsApp1.Properties.Resources.icons8_right_16;
+            this.label15.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.label15.Location = new System.Drawing.Point(0, 96);
+            this.label15.Margin = new System.Windows.Forms.Padding(0);
+            this.label15.Name = "label15";
+            this.label15.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.label15.Size = new System.Drawing.Size(207, 41);
+            this.label15.TabIndex = 1;
+            this.label15.Text = "      Xuất báo cáo giờ công";
+            this.label15.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label15.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.label15.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
             // 
             // tableLayoutPanel8
             // 
@@ -113,7 +204,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(207, 138);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(207, 137);
             this.tableLayoutPanel8.TabIndex = 7;
             // 
             // tableLayoutPanel9
@@ -132,6 +223,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel9.Size = new System.Drawing.Size(207, 96);
             this.tableLayoutPanel9.TabIndex = 0;
             this.tableLayoutPanel9.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.tableLayoutPanel9.MouseEnter += new System.EventHandler(this.label10_MouseEnter);
+            this.tableLayoutPanel9.MouseLeave += new System.EventHandler(this.label10_MouseLeave);
             // 
             // pictureBox2
             // 
@@ -145,6 +238,8 @@ namespace WindowsFormsApp1
             this.pictureBox2.TabIndex = 0;
             this.pictureBox2.TabStop = false;
             this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.pictureBox2.MouseEnter += new System.EventHandler(this.label10_MouseEnter);
+            this.pictureBox2.MouseLeave += new System.EventHandler(this.label10_MouseLeave);
             // 
             // label10
             // 
@@ -158,6 +253,8 @@ namespace WindowsFormsApp1
             this.label10.TabIndex = 1;
             this.label10.Text = "CREATE";
             this.label10.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.label10.MouseEnter += new System.EventHandler(this.label10_MouseEnter);
+            this.label10.MouseLeave += new System.EventHandler(this.label10_MouseLeave);
             // 
             // label11
             // 
@@ -172,11 +269,23 @@ namespace WindowsFormsApp1
             this.label11.Margin = new System.Windows.Forms.Padding(0);
             this.label11.Name = "label11";
             this.label11.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label11.Size = new System.Drawing.Size(207, 42);
+            this.label11.Size = new System.Drawing.Size(207, 41);
             this.label11.TabIndex = 1;
             this.label11.Text = "Tạo OVER TIME";
             this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.label11.Click += new System.EventHandler(this.pictureBox2_Click);
+            this.label11.MouseEnter += new System.EventHandler(this.label10_MouseEnter);
+            this.label11.MouseLeave += new System.EventHandler(this.label10_MouseLeave);
+            // 
+            // create_HOURS_OT1
+            // 
+            this.create_HOURS_OT1.BackColor = System.Drawing.SystemColors.Control;
+            this.create_HOURS_OT1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.create_HOURS_OT1.Location = new System.Drawing.Point(508, 20);
+            this.create_HOURS_OT1.Name = "create_HOURS_OT1";
+            this.create_HOURS_OT1.Size = new System.Drawing.Size(513, 131);
+            this.create_HOURS_OT1.TabIndex = 8;
+            this.create_HOURS_OT1.Visible = false;
             // 
             // panel1
             // 
@@ -198,10 +307,8 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.AllowUserToResizeRows = false;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             this.bunifuCustomDataGrid1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.bunifuCustomDataGrid1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.bunifuCustomDataGrid1.BackgroundColor = System.Drawing.Color.GhostWhite;
             this.bunifuCustomDataGrid1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.bunifuCustomDataGrid1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.None;
             this.bunifuCustomDataGrid1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.MediumSlateBlue;
@@ -257,67 +364,69 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.RowTemplate.Height = 40;
             this.bunifuCustomDataGrid1.RowTemplate.ReadOnly = true;
             this.bunifuCustomDataGrid1.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.bunifuCustomDataGrid1.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.bunifuCustomDataGrid1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.bunifuCustomDataGrid1.Size = new System.Drawing.Size(1018, 563);
             this.bunifuCustomDataGrid1.TabIndex = 4;
+            this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
             this.bunifuCustomDataGrid1.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentDoubleClick);
             // 
             // STT
             // 
-            this.STT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.STT.FillWeight = 30F;
+            this.STT.Frozen = true;
             this.STT.HeaderText = "STT";
             this.STT.Name = "STT";
             this.STT.ReadOnly = true;
+            this.STT.Width = 50;
             // 
             // FullName
             // 
-            this.FullName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.FullName.FillWeight = 120F;
+            this.FullName.Frozen = true;
             this.FullName.HeaderText = "Họ và Tên";
             this.FullName.Name = "FullName";
             this.FullName.ReadOnly = true;
+            this.FullName.Width = 250;
             // 
             // Column2
             // 
-            this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column2.FillWeight = 50F;
-            this.Column2.HeaderText = "17h   21h";
+            this.Column2.HeaderText = "17h -  21h";
             this.Column2.Name = "Column2";
             this.Column2.ReadOnly = true;
+            this.Column2.Width = 150;
             // 
             // Column3
             // 
-            this.Column3.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column3.FillWeight = 50F;
-            this.Column3.HeaderText = "21h   5h";
+            this.Column3.HeaderText = "21h -  5h";
             this.Column3.Name = "Column3";
             this.Column3.ReadOnly = true;
+            this.Column3.Width = 150;
             // 
             // Hours
             // 
-            this.Hours.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Hours.FillWeight = 70F;
-            this.Hours.HeaderText = "Saturdays   Sundays";
+            this.Hours.HeaderText = "Saturdays &  Sundays";
             this.Hours.Name = "Hours";
             this.Hours.ReadOnly = true;
+            this.Hours.Width = 200;
             // 
             // TotalHoursOT
             // 
-            this.TotalHoursOT.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TotalHoursOT.FillWeight = 40F;
             this.TotalHoursOT.HeaderText = "Total";
             this.TotalHoursOT.Name = "TotalHoursOT";
             this.TotalHoursOT.ReadOnly = true;
+            this.TotalHoursOT.Width = 150;
             // 
             // Column4
             // 
-            this.Column4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column4.FillWeight = 70F;
             this.Column4.HeaderText = "Amount 17h - 21h";
             this.Column4.Name = "Column4";
             this.Column4.ReadOnly = true;
+            this.Column4.Width = 200;
             // 
             // Column5
             // 
@@ -325,38 +434,39 @@ namespace WindowsFormsApp1
             this.Column5.HeaderText = "Amount 21h -5h";
             this.Column5.Name = "Column5";
             this.Column5.ReadOnly = true;
+            this.Column5.Width = 200;
             // 
             // Column6
             // 
-            this.Column6.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column6.FillWeight = 70F;
             this.Column6.HeaderText = "Amount Wekkend";
             this.Column6.Name = "Column6";
             this.Column6.ReadOnly = true;
+            this.Column6.Width = 200;
             // 
             // AmountTotal
             // 
-            this.AmountTotal.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AmountTotal.FillWeight = 70F;
             this.AmountTotal.HeaderText = "Amount Total";
             this.AmountTotal.Name = "AmountTotal";
             this.AmountTotal.ReadOnly = true;
+            this.AmountTotal.Width = 200;
             // 
             // AmountTax
             // 
-            this.AmountTax.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.AmountTax.FillWeight = 70F;
             this.AmountTax.HeaderText = "Tax";
             this.AmountTax.Name = "AmountTax";
             this.AmountTax.ReadOnly = true;
+            this.AmountTax.Width = 200;
             // 
             // TotalAll
             // 
-            this.TotalAll.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.TotalAll.FillWeight = 70F;
             this.TotalAll.HeaderText = "Total";
             this.TotalAll.Name = "TotalAll";
             this.TotalAll.ReadOnly = true;
+            this.TotalAll.Width = 200;
             // 
             // tableLayoutPanel4
             // 
@@ -512,16 +622,6 @@ namespace WindowsFormsApp1
             this.dataGridViewImageColumn1.ReadOnly = true;
             this.dataGridViewImageColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // create_HOURS_OT1
-            // 
-            this.create_HOURS_OT1.BackColor = System.Drawing.SystemColors.Control;
-            this.create_HOURS_OT1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.create_HOURS_OT1.Location = new System.Drawing.Point(508, 20);
-            this.create_HOURS_OT1.Name = "create_HOURS_OT1";
-            this.create_HOURS_OT1.Size = new System.Drawing.Size(513, 132);
-            this.create_HOURS_OT1.TabIndex = 8;
-            this.create_HOURS_OT1.Visible = false;
-            // 
             // bunifuElipse1
             // 
             this.bunifuElipse1.ElipseRadius = 10;
@@ -535,6 +635,11 @@ namespace WindowsFormsApp1
             this.Name = "QUANLYOT";
             this.Size = new System.Drawing.Size(1038, 861);
             this.tableLayoutPanel5.ResumeLayout(false);
+            this.tableLayoutPanel6.ResumeLayout(false);
+            this.tableLayoutPanel6.PerformLayout();
+            this.tableLayoutPanel7.ResumeLayout(false);
+            this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -568,6 +673,13 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.Label lbNoData;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
+        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
+        private CREATE_HOURS_OT create_HOURS_OT1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.DataGridViewTextBoxColumn STT;
         private System.Windows.Forms.DataGridViewTextBoxColumn FullName;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
@@ -580,7 +692,5 @@ namespace WindowsFormsApp1
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountTotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn AmountTax;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalAll;
-        private Bunifu.Framework.UI.BunifuElipse bunifuElipse1;
-        private CREATE_HOURS_OT create_HOURS_OT1;
     }
 }

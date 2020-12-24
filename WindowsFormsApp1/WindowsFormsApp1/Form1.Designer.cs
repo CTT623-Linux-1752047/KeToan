@@ -31,286 +31,68 @@ namespace WindowsFormsApp1
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.header = new System.Windows.Forms.TableLayoutPanel();
-            this.MaximumSize = new System.Windows.Forms.Button();
-            this.MinimumWindow = new System.Windows.Forms.Button();
-            this.CloseWindow = new System.Windows.Forms.Button();
             this.process1 = new System.Diagnostics.Process();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.tbnSetting = new System.Windows.Forms.Button();
+            this.btnOT = new System.Windows.Forms.Button();
+            this.btnWorkingHours = new System.Windows.Forms.Button();
+            this.panelDropDown = new System.Windows.Forms.Panel();
+            this.btnPIT = new System.Windows.Forms.Button();
+            this.btnInsurance = new System.Windows.Forms.Button();
+            this.btnPayroll = new System.Windows.Forms.Button();
+            this.btnDayOFF = new System.Windows.Forms.Button();
+            this.btnDashBoard = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button7 = new System.Windows.Forms.Button();
-            this.quanlyot1 = new WindowsFormsApp1.QUANLYOT();
-            this.quanlygiocong1 = new WindowsFormsApp1.QUANLYGIOCONG();
-            this.bangluongnhanvien1 = new WindowsFormsApp1.BANGLUONGNHANVIEN();
             this.quanlynhansu1 = new WindowsFormsApp1.QUANLYNHANSU();
-            this.ngaynghi1 = new WindowsFormsApp1.NGAYNGHI();
-            this.panel1.SuspendLayout();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.quanlyngaynghi1 = new WindowsFormsApp1.QUANLYNGAYNGHI();
+            this.quanlyluong1 = new WindowsFormsApp1.QUANLYLUONG();
+            this.quanlybaohiem1 = new WindowsFormsApp1.QUANLYBAOHIEM();
+            this.quanlythuetncn1 = new WindowsFormsApp1.QUANLYTHUETNCN();
+            this.quanlygiocong1 = new WindowsFormsApp1.QUANLYGIOCONG();
+            this.quanlyot1 = new WindowsFormsApp1.QUANLYOT();
+            this.quanlythietlap1 = new WindowsFormsApp1.QUANLYTHIETLAP();
             this.tableLayoutPanel2.SuspendLayout();
             this.panel2.SuspendLayout();
-            this.header.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panelDropDown.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.MediumSeaGreen;
-            this.panel1.Controls.Add(this.tableLayoutPanel1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(246, 811);
-            this.panel1.TabIndex = 0;
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
-            this.tableLayoutPanel1.ColumnCount = 1;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.button6, 0, 5);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 0, 6);
-            this.tableLayoutPanel1.Controls.Add(this.button1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button2, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.button3, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.button4, 0, 4);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 8;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(246, 811);
-            this.tableLayoutPanel1.TabIndex = 0;
-            // 
-            // button6
-            // 
-            this.button6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(36)))), ((int)(((byte)(52)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button6.Image = global::WindowsFormsApp1.Properties.Resources.icons8_time_to_pay_48;
-            this.button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.Location = new System.Drawing.Point(0, 486);
-            this.button6.Margin = new System.Windows.Forms.Padding(0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(246, 81);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "OVER TIME";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button5.Image = global::WindowsFormsApp1.Properties.Resources.icons8_gear_48;
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.Location = new System.Drawing.Point(0, 567);
-            this.button5.Margin = new System.Windows.Forms.Padding(0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(246, 81);
-            this.button5.TabIndex = 6;
-            this.button5.Text = "THIẾT LẬP ";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // button1
-            // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.Image = global::WindowsFormsApp1.Properties.Resources.icons8_business_conference_female_speaker_48;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(0, 162);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(246, 81);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "QUẢN LÝ NHÂN SỰ ";
-            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // button2
-            // 
-            this.button2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button2.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button2.FlatAppearance.BorderSize = 0;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.Image = global::WindowsFormsApp1.Properties.Resources.icons8_day_off_48;
-            this.button2.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button2.Location = new System.Drawing.Point(0, 243);
-            this.button2.Margin = new System.Windows.Forms.Padding(0);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(246, 81);
-            this.button2.TabIndex = 1;
-            this.button2.Text = " NGÀY NGHỈ";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click_1);
-            // 
-            // button3
-            // 
-            this.button3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button3.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.Image = global::WindowsFormsApp1.Properties.Resources.icons8_estimate_48;
-            this.button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.Location = new System.Drawing.Point(0, 324);
-            this.button3.Margin = new System.Windows.Forms.Padding(0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(246, 81);
-            this.button3.TabIndex = 2;
-            this.button3.Text = "      BẢNG LƯƠNG ";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
-            // 
-            // button4
-            // 
-            this.button4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.button4.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.Image = global::WindowsFormsApp1.Properties.Resources.icons8_schedule_48;
-            this.button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.Location = new System.Drawing.Point(0, 405);
-            this.button4.Margin = new System.Windows.Forms.Padding(0);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(246, 81);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "GIỜ CÔNG ";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click_1);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 1;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 1);
-            this.tableLayoutPanel2.Controls.Add(this.header, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.panel2, 0, 0);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(246, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 2;
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 4F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 96F));
+            this.tableLayoutPanel2.RowCount = 1;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 811F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(1238, 811);
             this.tableLayoutPanel2.TabIndex = 7;
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.quanlythietlap1);
             this.panel2.Controls.Add(this.quanlyot1);
             this.panel2.Controls.Add(this.quanlygiocong1);
-            this.panel2.Controls.Add(this.bangluongnhanvien1);
+            this.panel2.Controls.Add(this.quanlythuetncn1);
+            this.panel2.Controls.Add(this.quanlybaohiem1);
+            this.panel2.Controls.Add(this.quanlyluong1);
+            this.panel2.Controls.Add(this.quanlyngaynghi1);
             this.panel2.Controls.Add(this.quanlynhansu1);
-            this.panel2.Controls.Add(this.ngaynghi1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel2.Location = new System.Drawing.Point(3, 35);
+            this.panel2.Location = new System.Drawing.Point(3, 3);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1232, 773);
+            this.panel2.Size = new System.Drawing.Size(1232, 805);
             this.panel2.TabIndex = 0;
-            // 
-            // header
-            // 
-            this.header.ColumnCount = 4;
-            this.header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.header.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.header.Controls.Add(this.MaximumSize, 2, 0);
-            this.header.Controls.Add(this.MinimumWindow, 1, 0);
-            this.header.Controls.Add(this.CloseWindow, 3, 0);
-            this.header.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.header.Location = new System.Drawing.Point(0, 0);
-            this.header.Margin = new System.Windows.Forms.Padding(0);
-            this.header.Name = "header";
-            this.header.RowCount = 1;
-            this.header.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.header.Size = new System.Drawing.Size(1238, 32);
-            this.header.TabIndex = 1;
-            this.header.MouseDown += new System.Windows.Forms.MouseEventHandler(this.header_MouseDown);
-            this.header.MouseMove += new System.Windows.Forms.MouseEventHandler(this.header_MouseMove);
-            this.header.MouseUp += new System.Windows.Forms.MouseEventHandler(this.header_MouseUp);
-            // 
-            // MaximumSize
-            // 
-            this.MaximumSize.BackColor = System.Drawing.SystemColors.Control;
-            this.MaximumSize.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MaximumSize.FlatAppearance.BorderSize = 0;
-            this.MaximumSize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MaximumSize.ForeColor = System.Drawing.SystemColors.Control;
-            this.MaximumSize.Image = global::WindowsFormsApp1.Properties.Resources.icons8_restore_window_24;
-            this.MaximumSize.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.MaximumSize.Location = new System.Drawing.Point(1174, 0);
-            this.MaximumSize.Margin = new System.Windows.Forms.Padding(0);
-            this.MaximumSize.Name = "MaximumSize";
-            this.MaximumSize.Size = new System.Drawing.Size(32, 32);
-            this.MaximumSize.TabIndex = 11;
-            this.MaximumSize.UseVisualStyleBackColor = false;
-            this.MaximumSize.Click += new System.EventHandler(this.MaximumSize_Click);
-            // 
-            // MinimumWindow
-            // 
-            this.MinimumWindow.BackColor = System.Drawing.SystemColors.Control;
-            this.MinimumWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MinimumWindow.FlatAppearance.BorderSize = 0;
-            this.MinimumWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.MinimumWindow.ForeColor = System.Drawing.SystemColors.Control;
-            this.MinimumWindow.Image = global::WindowsFormsApp1.Properties.Resources.icons8_minimize_window_24;
-            this.MinimumWindow.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.MinimumWindow.Location = new System.Drawing.Point(1142, 0);
-            this.MinimumWindow.Margin = new System.Windows.Forms.Padding(0);
-            this.MinimumWindow.Name = "MinimumWindow";
-            this.MinimumWindow.Size = new System.Drawing.Size(32, 32);
-            this.MinimumWindow.TabIndex = 9;
-            this.MinimumWindow.UseVisualStyleBackColor = false;
-            this.MinimumWindow.Click += new System.EventHandler(this.MinimumWindow_Click);
-            // 
-            // CloseWindow
-            // 
-            this.CloseWindow.BackColor = System.Drawing.SystemColors.Control;
-            this.CloseWindow.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CloseWindow.FlatAppearance.BorderSize = 0;
-            this.CloseWindow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.CloseWindow.ForeColor = System.Drawing.SystemColors.Control;
-            this.CloseWindow.Image = global::WindowsFormsApp1.Properties.Resources.icons8_close_window_24__2_;
-            this.CloseWindow.ImageAlign = System.Drawing.ContentAlignment.TopRight;
-            this.CloseWindow.Location = new System.Drawing.Point(1206, 0);
-            this.CloseWindow.Margin = new System.Windows.Forms.Padding(0);
-            this.CloseWindow.Name = "CloseWindow";
-            this.CloseWindow.Size = new System.Drawing.Size(32, 32);
-            this.CloseWindow.TabIndex = 7;
-            this.CloseWindow.UseVisualStyleBackColor = false;
-            this.CloseWindow.Click += new System.EventHandler(this.CloseWindow_Click);
             // 
             // process1
             // 
@@ -322,13 +104,227 @@ namespace WindowsFormsApp1
             this.process1.StartInfo.UserName = "";
             this.process1.SynchronizingObject = this;
             // 
+            // timer1
+            // 
+            this.timer1.Interval = 5;
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.panel1.Controls.Add(this.tbnSetting);
+            this.panel1.Controls.Add(this.btnOT);
+            this.panel1.Controls.Add(this.btnWorkingHours);
+            this.panel1.Controls.Add(this.panelDropDown);
+            this.panel1.Controls.Add(this.btnDayOFF);
+            this.panel1.Controls.Add(this.btnDashBoard);
+            this.panel1.Controls.Add(this.pictureBox1);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(246, 811);
+            this.panel1.TabIndex = 0;
+            // 
+            // tbnSetting
+            // 
+            this.tbnSetting.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.tbnSetting.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbnSetting.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.tbnSetting.FlatAppearance.BorderSize = 0;
+            this.tbnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.tbnSetting.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbnSetting.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.tbnSetting.Image = ((System.Drawing.Image)(resources.GetObject("tbnSetting.Image")));
+            this.tbnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.tbnSetting.Location = new System.Drawing.Point(0, 555);
+            this.tbnSetting.Margin = new System.Windows.Forms.Padding(0);
+            this.tbnSetting.Name = "tbnSetting";
+            this.tbnSetting.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.tbnSetting.Size = new System.Drawing.Size(246, 81);
+            this.tbnSetting.TabIndex = 17;
+            this.tbnSetting.Text = "THIẾT LẬP ";
+            this.tbnSetting.UseVisualStyleBackColor = false;
+            this.tbnSetting.Click += new System.EventHandler(this.tbnSetting_Click);
+            // 
+            // btnOT
+            // 
+            this.btnOT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.btnOT.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnOT.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(4)))), ((int)(((byte)(36)))), ((int)(((byte)(52)))));
+            this.btnOT.FlatAppearance.BorderSize = 0;
+            this.btnOT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOT.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnOT.Image = ((System.Drawing.Image)(resources.GetObject("btnOT.Image")));
+            this.btnOT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnOT.Location = new System.Drawing.Point(0, 474);
+            this.btnOT.Margin = new System.Windows.Forms.Padding(0);
+            this.btnOT.Name = "btnOT";
+            this.btnOT.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnOT.Size = new System.Drawing.Size(246, 81);
+            this.btnOT.TabIndex = 16;
+            this.btnOT.Text = "OVER TIME";
+            this.btnOT.UseVisualStyleBackColor = false;
+            this.btnOT.Click += new System.EventHandler(this.btnOT_Click);
+            // 
+            // btnWorkingHours
+            // 
+            this.btnWorkingHours.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.btnWorkingHours.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnWorkingHours.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnWorkingHours.FlatAppearance.BorderSize = 0;
+            this.btnWorkingHours.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnWorkingHours.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnWorkingHours.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnWorkingHours.Image = ((System.Drawing.Image)(resources.GetObject("btnWorkingHours.Image")));
+            this.btnWorkingHours.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnWorkingHours.Location = new System.Drawing.Point(0, 393);
+            this.btnWorkingHours.Margin = new System.Windows.Forms.Padding(0);
+            this.btnWorkingHours.Name = "btnWorkingHours";
+            this.btnWorkingHours.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnWorkingHours.Size = new System.Drawing.Size(246, 81);
+            this.btnWorkingHours.TabIndex = 15;
+            this.btnWorkingHours.Text = "GIỜ CÔNG ";
+            this.btnWorkingHours.UseVisualStyleBackColor = false;
+            this.btnWorkingHours.Click += new System.EventHandler(this.btnWorkingHours_Click);
+            // 
+            // panelDropDown
+            // 
+            this.panelDropDown.Controls.Add(this.btnPIT);
+            this.panelDropDown.Controls.Add(this.btnInsurance);
+            this.panelDropDown.Controls.Add(this.btnPayroll);
+            this.panelDropDown.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelDropDown.Location = new System.Drawing.Point(0, 312);
+            this.panelDropDown.MaximumSize = new System.Drawing.Size(246, 246);
+            this.panelDropDown.MinimumSize = new System.Drawing.Size(246, 81);
+            this.panelDropDown.Name = "panelDropDown";
+            this.panelDropDown.Size = new System.Drawing.Size(246, 81);
+            this.panelDropDown.TabIndex = 14;
+            // 
+            // btnPIT
+            // 
+            this.btnPIT.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(44)))), ((int)(((byte)(44)))), ((int)(((byte)(44)))));
+            this.btnPIT.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPIT.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnPIT.FlatAppearance.BorderSize = 0;
+            this.btnPIT.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPIT.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPIT.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPIT.Image = ((System.Drawing.Image)(resources.GetObject("btnPIT.Image")));
+            this.btnPIT.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnPIT.Location = new System.Drawing.Point(0, 152);
+            this.btnPIT.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPIT.Name = "btnPIT";
+            this.btnPIT.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnPIT.Size = new System.Drawing.Size(246, 71);
+            this.btnPIT.TabIndex = 5;
+            this.btnPIT.Text = "              THUẾ THU NHẬP CÁ NHÂN (PIT)";
+            this.btnPIT.UseVisualStyleBackColor = false;
+            this.btnPIT.Click += new System.EventHandler(this.btnPIT_Click);
+            // 
+            // btnInsurance
+            // 
+            this.btnInsurance.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(55)))), ((int)(((byte)(55)))), ((int)(((byte)(55)))));
+            this.btnInsurance.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnInsurance.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnInsurance.FlatAppearance.BorderSize = 0;
+            this.btnInsurance.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsurance.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsurance.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnInsurance.Image = ((System.Drawing.Image)(resources.GetObject("btnInsurance.Image")));
+            this.btnInsurance.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnInsurance.Location = new System.Drawing.Point(0, 81);
+            this.btnInsurance.Margin = new System.Windows.Forms.Padding(0);
+            this.btnInsurance.Name = "btnInsurance";
+            this.btnInsurance.Padding = new System.Windows.Forms.Padding(30, 0, 0, 0);
+            this.btnInsurance.Size = new System.Drawing.Size(246, 71);
+            this.btnInsurance.TabIndex = 4;
+            this.btnInsurance.Text = "BẢO HIỂM ";
+            this.btnInsurance.UseVisualStyleBackColor = false;
+            this.btnInsurance.Click += new System.EventHandler(this.btnInsurance_Click);
+            // 
+            // btnPayroll
+            // 
+            this.btnPayroll.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.btnPayroll.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnPayroll.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnPayroll.FlatAppearance.BorderSize = 0;
+            this.btnPayroll.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPayroll.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPayroll.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnPayroll.Image = ((System.Drawing.Image)(resources.GetObject("btnPayroll.Image")));
+            this.btnPayroll.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnPayroll.Location = new System.Drawing.Point(0, 0);
+            this.btnPayroll.Margin = new System.Windows.Forms.Padding(0);
+            this.btnPayroll.Name = "btnPayroll";
+            this.btnPayroll.Padding = new System.Windows.Forms.Padding(8, 0, 10, 0);
+            this.btnPayroll.Size = new System.Drawing.Size(246, 81);
+            this.btnPayroll.TabIndex = 3;
+            this.btnPayroll.Text = "      BẢNG LƯƠNG ";
+            this.btnPayroll.UseVisualStyleBackColor = false;
+            this.btnPayroll.Click += new System.EventHandler(this.btnPayroll_Click);
+            // 
+            // btnDayOFF
+            // 
+            this.btnDayOFF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.btnDayOFF.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDayOFF.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnDayOFF.FlatAppearance.BorderSize = 0;
+            this.btnDayOFF.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDayOFF.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDayOFF.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDayOFF.Image = ((System.Drawing.Image)(resources.GetObject("btnDayOFF.Image")));
+            this.btnDayOFF.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDayOFF.Location = new System.Drawing.Point(0, 231);
+            this.btnDayOFF.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDayOFF.Name = "btnDayOFF";
+            this.btnDayOFF.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDayOFF.Size = new System.Drawing.Size(246, 81);
+            this.btnDayOFF.TabIndex = 3;
+            this.btnDayOFF.Text = " NGÀY NGHỈ";
+            this.btnDayOFF.UseVisualStyleBackColor = false;
+            this.btnDayOFF.Click += new System.EventHandler(this.btnDayOFF_Click);
+            // 
+            // btnDashBoard
+            // 
+            this.btnDashBoard.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.btnDashBoard.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnDashBoard.FlatAppearance.BorderColor = System.Drawing.Color.MediumSeaGreen;
+            this.btnDashBoard.FlatAppearance.BorderSize = 0;
+            this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashBoard.Font = new System.Drawing.Font("Segoe UI Semibold", 12.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDashBoard.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
+            this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnDashBoard.Location = new System.Drawing.Point(0, 150);
+            this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
+            this.btnDashBoard.Name = "btnDashBoard";
+            this.btnDashBoard.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
+            this.btnDashBoard.Size = new System.Drawing.Size(246, 81);
+            this.btnDashBoard.TabIndex = 2;
+            this.btnDashBoard.Text = "QUẢN LÝ NHÂN SỰ ";
+            this.btnDashBoard.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btnDashBoard.UseVisualStyleBackColor = false;
+            this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(21)))), ((int)(((byte)(23)))), ((int)(((byte)(22)))));
+            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pictureBox1.Location = new System.Drawing.Point(0, 0);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(246, 150);
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
             // button7
             // 
             this.button7.BackColor = System.Drawing.SystemColors.Control;
             this.button7.Dock = System.Windows.Forms.DockStyle.Fill;
             this.button7.FlatAppearance.BorderSize = 0;
             this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Image = global::WindowsFormsApp1.Properties.Resources.icons8_minimize_window_24;
+            this.button7.Image = ((System.Drawing.Image)(resources.GetObject("button7.Image")));
             this.button7.Location = new System.Drawing.Point(1174, 0);
             this.button7.Margin = new System.Windows.Forms.Padding(0);
             this.button7.Name = "button7";
@@ -336,47 +332,70 @@ namespace WindowsFormsApp1
             this.button7.TabIndex = 4;
             this.button7.UseVisualStyleBackColor = false;
             // 
-            // quanlyot1
+            // quanlynhansu1
             // 
-            this.quanlyot1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quanlyot1.Location = new System.Drawing.Point(0, 0);
-            this.quanlyot1.Name = "quanlyot1";
-            this.quanlyot1.Size = new System.Drawing.Size(1232, 773);
-            this.quanlyot1.TabIndex = 9;
+            this.quanlynhansu1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlynhansu1.Location = new System.Drawing.Point(0, 0);
+            this.quanlynhansu1.Name = "quanlynhansu1";
+            this.quanlynhansu1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlynhansu1.TabIndex = 0;
+            // 
+            // quanlyngaynghi1
+            // 
+            this.quanlyngaynghi1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlyngaynghi1.Location = new System.Drawing.Point(0, 0);
+            this.quanlyngaynghi1.Name = "quanlyngaynghi1";
+            this.quanlyngaynghi1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlyngaynghi1.TabIndex = 1;
+            // 
+            // quanlyluong1
+            // 
+            this.quanlyluong1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlyluong1.Location = new System.Drawing.Point(0, 0);
+            this.quanlyluong1.Margin = new System.Windows.Forms.Padding(0);
+            this.quanlyluong1.Name = "quanlyluong1";
+            this.quanlyluong1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlyluong1.TabIndex = 2;
+            // 
+            // quanlybaohiem1
+            // 
+            this.quanlybaohiem1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlybaohiem1.Location = new System.Drawing.Point(0, 0);
+            this.quanlybaohiem1.Name = "quanlybaohiem1";
+            this.quanlybaohiem1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlybaohiem1.TabIndex = 3;
+            // 
+            // quanlythuetncn1
+            // 
+            this.quanlythuetncn1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlythuetncn1.Location = new System.Drawing.Point(0, 0);
+            this.quanlythuetncn1.Name = "quanlythuetncn1";
+            this.quanlythuetncn1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlythuetncn1.TabIndex = 4;
             // 
             // quanlygiocong1
             // 
             this.quanlygiocong1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.quanlygiocong1.Location = new System.Drawing.Point(0, 0);
             this.quanlygiocong1.Name = "quanlygiocong1";
-            this.quanlygiocong1.Size = new System.Drawing.Size(1232, 773);
-            this.quanlygiocong1.TabIndex = 8;
+            this.quanlygiocong1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlygiocong1.TabIndex = 5;
             // 
-            // bangluongnhanvien1
+            // quanlyot1
             // 
-            this.bangluongnhanvien1.BackColor = System.Drawing.Color.Maroon;
-            this.bangluongnhanvien1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bangluongnhanvien1.Location = new System.Drawing.Point(0, 0);
-            this.bangluongnhanvien1.Margin = new System.Windows.Forms.Padding(0);
-            this.bangluongnhanvien1.Name = "bangluongnhanvien1";
-            this.bangluongnhanvien1.Size = new System.Drawing.Size(1232, 773);
-            this.bangluongnhanvien1.TabIndex = 6;
+            this.quanlyot1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlyot1.Location = new System.Drawing.Point(0, 0);
+            this.quanlyot1.Name = "quanlyot1";
+            this.quanlyot1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlyot1.TabIndex = 6;
             // 
-            // quanlynhansu1
+            // quanlythietlap1
             // 
-            this.quanlynhansu1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.quanlynhansu1.Location = new System.Drawing.Point(0, 0);
-            this.quanlynhansu1.Name = "quanlynhansu1";
-            this.quanlynhansu1.Size = new System.Drawing.Size(1232, 773);
-            this.quanlynhansu1.TabIndex = 5;
-            // 
-            // ngaynghi1
-            // 
-            this.ngaynghi1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ngaynghi1.Location = new System.Drawing.Point(0, 0);
-            this.ngaynghi1.Name = "ngaynghi1";
-            this.ngaynghi1.Size = new System.Drawing.Size(1232, 773);
-            this.ngaynghi1.TabIndex = 7;
+            this.quanlythietlap1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.quanlythietlap1.Location = new System.Drawing.Point(0, 0);
+            this.quanlythietlap1.Name = "quanlythietlap1";
+            this.quanlythietlap1.Size = new System.Drawing.Size(1232, 805);
+            this.quanlythietlap1.TabIndex = 7;
             // 
             // Form1
             // 
@@ -385,42 +404,45 @@ namespace WindowsFormsApp1
             this.ClientSize = new System.Drawing.Size(1484, 811);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
-            this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
-            this.header.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panelDropDown.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private Panel panel1;
-        private TableLayoutPanel tableLayoutPanel1;
-        private Button button1;
-        private Button button2;
-        private NGAYNGHI ngaynghi1;
-        private QUANLYNHANSU quanlynhansu1;
-        private Button button3;
-        private Button button4;
         private TableLayoutPanel tableLayoutPanel2;
         private Panel panel2;
-        private TableLayoutPanel header;
         private Button button7;
-        private Button MaximumSize;
-        private Button MinimumWindow;
-        private Button CloseWindow;
         private System.Diagnostics.Process process1;
-        private BANGLUONGNHANVIEN bangluongnhanvien1;
-        private QUANLYGIOCONG quanlygiocong1;
-        private Button button6;
-        private Button button5;
+        private Timer timer1;
+        private Panel panel1;
+        private Button tbnSetting;
+        private Button btnOT;
+        private Button btnWorkingHours;
+        private Panel panelDropDown;
+        private Button btnPIT;
+        private Button btnInsurance;
+        private Button btnPayroll;
+        private Button btnDayOFF;
+        private Button btnDashBoard;
+        private PictureBox pictureBox1;
+        private QUANLYTHIETLAP quanlythietlap1;
         private QUANLYOT quanlyot1;
+        private QUANLYGIOCONG quanlygiocong1;
+        private QUANLYTHUETNCN quanlythuetncn1;
+        private QUANLYBAOHIEM quanlybaohiem1;
+        private QUANLYLUONG quanlyluong1;
+        private QUANLYNGAYNGHI quanlyngaynghi1;
+        private QUANLYNHANSU quanlynhansu1;
     }
 }
 

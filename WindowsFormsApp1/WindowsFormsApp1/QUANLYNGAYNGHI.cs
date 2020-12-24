@@ -14,12 +14,12 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApp1
 {
-    public partial class NGAYNGHI : UserControl
+    public partial class QUANLYNGAYNGHI : UserControl
     {
         private TinhTienLuongEntities data = new TinhTienLuongEntities();
         private DataTable dt;
         private List<fnDisplayOFFDayFollowCondition_Result> listOFFStaff;
-        public NGAYNGHI()
+        public QUANLYNGAYNGHI()
         {
             InitializeComponent();
             this.txtSearchName.GotFocus += TxtSearchName_GotFocus;

@@ -14,9 +14,9 @@ namespace WindowsFormsApp1
     public partial class fnDisplayInfoStaffWorkingDayInMonth_Result
     {
         public int ID { get; set; }
-        public Nullable<System.DateTime> NgayGioKetThuc { get; set; }
         public Nullable<int> ID_NhanVien { get; set; }
-        public Nullable<System.DateTime> NgayGioBatDau { get; set; }
         public Nullable<int> ID_GioCong { get; set; }
+        public Nullable<System.DateTime> NgayGioBatDau { get; set; }
+        public Nullable<System.DateTime> NgayGioKetThuc { get; set; }
     }
 }

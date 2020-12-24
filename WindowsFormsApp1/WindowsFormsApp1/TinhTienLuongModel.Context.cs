@@ -28,20 +28,36 @@ namespace WindowsFormsApp1
         }
     
         public virtual DbSet<BANGLUONG> BANGLUONGs { get; set; }
+        public virtual DbSet<BAOHIEM_THUE> BAOHIEM_THUE { get; set; }
         public virtual DbSet<CHUCDANH> CHUCDANHs { get; set; }
         public virtual DbSet<HISTORY_RESET_DAY_OF_TAKE_LEAVE> HISTORY_RESET_DAY_OF_TAKE_LEAVE { get; set; }
         public virtual DbSet<KHAUTRULUONG> KHAUTRULUONGs { get; set; }
         public virtual DbSet<LOAI_GIO_CONG> LOAI_GIO_CONG { get; set; }
         public virtual DbSet<LOAINGAYNGHI> LOAINGAYNGHIs { get; set; }
-        public virtual DbSet<LOAIPHUCAP> LOAIPHUCAPs { get; set; }
         public virtual DbSet<NHANSU> NHANSUs { get; set; }
+        public virtual DbSet<NHANVIEN_BAOHIEM_THUE> NHANVIEN_BAOHIEM_THUE { get; set; }
         public virtual DbSet<NHANVIEN_GIOCONG> NHANVIEN_GIOCONG { get; set; }
         public virtual DbSet<NHANVIEN_LOAINGAYNGHI> NHANVIEN_LOAINGAYNGHI { get; set; }
-        public virtual DbSet<NHANVIEN_LOAIPHUCAP> NHANVIEN_LOAIPHUCAP { get; set; }
+        public virtual DbSet<NHANVIEN_OT> NHANVIEN_OT { get; set; }
+        public virtual DbSet<NHANVIEN_PHUCAP> NHANVIEN_PHUCAP { get; set; }
+        public virtual DbSet<PHUCAP> PHUCAPs { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TRANGTHAILAMVIEC> TRANGTHAILAMVIECs { get; set; }
         public virtual DbSet<TYPE_RANGE_HOURS_OT> TYPE_RANGE_HOURS_OT { get; set; }
-        public virtual DbSet<NHANVIEN_OT> NHANVIEN_OT { get; set; }
+    
+        [DbFunction("TinhTienLuongEntities", "fnDisplayInfoStaffWorkingDayInMonth")]
+        public virtual IQueryable<fnDisplayInfoStaffWorkingDayInMonth_Result> fnDisplayInfoStaffWorkingDayInMonth(Nullable<int> iD_NhanVien, Nullable<System.DateTime> thangNam)
+        {
+            var iD_NhanVienParameter = iD_NhanVien.HasValue ?
+                new ObjectParameter("ID_NhanVien", iD_NhanVien) :
+                new ObjectParameter("ID_NhanVien", typeof(int));
+    
+            var thangNamParameter = thangNam.HasValue ?
+                new ObjectParameter("ThangNam", thangNam) :
+                new ObjectParameter("ThangNam", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayInfoStaffWorkingDayInMonth_Result>("[TinhTienLuongEntities].[fnDisplayInfoStaffWorkingDayInMonth](@ID_NhanVien, @ThangNam)", iD_NhanVienParameter, thangNamParameter);
+        }
     
         [DbFunction("TinhTienLuongEntities", "fnDisplayOFFDayFollowCondition")]
         public virtual IQueryable<fnDisplayOFFDayFollowCondition_Result> fnDisplayOFFDayFollowCondition(Nullable<System.DateTime> ngayBatDau, Nullable<System.DateTime> ngayKetThuc, string hoVaTen)
@@ -73,6 +89,20 @@ namespace WindowsFormsApp1
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayOptionTitle_Result>("[TinhTienLuongEntities].[fnDisplayOptionTitle]()");
         }
     
+        [DbFunction("TinhTienLuongEntities", "fnDisplayOT_AmountOTStaffOfMonth")]
+        public virtual IQueryable<fnDisplayOT_AmountOTStaffOfMonth_Result> fnDisplayOT_AmountOTStaffOfMonth(string hoVaTen, Nullable<System.DateTime> date)
+        {
+            var hoVaTenParameter = hoVaTen != null ?
+                new ObjectParameter("HoVaTen", hoVaTen) :
+                new ObjectParameter("HoVaTen", typeof(string));
+    
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayOT_AmountOTStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayOT_AmountOTStaffOfMonth](@HoVaTen, @Date)", hoVaTenParameter, dateParameter);
+        }
+    
         [DbFunction("TinhTienLuongEntities", "fnDisplayStaffFollowID")]
         public virtual IQueryable<fnDisplayStaffFollowID_Result> fnDisplayStaffFollowID(Nullable<int> id_NhanVien)
         {
@@ -97,6 +127,60 @@ namespace WindowsFormsApp1
         public virtual IQueryable<fnDisplayTitleOFFDay_Result> fnDisplayTitleOFFDay()
         {
             return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayTitleOFFDay_Result>("[TinhTienLuongEntities].[fnDisplayTitleOFFDay]()");
+        }
+    
+        [DbFunction("TinhTienLuongEntities", "fnDisplayWorkingDaysForStaff")]
+        public virtual IQueryable<fnDisplayWorkingDaysForStaff_Result> fnDisplayWorkingDaysForStaff(string hoVaTen, Nullable<System.DateTime> thangNamStart, Nullable<System.DateTime> thangNamEnd)
+        {
+            var hoVaTenParameter = hoVaTen != null ?
+                new ObjectParameter("HoVaTen", hoVaTen) :
+                new ObjectParameter("HoVaTen", typeof(string));
+    
+            var thangNamStartParameter = thangNamStart.HasValue ?
+                new ObjectParameter("ThangNamStart", thangNamStart) :
+                new ObjectParameter("ThangNamStart", typeof(System.DateTime));
+    
+            var thangNamEndParameter = thangNamEnd.HasValue ?
+                new ObjectParameter("ThangNamEnd", thangNamEnd) :
+                new ObjectParameter("ThangNamEnd", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayWorkingDaysForStaff_Result>("[TinhTienLuongEntities].[fnDisplayWorkingDaysForStaff](@HoVaTen, @ThangNamStart, @ThangNamEnd)", hoVaTenParameter, thangNamStartParameter, thangNamEndParameter);
+        }
+    
+        [DbFunction("TinhTienLuongEntities", "fnDisplayWorkingDaysStaffOfMonth")]
+        public virtual IQueryable<fnDisplayWorkingDaysStaffOfMonth_Result> fnDisplayWorkingDaysStaffOfMonth(string hoVaTen, Nullable<System.DateTime> thangNam)
+        {
+            var hoVaTenParameter = hoVaTen != null ?
+                new ObjectParameter("HoVaTen", hoVaTen) :
+                new ObjectParameter("HoVaTen", typeof(string));
+    
+            var thangNamParameter = thangNam.HasValue ?
+                new ObjectParameter("ThangNam", thangNam) :
+                new ObjectParameter("ThangNam", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayWorkingDaysStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayWorkingDaysStaffOfMonth](@HoVaTen, @ThangNam)", hoVaTenParameter, thangNamParameter);
+        }
+    
+        [DbFunction("TinhTienLuongEntities", "fnGetAmountBenefit")]
+        public virtual IQueryable<fnGetAmountBenefit_Result> fnGetAmountBenefit(string hoVaTen, Nullable<System.DateTime> startdate, Nullable<int> loaiPhuCap, Nullable<System.DateTime> enddate)
+        {
+            var hoVaTenParameter = hoVaTen != null ?
+                new ObjectParameter("HoVaTen", hoVaTen) :
+                new ObjectParameter("HoVaTen", typeof(string));
+    
+            var startdateParameter = startdate.HasValue ?
+                new ObjectParameter("Startdate", startdate) :
+                new ObjectParameter("Startdate", typeof(System.DateTime));
+    
+            var loaiPhuCapParameter = loaiPhuCap.HasValue ?
+                new ObjectParameter("LoaiPhuCap", loaiPhuCap) :
+                new ObjectParameter("LoaiPhuCap", typeof(int));
+    
+            var enddateParameter = enddate.HasValue ?
+                new ObjectParameter("Enddate", enddate) :
+                new ObjectParameter("Enddate", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnGetAmountBenefit_Result>("[TinhTienLuongEntities].[fnGetAmountBenefit](@HoVaTen, @Startdate, @LoaiPhuCap, @Enddate)", hoVaTenParameter, startdateParameter, loaiPhuCapParameter, enddateParameter);
         }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)
@@ -272,66 +356,6 @@ namespace WindowsFormsApp1
                 new ObjectParameter("Date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TinhLuongCBTheoThang", userIDParameter, dateParameter);
-        }
-    
-        [DbFunction("TinhTienLuongEntities", "fnDisplayWorkingDaysForStaff")]
-        public virtual IQueryable<string> fnDisplayWorkingDaysForStaff(string hoVaTen, Nullable<System.DateTime> thangNamStart, Nullable<System.DateTime> thangNamEnd)
-        {
-            var hoVaTenParameter = hoVaTen != null ?
-                new ObjectParameter("HoVaTen", hoVaTen) :
-                new ObjectParameter("HoVaTen", typeof(string));
-    
-            var thangNamStartParameter = thangNamStart.HasValue ?
-                new ObjectParameter("ThangNamStart", thangNamStart) :
-                new ObjectParameter("ThangNamStart", typeof(System.DateTime));
-    
-            var thangNamEndParameter = thangNamEnd.HasValue ?
-                new ObjectParameter("ThangNamEnd", thangNamEnd) :
-                new ObjectParameter("ThangNamEnd", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<string>("[TinhTienLuongEntities].[fnDisplayWorkingDaysForStaff](@HoVaTen, @ThangNamStart, @ThangNamEnd)", hoVaTenParameter, thangNamStartParameter, thangNamEndParameter);
-        }
-    
-        [DbFunction("TinhTienLuongEntities", "fnDisplayWorkingDaysStaffOfMonth")]
-        public virtual IQueryable<fnDisplayWorkingDaysStaffOfMonth_Result> fnDisplayWorkingDaysStaffOfMonth(string hoVaTen, Nullable<System.DateTime> thangNam)
-        {
-            var hoVaTenParameter = hoVaTen != null ?
-                new ObjectParameter("HoVaTen", hoVaTen) :
-                new ObjectParameter("HoVaTen", typeof(string));
-    
-            var thangNamParameter = thangNam.HasValue ?
-                new ObjectParameter("ThangNam", thangNam) :
-                new ObjectParameter("ThangNam", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayWorkingDaysStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayWorkingDaysStaffOfMonth](@HoVaTen, @ThangNam)", hoVaTenParameter, thangNamParameter);
-        }
-    
-        [DbFunction("TinhTienLuongEntities", "fnDisplayInfoStaffWorkingDayInMonth")]
-        public virtual IQueryable<fnDisplayInfoStaffWorkingDayInMonth_Result> fnDisplayInfoStaffWorkingDayInMonth(Nullable<int> iD_NhanVien, Nullable<System.DateTime> thangNam)
-        {
-            var iD_NhanVienParameter = iD_NhanVien.HasValue ?
-                new ObjectParameter("ID_NhanVien", iD_NhanVien) :
-                new ObjectParameter("ID_NhanVien", typeof(int));
-    
-            var thangNamParameter = thangNam.HasValue ?
-                new ObjectParameter("ThangNam", thangNam) :
-                new ObjectParameter("ThangNam", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayInfoStaffWorkingDayInMonth_Result>("[TinhTienLuongEntities].[fnDisplayInfoStaffWorkingDayInMonth](@ID_NhanVien, @ThangNam)", iD_NhanVienParameter, thangNamParameter);
-        }
-    
-        [DbFunction("TinhTienLuongEntities", "fnDisplayOT_AmountOTStaffOfMonth")]
-        public virtual IQueryable<fnDisplayOT_AmountOTStaffOfMonth_Result> fnDisplayOT_AmountOTStaffOfMonth(string hoVaTen, Nullable<System.DateTime> date)
-        {
-            var hoVaTenParameter = hoVaTen != null ?
-                new ObjectParameter("HoVaTen", hoVaTen) :
-                new ObjectParameter("HoVaTen", typeof(string));
-    
-            var dateParameter = date.HasValue ?
-                new ObjectParameter("Date", date) :
-                new ObjectParameter("Date", typeof(System.DateTime));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.CreateQuery<fnDisplayOT_AmountOTStaffOfMonth_Result>("[TinhTienLuongEntities].[fnDisplayOT_AmountOTStaffOfMonth](@HoVaTen, @Date)", hoVaTenParameter, dateParameter);
         }
     }
 }

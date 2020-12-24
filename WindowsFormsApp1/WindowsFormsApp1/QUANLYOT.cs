@@ -12,11 +12,12 @@ namespace WindowsFormsApp1
 {
     public partial class QUANLYOT : UserControl
     {
-        TinhTienLuongEntities data = new TinhTienLuongEntities();
-        List<fnDisplayOT_AmountOTStaffOfMonth_Result> lstStaffOT;
+        private TinhTienLuongEntities data = new TinhTienLuongEntities();
+        private List<fnDisplayOT_AmountOTStaffOfMonth_Result> lstStaffOT;
         public QUANLYOT()
         {
             InitializeComponent();
+            create_HOURS_OT1.addDataSuccess += addDataComback;
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -78,6 +79,35 @@ namespace WindowsFormsApp1
                 edit.ShowDialog();
                 LoadData();
             }
+        }
+
+        private void label10_MouseEnter(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel9.BackColor = Color.FromArgb(24, 124, 189);
+        }
+
+        private void label10_MouseLeave(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel9.BackColor = Color.FromArgb(42, 157, 244);
+        }
+
+        private void tableLayoutPanel7_MouseEnter(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel7.BackColor = Color.FromArgb(47, 114, 12);
+        }
+
+        private void tableLayoutPanel7_MouseLeave(object sender, EventArgs e)
+        {
+            this.tableLayoutPanel7.BackColor = Color.FromArgb(23, 143, 7);
+        }
+
+        private void bunifuCustomDataGrid1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void addDataComback(object sender, EventArgs e)
+        {
+            LoadData();
         }
     }
 }

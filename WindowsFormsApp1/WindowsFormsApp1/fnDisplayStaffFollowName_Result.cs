@@ -45,5 +45,7 @@ namespace WindowsFormsApp1
         public string GioiTinhNguoiLienQuan { get; set; }
         public Nullable<int> SoNgayNghiPhep { get; set; }
         public Nullable<System.DateTime> NgayResetNghiCoPhep { get; set; }
+        public Nullable<double> Km { get; set; }
+        public Nullable<int> SoNguoiPhuThuoc { get; set; }
     }
 }

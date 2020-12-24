@@ -12,14 +12,13 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class NHANVIEN_LOAIPHUCAP
+    public partial class NHANVIEN_BAOHIEM_THUE
     {
         public int ID { get; set; }
-        public int ID_NhanVien { get; set; }
-        public int ID_LOAIPHUCAP { get; set; }
-        public Nullable<int> Thang { get; set; }
+        public Nullable<int> ID_NhanVien { get; set; }
+        public Nullable<int> ID_BaoHiem_Thue { get; set; }
     
-        public virtual LOAIPHUCAP LOAIPHUCAP { get; set; }
+        public virtual BAOHIEM_THUE BAOHIEM_THUE { get; set; }
         public virtual NHANSU NHANSU { get; set; }
     }
 }

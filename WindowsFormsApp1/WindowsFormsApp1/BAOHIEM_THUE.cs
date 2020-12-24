@@ -12,19 +12,20 @@ namespace WindowsFormsApp1
     using System;
     using System.Collections.Generic;
     
-    public partial class LOAIPHUCAP
+    public partial class BAOHIEM_THUE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public LOAIPHUCAP()
+        public BAOHIEM_THUE()
         {
-            this.NHANVIEN_LOAIPHUCAP = new HashSet<NHANVIEN_LOAIPHUCAP>();
+            this.NHANVIEN_BAOHIEM_THUE = new HashSet<NHANVIEN_BAOHIEM_THUE>();
         }
     
         public int ID { get; set; }
-        public string LoaiPhuCap1 { get; set; }
-        public string TenPhuCap { get; set; }
+        public string LoaiBaoHiem { get; set; }
+        public Nullable<double> PhanTramBaoHiem { get; set; }
+        public string MoTa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<NHANVIEN_LOAIPHUCAP> NHANVIEN_LOAIPHUCAP { get; set; }
+        public virtual ICollection<NHANVIEN_BAOHIEM_THUE> NHANVIEN_BAOHIEM_THUE { get; set; }
     }
 }

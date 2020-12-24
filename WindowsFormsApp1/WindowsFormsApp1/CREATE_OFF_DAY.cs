@@ -21,6 +21,7 @@ namespace WindowsFormsApp1
         private List<fnDisplayTitleOFFDay_Result> listTitleOFFDay;
         private List<int> lstIDNhanVienNgayNghi;
         private List<int> lstIDNhanVien = new List<int>();
+
         public CREATE_OFF_DAY()
         {
             InitializeComponent();

@@ -2,7 +2,7 @@
 
 namespace WindowsFormsApp1
 {
-    partial class NGAYNGHI
+    partial class QUANLYNGAYNGHI
     {
         /// <summary> 
         /// Required designer variable.

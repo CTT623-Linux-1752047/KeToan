@@ -429,6 +429,7 @@ namespace WindowsFormsApp1
             this.bunifuCustomDataGrid1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellContentClick);
             this.bunifuCustomDataGrid1.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.bunifuCustomDataGrid1_CellValueChanged);
             this.bunifuCustomDataGrid1.ColumnWidthChanged += new System.Windows.Forms.DataGridViewColumnEventHandler(this.bunifuCustomDataGrid1_ColumnWidthChanged);
+            this.bunifuCustomDataGrid1.CurrentCellDirtyStateChanged += new System.EventHandler(this.bunifuCustomDataGrid1_CurrentCellDirtyStateChanged);
             this.bunifuCustomDataGrid1.Scroll += new System.Windows.Forms.ScrollEventHandler(this.bunifuCustomDataGrid1_Scroll);
             // 
             // STT
@@ -501,7 +502,7 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 53.33333F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.33333F));
-            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 43F));
+            this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 46F));
             this.tableLayoutPanel5.Controls.Add(this.lbNoData, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.btnEdit, 2, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -526,7 +527,7 @@ namespace WindowsFormsApp1
             this.lbNoData.Location = new System.Drawing.Point(3, 0);
             this.lbNoData.Name = "lbNoData";
             this.lbNoData.Padding = new System.Windows.Forms.Padding(8, 0, 0, 0);
-            this.lbNoData.Size = new System.Drawing.Size(307, 38);
+            this.lbNoData.Size = new System.Drawing.Size(306, 38);
             this.lbNoData.TabIndex = 5;
             this.lbNoData.Text = "KHÔNG CÓ NỘI DUNG ĐỂ HIỂN THỊ ";
             this.lbNoData.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -541,7 +542,7 @@ namespace WindowsFormsApp1
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.btnEdit.Image = global::WindowsFormsApp1.Properties.Resources.icons8_edit_property_24;
             this.btnEdit.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEdit.Location = new System.Drawing.Point(814, 0);
+            this.btnEdit.Location = new System.Drawing.Point(812, 0);
             this.btnEdit.Margin = new System.Windows.Forms.Padding(0);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(125, 38);

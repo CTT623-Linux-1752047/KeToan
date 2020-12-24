@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     
     public partial class fnDisplayOT_AmountOTStaffOfMonth_Result
     {
+        public int ID { get; set; }
         public string HoVaTen { get; set; }
         public Nullable<double> C17h___21h { get; set; }
         public Nullable<double> C21h___5h { get; set; }
@@ -24,6 +25,5 @@ namespace WindowsFormsApp1
         public Nullable<double> TotalWithoutTax { get; set; }
         public Nullable<double> Tax { get; set; }
         public Nullable<double> TotalAmountWithTax { get; set; }
-        public int ID { get; set; }
     }
 }

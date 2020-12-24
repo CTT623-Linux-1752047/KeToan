@@ -11,11 +11,21 @@
           </Key>
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_NhanVien" Type="int" Nullable="false" />
-          <Property Name="LuongThang" Type="float" />
-          <Property Name="TongPhuCap" Type="float" />
-          <Property Name="TongKhauTruLuong" Type="float" />
+          <Property Name="LuongThang" Type="datetime" />
           <Property Name="TongOT" Type="float" />
-          <Property Name="ThucNhan" Type="float" />
+          <Property Name="TongKhauTru" Type="money" />
+          <Property Name="PIT" Type="money" />
+          <Property Name="ThucNhan" Type="money" />
+          <Property Name="TongTien" Type="money" />
+        </EntityType>
+        <EntityType Name="BAOHIEM_THUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LoaiBaoHiem" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhanTramBaoHiem" Type="float" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="CHUCDANH">
           <Key>
@@ -61,14 +71,6 @@
           <Property Name="TenNgayNghi" Type="nvarchar" MaxLength="50" />
           <Property Name="ThoiGian" Type="float" />
         </EntityType>
-        <EntityType Name="LOAIPHUCAP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="LoaiPhuCap" Type="nchar" MaxLength="20" />
-          <Property Name="TenPhuCap" Type="nvarchar" MaxLength="50" />
-        </EntityType>
         <EntityType Name="NHANSU">
           <Key>
             <PropertyRef Name="ID" />
@@ -105,6 +107,16 @@
           <Property Name="GioiTinhNguoiLienQuan" Type="nvarchar" MaxLength="10" />
           <Property Name="SoNgayNghiPhep" Type="int" />
           <Property Name="NgayResetNghiCoPhep" Type="date" />
+          <Property Name="Km" Type="float" />
+          <Property Name="SoNguoiPhuThuoc" Type="int" />
+        </EntityType>
+        <EntityType Name="NHANVIEN_BAOHIEM_THUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_NhanVien" Type="int" />
+          <Property Name="ID_BaoHiem_Thue" Type="int" />
         </EntityType>
         <EntityType Name="NHANVIEN_GIOCONG">
           <Key>
@@ -127,15 +139,6 @@
           <Property Name="NgayKetThuc" Type="datetime" />
           <Property Name="LyDo" Type="nvarchar" MaxLength="255" />
         </EntityType>
-        <EntityType Name="NHANVIEN_LOAIPHUCAP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ID_NhanVien" Type="int" Nullable="false" />
-          <Property Name="ID_LOAIPHUCAP" Type="int" Nullable="false" />
-          <Property Name="Thang" Type="int" />
-        </EntityType>
         <EntityType Name="NHANVIEN_OT">
           <Key>
             <PropertyRef Name="ID" />
@@ -146,6 +149,25 @@
           <Property Name="ID_Project" Type="int" />
           <Property Name="ID_NhanVien" Type="int" />
           <Property Name="ID_Range_Hours_OT" Type="int" />
+        </EntityType>
+        <EntityType Name="NHANVIEN_PHUCAP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ID_NhanVien" Type="int" Nullable="false" />
+          <Property Name="ID_PhuCap" Type="int" Nullable="false" />
+          <Property Name="ThangNam" Type="date" />
+        </EntityType>
+        <EntityType Name="PHUCAP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PC_CoDinh" Type="money" />
+          <Property Name="CongThuc" Type="nchar" MaxLength="255" />
+          <Property Name="TenPhuCap" Type="nvarchar" MaxLength="255" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="sysdiagrams">
           <Key>
@@ -232,6 +254,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__NHANVIEN___ID_Ba__2645B050">
+          <End Role="BAOHIEM_THUE" Type="Self.BAOHIEM_THUE" Multiplicity="0..1" />
+          <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAOHIEM_THUE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+              <PropertyRef Name="ID_BaoHiem_Thue" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK__NHANVIEN___ID_Gi__0B91BA14">
           <End Role="LOAI_GIO_CONG" Type="Self.LOAI_GIO_CONG" Multiplicity="0..1" />
           <End Role="NHANVIEN_GIOCONG" Type="Self.NHANVIEN_GIOCONG" Multiplicity="*" />
@@ -256,15 +290,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NHANVIEN___ID_LO__45F365D3">
-          <End Role="LOAIPHUCAP" Type="Self.LOAIPHUCAP" Multiplicity="1" />
-          <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
+        <Association Name="FK__NHANVIEN___ID_Nh__245D67DE">
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="0..1" />
+          <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="LOAIPHUCAP">
+            <Principal Role="NHANSU">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="NHANVIEN_LOAIPHUCAP">
-              <PropertyRef Name="ID_LOAIPHUCAP" />
+            <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+              <PropertyRef Name="ID_NhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -294,13 +328,25 @@
         </Association>
         <Association Name="FK__NHANVIEN___ID_Nh__44FF419A">
           <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
-          <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
+          <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHANSU">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="NHANVIEN_LOAIPHUCAP">
+            <Dependent Role="NHANVIEN_PHUCAP">
               <PropertyRef Name="ID_NhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN___ID_Ph__1DB06A4F">
+          <End Role="PHUCAP" Type="Self.PHUCAP" Multiplicity="1" />
+          <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHUCAP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_PHUCAP">
+              <PropertyRef Name="ID_PhuCap" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -493,6 +539,8 @@
                 <Property Name="GioiTinhNguoiLienQuan" Type="nvarchar" MaxLength="10" />
                 <Property Name="SoNgayNghiPhep" Type="int" />
                 <Property Name="NgayResetNghiCoPhep" Type="date" />
+                <Property Name="Km" Type="float" />
+                <Property Name="SoNguoiPhuThuoc" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -528,10 +576,9 @@
             <CollectionType>
               <RowType>
                 <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" Nullable="false" />
-                <Property Name="ID_NhanVien" Type="int" />
+                <Property Name="ID" Type="int" Nullable="false" />
                 <Property Name="WFH" Type="int" />
                 <Property Name="LEAVES" Type="int" />
-                <Property Name="TotalOFFDays" Type="int" />
               </RowType>
             </CollectionType>
           </ReturnType>
@@ -539,6 +586,19 @@
         <Function Name="fnFullMonthsSeparation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
           <Parameter Name="DateA" Type="datetime" Mode="In" />
           <Parameter Name="DateB" Type="datetime" Mode="In" />
+        </Function>
+        <Function Name="fnGetAmountBenefit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="HoVaTen" Type="nvarchar" Mode="In" />
+          <Parameter Name="Startdate" Type="date" Mode="In" />
+          <Parameter Name="LoaiPhuCap" Type="int" Mode="In" />
+          <Parameter Name="Enddate" Type="date" Mode="In" />
+          <ReturnType>
+            <CollectionType>
+              <RowType>
+                <Property Name="PC_CoDinh" Type="money" />
+              </RowType>
+            </CollectionType>
+          </ReturnType>
         </Function>
         <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -592,17 +652,19 @@
         </Function>
         <EntityContainer Name="TinhTienLuongModelStoreContainer">
           <EntitySet Name="BANGLUONG" EntityType="Self.BANGLUONG" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BAOHIEM_THUE" EntityType="Self.BAOHIEM_THUE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUCDANH" EntityType="Self.CHUCDANH" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE" EntityType="Self.HISTORY_RESET_DAY_OF_TAKE_LEAVE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="KHAUTRULUONG" EntityType="Self.KHAUTRULUONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAI_GIO_CONG" EntityType="Self.LOAI_GIO_CONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LOAINGAYNGHI" EntityType="Self.LOAINGAYNGHI" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="LOAIPHUCAP" EntityType="Self.LOAIPHUCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANSU" EntityType="Self.NHANSU" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN_BAOHIEM_THUE" EntityType="Self.NHANVIEN_BAOHIEM_THUE" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN_GIOCONG" EntityType="Self.NHANVIEN_GIOCONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN_LOAINGAYNGHI" EntityType="Self.NHANVIEN_LOAINGAYNGHI" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="NHANVIEN_LOAIPHUCAP" EntityType="Self.NHANVIEN_LOAIPHUCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="NHANVIEN_OT" EntityType="Self.NHANVIEN_OT" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NHANVIEN_PHUCAP" EntityType="Self.NHANVIEN_PHUCAP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PHUCAP" EntityType="Self.PHUCAP" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TRANGTHAILAMVIEC" EntityType="Self.TRANGTHAILAMVIEC" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TYPE_RANGE_HOURS_OT" EntityType="Self.TYPE_RANGE_HOURS_OT" Schema="dbo" store:Type="Tables" />
@@ -626,6 +688,10 @@
             <End Role="TRANGTHAILAMVIEC" EntitySet="TRANGTHAILAMVIEC" />
             <End Role="NHANSU" EntitySet="NHANSU" />
           </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Ba__2645B050" Association="Self.FK__NHANVIEN___ID_Ba__2645B050">
+            <End Role="BAOHIEM_THUE" EntitySet="BAOHIEM_THUE" />
+            <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
+          </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Gi__0B91BA14" Association="Self.FK__NHANVIEN___ID_Gi__0B91BA14">
             <End Role="LOAI_GIO_CONG" EntitySet="LOAI_GIO_CONG" />
             <End Role="NHANVIEN_GIOCONG" EntitySet="NHANVIEN_GIOCONG" />
@@ -634,9 +700,9 @@
             <End Role="LOAINGAYNGHI" EntitySet="LOAINGAYNGHI" />
             <End Role="NHANVIEN_LOAINGAYNGHI" EntitySet="NHANVIEN_LOAINGAYNGHI" />
           </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN___ID_LO__45F365D3" Association="Self.FK__NHANVIEN___ID_LO__45F365D3">
-            <End Role="LOAIPHUCAP" EntitySet="LOAIPHUCAP" />
-            <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+          <AssociationSet Name="FK__NHANVIEN___ID_Nh__245D67DE" Association="Self.FK__NHANVIEN___ID_Nh__245D67DE">
+            <End Role="NHANSU" EntitySet="NHANSU" />
+            <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
           </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Nh__2A4B4B5E" Association="Self.FK__NHANVIEN___ID_Nh__2A4B4B5E">
             <End Role="NHANSU" EntitySet="NHANSU" />
@@ -648,7 +714,11 @@
           </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Nh__44FF419A" Association="Self.FK__NHANVIEN___ID_Nh__44FF419A">
             <End Role="NHANSU" EntitySet="NHANSU" />
-            <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+            <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Ph__1DB06A4F" Association="Self.FK__NHANVIEN___ID_Ph__1DB06A4F">
+            <End Role="PHUCAP" EntitySet="PHUCAP" />
+            <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
           </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Ra__18EBB532" Association="Self.FK__NHANVIEN___ID_Ra__18EBB532">
             <End Role="TYPE_RANGE_HOURS_OT" EntitySet="TYPE_RANGE_HOURS_OT" />
@@ -663,6 +733,13 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TinhTienLuongModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <ComplexType Name="fnDisplayInfoStaffWorkingDayInMonth_Result">
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="ID_NhanVien" Type="Int32" />
+          <Property Name="ID_GioCong" Type="Int32" />
+          <Property Name="NgayGioBatDau" Type="DateTime" />
+          <Property Name="NgayGioKetThuc" Type="DateTime" />
+        </ComplexType>
         <ComplexType Name="fnDisplayOFFDayFollowCondition_Result">
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" MaxLength="10" FixedLength="true" Unicode="true" Nullable="false" />
@@ -681,6 +758,20 @@
         <ComplexType Name="fnDisplayOptionTitle_Result">
           <Property Name="ID" Type="Int32" Nullable="false" />
           <Property Name="TenChucDanh" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </ComplexType>
+        <ComplexType Name="fnDisplayOT_AmountOTStaffOfMonth_Result">
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="C17h___21h" Type="Double" />
+          <Property Name="C21h___5h" Type="Double" />
+          <Property Name="Saturday___Sunday" Type="Double" />
+          <Property Name="Total_hours" Type="Double" />
+          <Property Name="Amount_17h___21h" Type="Double" />
+          <Property Name="Amount_21h___5h" Type="Double" />
+          <Property Name="Amount_Saturday___Sunday" Type="Double" />
+          <Property Name="TotalWithoutTax" Type="Double" />
+          <Property Name="Tax" Type="Double" />
+          <Property Name="TotalAmountWithTax" Type="Double" />
         </ComplexType>
         <ComplexType Name="fnDisplayStaffFollowID_Result">
           <Property Name="NguoiPhuTrach" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
@@ -747,6 +838,8 @@
           <Property Name="GioiTinhNguoiLienQuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SoNgayNghiPhep" Type="Int32" />
           <Property Name="NgayResetNghiCoPhep" Type="DateTime" />
+          <Property Name="Km" Type="Double" />
+          <Property Name="SoNguoiPhuThuoc" Type="Int32" />
         </ComplexType>
         <ComplexType Name="fnDisplayTitleOFFDay_Result">
           <Property Name="ID" Type="Int32" Nullable="false" />
@@ -754,18 +847,41 @@
           <Property Name="TenNgayNghi" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGian" Type="Double" />
         </ComplexType>
+        <ComplexType Name="fnDisplayWorkingDaysForStaff_Result">
+          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="fnDisplayWorkingDaysStaffOfMonth_Result">
+          <Property Name="HoVaTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="WFH" Type="Int32" />
+          <Property Name="LEAVES" Type="Int32" />
+        </ComplexType>
+        <ComplexType Name="fnGetAmountBenefit_Result">
+          <Property Name="PC_CoDinh" Type="Decimal" Precision="19" Scale="4" Nullable="true" />
+        </ComplexType>
         <EntityType Name="BANGLUONG">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_NhanVien" Type="Int32" Nullable="false" />
-          <Property Name="LuongThang" Type="Double" />
-          <Property Name="TongPhuCap" Type="Double" />
-          <Property Name="TongKhauTruLuong" Type="Double" />
+          <Property Name="LuongThang" Type="DateTime" Precision="3" />
           <Property Name="TongOT" Type="Double" />
-          <Property Name="ThucNhan" Type="Double" />
+          <Property Name="TongKhauTru" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="PIT" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="ThucNhan" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TongTien" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="NHANSU" Relationship="Self.FK__BANGLUONG__ID_Nh__48CFD27E" FromRole="BANGLUONG" ToRole="NHANSU" />
+        </EntityType>
+        <EntityType Name="BAOHIEM_THUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LoaiBaoHiem" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PhanTramBaoHiem" Type="Double" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NHANVIEN_BAOHIEM_THUE" Relationship="Self.FK__NHANVIEN___ID_Ba__2645B050" FromRole="BAOHIEM_THUE" ToRole="NHANVIEN_BAOHIEM_THUE" />
         </EntityType>
         <EntityType Name="CHUCDANH">
           <Key>
@@ -816,15 +932,6 @@
           <Property Name="ThoiGian" Type="Double" />
           <NavigationProperty Name="NHANVIEN_LOAINGAYNGHI" Relationship="Self.FK__NHANVIEN___ID_Lo__3D5E1FD2" FromRole="LOAINGAYNGHI" ToRole="NHANVIEN_LOAINGAYNGHI" />
         </EntityType>
-        <EntityType Name="LOAIPHUCAP">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="LoaiPhuCap1" Type="String" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Name="TenPhuCap" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="NHANVIEN_LOAIPHUCAP" Relationship="Self.FK__NHANVIEN___ID_LO__45F365D3" FromRole="LOAIPHUCAP" ToRole="NHANVIEN_LOAIPHUCAP" />
-        </EntityType>
         <EntityType Name="NHANSU">
           <Key>
             <PropertyRef Name="ID" />
@@ -861,15 +968,28 @@
           <Property Name="GioiTinhNguoiLienQuan" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
           <Property Name="SoNgayNghiPhep" Type="Int32" />
           <Property Name="NgayResetNghiCoPhep" Type="DateTime" Precision="0" />
+          <Property Name="Km" Type="Double" />
+          <Property Name="SoNguoiPhuThuoc" Type="Int32" />
           <NavigationProperty Name="BANGLUONGs" Relationship="Self.FK__BANGLUONG__ID_Nh__48CFD27E" FromRole="NHANSU" ToRole="BANGLUONG" />
           <NavigationProperty Name="CHUCDANH1" Relationship="Self.FK__NHANSU__ChucDanh__74AE54BC" FromRole="NHANSU" ToRole="CHUCDANH" />
           <NavigationProperty Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE" Relationship="Self.FK__HISTORY_R__ID_Nh__06CD04F7" FromRole="NHANSU" ToRole="HISTORY_RESET_DAY_OF_TAKE_LEAVE" />
           <NavigationProperty Name="KHAUTRULUONGs" Relationship="Self.FK__KHAUTRULU__ID_Nh__403A8C7D" FromRole="NHANSU" ToRole="KHAUTRULUONG" />
           <NavigationProperty Name="TRANGTHAILAMVIEC1" Relationship="Self.FK__NHANSU__TrangTha__6A30C649" FromRole="NHANSU" ToRole="TRANGTHAILAMVIEC" />
+          <NavigationProperty Name="NHANVIEN_BAOHIEM_THUE" Relationship="Self.FK__NHANVIEN___ID_Nh__245D67DE" FromRole="NHANSU" ToRole="NHANVIEN_BAOHIEM_THUE" />
+          <NavigationProperty Name="NHANVIEN_OT" Relationship="Self.FK__NHANVIEN___ID_Nh__2A4B4B5E" FromRole="NHANSU" ToRole="NHANVIEN_OT" />
           <NavigationProperty Name="NHANVIEN_LOAINGAYNGHI" Relationship="Self.FK__NHANVIEN___ID_Nh__3C69FB99" FromRole="NHANSU" ToRole="NHANVIEN_LOAINGAYNGHI" />
-          <NavigationProperty Name="NHANVIEN_LOAIPHUCAP" Relationship="Self.FK__NHANVIEN___ID_Nh__44FF419A" FromRole="NHANSU" ToRole="NHANVIEN_LOAIPHUCAP" />
+          <NavigationProperty Name="NHANVIEN_PHUCAP" Relationship="Self.FK__NHANVIEN___ID_Nh__44FF419A" FromRole="NHANSU" ToRole="NHANVIEN_PHUCAP" />
           <NavigationProperty Name="NHANVIEN_GIOCONG" Relationship="Self.FK__NHAVIEN_G__ID_Nh__37A5467C" FromRole="NHANSU" ToRole="NHANVIEN_GIOCONG" />
-          <NavigationProperty Name="NHANVIEN_OT" Relationship="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" FromRole="NHANSU" ToRole="NHANVIEN_OT" />
+        </EntityType>
+        <EntityType Name="NHANVIEN_BAOHIEM_THUE">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID_NhanVien" Type="Int32" />
+          <Property Name="ID_BaoHiem_Thue" Type="Int32" />
+          <NavigationProperty Name="BAOHIEM_THUE" Relationship="Self.FK__NHANVIEN___ID_Ba__2645B050" FromRole="NHANVIEN_BAOHIEM_THUE" ToRole="BAOHIEM_THUE" />
+          <NavigationProperty Name="NHANSU" Relationship="Self.FK__NHANVIEN___ID_Nh__245D67DE" FromRole="NHANVIEN_BAOHIEM_THUE" ToRole="NHANSU" />
         </EntityType>
         <EntityType Name="NHANVIEN_GIOCONG">
           <Key>
@@ -896,16 +1016,40 @@
           <NavigationProperty Name="LOAINGAYNGHI" Relationship="Self.FK__NHANVIEN___ID_Lo__3D5E1FD2" FromRole="NHANVIEN_LOAINGAYNGHI" ToRole="LOAINGAYNGHI" />
           <NavigationProperty Name="NHANSU" Relationship="Self.FK__NHANVIEN___ID_Nh__3C69FB99" FromRole="NHANVIEN_LOAINGAYNGHI" ToRole="NHANSU" />
         </EntityType>
-        <EntityType Name="NHANVIEN_LOAIPHUCAP">
+        <EntityType Name="NHANVIEN_OT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DateDangKy" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SoGioOT" Type="Double" Nullable="false" />
+          <Property Name="ID_Project" Type="Int32" />
+          <Property Name="ID_NhanVien" Type="Int32" />
+          <Property Name="ID_Range_Hours_OT" Type="Int32" />
+          <NavigationProperty Name="NHANSU" Relationship="Self.FK__NHANVIEN___ID_Nh__2A4B4B5E" FromRole="NHANVIEN_OT" ToRole="NHANSU" />
+          <NavigationProperty Name="TYPE_RANGE_HOURS_OT" Relationship="Self.FK__NHANVIEN___ID_Ra__18EBB532" FromRole="NHANVIEN_OT" ToRole="TYPE_RANGE_HOURS_OT" />
+        </EntityType>
+        <EntityType Name="NHANVIEN_PHUCAP">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_NhanVien" Type="Int32" Nullable="false" />
-          <Property Name="ID_LOAIPHUCAP" Type="Int32" Nullable="false" />
-          <Property Name="Thang" Type="Int32" />
-          <NavigationProperty Name="LOAIPHUCAP" Relationship="Self.FK__NHANVIEN___ID_LO__45F365D3" FromRole="NHANVIEN_LOAIPHUCAP" ToRole="LOAIPHUCAP" />
-          <NavigationProperty Name="NHANSU" Relationship="Self.FK__NHANVIEN___ID_Nh__44FF419A" FromRole="NHANVIEN_LOAIPHUCAP" ToRole="NHANSU" />
+          <Property Name="ID_PhuCap" Type="Int32" Nullable="false" />
+          <Property Name="ThangNam" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="NHANSU" Relationship="Self.FK__NHANVIEN___ID_Nh__44FF419A" FromRole="NHANVIEN_PHUCAP" ToRole="NHANSU" />
+          <NavigationProperty Name="PHUCAP" Relationship="Self.FK__NHANVIEN___ID_Ph__1DB06A4F" FromRole="NHANVIEN_PHUCAP" ToRole="PHUCAP" />
+        </EntityType>
+        <EntityType Name="PHUCAP">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PC_CoDinh" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="CongThuc" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="TenPhuCap" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NHANVIEN_PHUCAP" Relationship="Self.FK__NHANVIEN___ID_Ph__1DB06A4F" FromRole="PHUCAP" ToRole="NHANVIEN_PHUCAP" />
         </EntityType>
         <EntityType Name="sysdiagram">
           <Key>
@@ -925,6 +1069,15 @@
           <Property Name="TenTrangThai" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="NHANSUs" Relationship="Self.FK__NHANSU__TrangTha__6A30C649" FromRole="TRANGTHAILAMVIEC" ToRole="NHANSU" />
         </EntityType>
+        <EntityType Name="TYPE_RANGE_HOURS_OT">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RangeHours" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="PercentAmountOT" Type="Double" />
+          <NavigationProperty Name="NHANVIEN_OT" Relationship="Self.FK__NHANVIEN___ID_Ra__18EBB532" FromRole="TYPE_RANGE_HOURS_OT" ToRole="NHANVIEN_OT" />
+        </EntityType>
         <Association Name="FK__BANGLUONG__ID_Nh__48CFD27E">
           <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
           <End Role="BANGLUONG" Type="Self.BANGLUONG" Multiplicity="*" />
@@ -934,6 +1087,18 @@
             </Principal>
             <Dependent Role="BANGLUONG">
               <PropertyRef Name="ID_NhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN___ID_Ba__2645B050">
+          <End Role="BAOHIEM_THUE" Type="Self.BAOHIEM_THUE" Multiplicity="0..1" />
+          <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="BAOHIEM_THUE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+              <PropertyRef Name="ID_BaoHiem_Thue" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -997,18 +1162,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__NHANVIEN___ID_LO__45F365D3">
-          <End Role="LOAIPHUCAP" Type="Self.LOAIPHUCAP" Multiplicity="1" />
-          <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="LOAIPHUCAP">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NHANVIEN_LOAIPHUCAP">
-              <PropertyRef Name="ID_LOAIPHUCAP" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__NHANSU__TrangTha__6A30C649">
           <End Role="TRANGTHAILAMVIEC" Type="Self.TRANGTHAILAMVIEC" Multiplicity="0..1" />
           <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="*" />
@@ -1018,6 +1171,30 @@
             </Principal>
             <Dependent Role="NHANSU">
               <PropertyRef Name="TrangThaiLamViec" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN___ID_Nh__245D67DE">
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="0..1" />
+          <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+              <PropertyRef Name="ID_NhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN___ID_Nh__2A4B4B5E">
+          <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="0..1" />
+          <End Role="NHANVIEN_OT" Type="Self.NHANVIEN_OT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANSU">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_OT">
+              <PropertyRef Name="ID_NhanVien" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1035,12 +1212,12 @@
         </Association>
         <Association Name="FK__NHANVIEN___ID_Nh__44FF419A">
           <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
-          <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
+          <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NHANSU">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="NHANVIEN_LOAIPHUCAP">
+            <Dependent Role="NHANVIEN_PHUCAP">
               <PropertyRef Name="ID_NhanVien" />
             </Dependent>
           </ReferentialConstraint>
@@ -1057,23 +1234,55 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK__NHANVIEN___ID_Ra__18EBB532">
+          <End Role="TYPE_RANGE_HOURS_OT" Type="Self.TYPE_RANGE_HOURS_OT" Multiplicity="0..1" />
+          <End Role="NHANVIEN_OT" Type="Self.NHANVIEN_OT" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TYPE_RANGE_HOURS_OT">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_OT">
+              <PropertyRef Name="ID_Range_Hours_OT" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__NHANVIEN___ID_Ph__1DB06A4F">
+          <End Role="PHUCAP" Type="Self.PHUCAP" Multiplicity="1" />
+          <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PHUCAP">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="NHANVIEN_PHUCAP">
+              <PropertyRef Name="ID_PhuCap" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="TinhTienLuongEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="BANGLUONGs" EntityType="Self.BANGLUONG" />
+          <EntitySet Name="BAOHIEM_THUE" EntityType="Self.BAOHIEM_THUE" />
           <EntitySet Name="CHUCDANHs" EntityType="Self.CHUCDANH" />
           <EntitySet Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE" EntityType="Self.HISTORY_RESET_DAY_OF_TAKE_LEAVE" />
           <EntitySet Name="KHAUTRULUONGs" EntityType="Self.KHAUTRULUONG" />
           <EntitySet Name="LOAI_GIO_CONG" EntityType="Self.LOAI_GIO_CONG" />
           <EntitySet Name="LOAINGAYNGHIs" EntityType="Self.LOAINGAYNGHI" />
-          <EntitySet Name="LOAIPHUCAPs" EntityType="Self.LOAIPHUCAP" />
           <EntitySet Name="NHANSUs" EntityType="Self.NHANSU" />
+          <EntitySet Name="NHANVIEN_BAOHIEM_THUE" EntityType="Self.NHANVIEN_BAOHIEM_THUE" />
           <EntitySet Name="NHANVIEN_GIOCONG" EntityType="Self.NHANVIEN_GIOCONG" />
           <EntitySet Name="NHANVIEN_LOAINGAYNGHI" EntityType="Self.NHANVIEN_LOAINGAYNGHI" />
-          <EntitySet Name="NHANVIEN_LOAIPHUCAP" EntityType="Self.NHANVIEN_LOAIPHUCAP" />
+          <EntitySet Name="NHANVIEN_OT" EntityType="Self.NHANVIEN_OT" />
+          <EntitySet Name="NHANVIEN_PHUCAP" EntityType="Self.NHANVIEN_PHUCAP" />
+          <EntitySet Name="PHUCAPs" EntityType="Self.PHUCAP" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
           <EntitySet Name="TRANGTHAILAMVIECs" EntityType="Self.TRANGTHAILAMVIEC" />
+          <EntitySet Name="TYPE_RANGE_HOURS_OT" EntityType="Self.TYPE_RANGE_HOURS_OT" />
           <AssociationSet Name="FK__BANGLUONG__ID_Nh__48CFD27E" Association="Self.FK__BANGLUONG__ID_Nh__48CFD27E">
             <End Role="NHANSU" EntitySet="NHANSUs" />
             <End Role="BANGLUONG" EntitySet="BANGLUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Ba__2645B050" Association="Self.FK__NHANVIEN___ID_Ba__2645B050">
+            <End Role="BAOHIEM_THUE" EntitySet="BAOHIEM_THUE" />
+            <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
           </AssociationSet>
           <AssociationSet Name="FK__NHANSU__ChucDanh__74AE54BC" Association="Self.FK__NHANSU__ChucDanh__74AE54BC">
             <End Role="CHUCDANH" EntitySet="CHUCDANHs" />
@@ -1095,13 +1304,17 @@
             <End Role="LOAINGAYNGHI" EntitySet="LOAINGAYNGHIs" />
             <End Role="NHANVIEN_LOAINGAYNGHI" EntitySet="NHANVIEN_LOAINGAYNGHI" />
           </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN___ID_LO__45F365D3" Association="Self.FK__NHANVIEN___ID_LO__45F365D3">
-            <End Role="LOAIPHUCAP" EntitySet="LOAIPHUCAPs" />
-            <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
-          </AssociationSet>
           <AssociationSet Name="FK__NHANSU__TrangTha__6A30C649" Association="Self.FK__NHANSU__TrangTha__6A30C649">
             <End Role="TRANGTHAILAMVIEC" EntitySet="TRANGTHAILAMVIECs" />
             <End Role="NHANSU" EntitySet="NHANSUs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Nh__245D67DE" Association="Self.FK__NHANVIEN___ID_Nh__245D67DE">
+            <End Role="NHANSU" EntitySet="NHANSUs" />
+            <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Nh__2A4B4B5E" Association="Self.FK__NHANVIEN___ID_Nh__2A4B4B5E">
+            <End Role="NHANSU" EntitySet="NHANSUs" />
+            <End Role="NHANVIEN_OT" EntitySet="NHANVIEN_OT" />
           </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Nh__3C69FB99" Association="Self.FK__NHANVIEN___ID_Nh__3C69FB99">
             <End Role="NHANSU" EntitySet="NHANSUs" />
@@ -1109,12 +1322,24 @@
           </AssociationSet>
           <AssociationSet Name="FK__NHANVIEN___ID_Nh__44FF419A" Association="Self.FK__NHANVIEN___ID_Nh__44FF419A">
             <End Role="NHANSU" EntitySet="NHANSUs" />
-            <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+            <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
           </AssociationSet>
           <AssociationSet Name="FK__NHAVIEN_G__ID_Nh__37A5467C" Association="Self.FK__NHAVIEN_G__ID_Nh__37A5467C">
             <End Role="NHANSU" EntitySet="NHANSUs" />
             <End Role="NHANVIEN_GIOCONG" EntitySet="NHANVIEN_GIOCONG" />
           </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Ra__18EBB532" Association="Self.FK__NHANVIEN___ID_Ra__18EBB532">
+            <End Role="TYPE_RANGE_HOURS_OT" EntitySet="TYPE_RANGE_HOURS_OT" />
+            <End Role="NHANVIEN_OT" EntitySet="NHANVIEN_OT" />
+          </AssociationSet>
+          <AssociationSet Name="FK__NHANVIEN___ID_Ph__1DB06A4F" Association="Self.FK__NHANVIEN___ID_Ph__1DB06A4F">
+            <End Role="PHUCAP" EntitySet="PHUCAPs" />
+            <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
+          </AssociationSet>
+          <FunctionImport Name="fnDisplayInfoStaffWorkingDayInMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result)">
+            <Parameter Name="ID_NhanVien" Mode="In" Type="Int32" />
+            <Parameter Name="ThangNam" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="fnDisplayOFFDayFollowCondition" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayOFFDayFollowCondition_Result)">
             <Parameter Name="NgayBatDau" Mode="In" Type="DateTime" />
             <Parameter Name="NgayKetThuc" Mode="In" Type="DateTime" />
@@ -1122,6 +1347,10 @@
           </FunctionImport>
           <FunctionImport Name="fnDisplayOptionStateWorking" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayOptionStateWorking_Result)" />
           <FunctionImport Name="fnDisplayOptionTitle" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayOptionTitle_Result)" />
+          <FunctionImport Name="fnDisplayOT_AmountOTStaffOfMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result)">
+            <Parameter Name="HoVaTen" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="fnDisplayStaffFollowID" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayStaffFollowID_Result)">
           <Parameter Name="id_NhanVien" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -1129,6 +1358,21 @@
           <Parameter Name="HoVaTen" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="fnDisplayTitleOFFDay" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayTitleOFFDay_Result)" />
+          <FunctionImport Name="fnDisplayWorkingDaysForStaff" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayWorkingDaysForStaff_Result)">
+            <Parameter Name="HoVaTen" Mode="In" Type="String" />
+            <Parameter Name="ThangNamStart" Mode="In" Type="DateTime" />
+            <Parameter Name="ThangNamEnd" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="fnDisplayWorkingDaysStaffOfMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result)">
+            <Parameter Name="HoVaTen" Mode="In" Type="String" />
+            <Parameter Name="ThangNam" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="fnGetAmountBenefit" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnGetAmountBenefit_Result)">
+            <Parameter Name="HoVaTen" Mode="In" Type="String" />
+            <Parameter Name="Startdate" Mode="In" Type="DateTime" />
+            <Parameter Name="LoaiPhuCap" Mode="In" Type="Int32" />
+            <Parameter Name="Enddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
           <FunctionImport Name="sp_alterdiagram">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
@@ -1179,33 +1423,6 @@
             <Parameter Name="UserID" Mode="In" Type="String" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="fnDisplayWorkingDaysForStaff" IsComposable="true" ReturnType="Collection(String)">
-            <Parameter Name="HoVaTen" Mode="In" Type="String" />
-            <Parameter Name="ThangNamStart" Mode="In" Type="DateTime" />
-            <Parameter Name="ThangNamEnd" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="fnDisplayWorkingDaysStaffOfMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result)">
-            <Parameter Name="HoVaTen" Mode="In" Type="String" />
-            <Parameter Name="ThangNam" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <FunctionImport Name="fnDisplayInfoStaffWorkingDayInMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result)">
-            <Parameter Name="ID_NhanVien" Mode="In" Type="Int32" />
-            <Parameter Name="ThangNam" Mode="In" Type="DateTime" />
-          </FunctionImport>
-          <EntitySet Name="TYPE_RANGE_HOURS_OT" EntityType="TinhTienLuongModel.TYPE_RANGE_HOURS_OT" />
-          <EntitySet Name="NHANVIEN_OT" EntityType="TinhTienLuongModel.NHANVIEN_OT" />
-          <AssociationSet Name="FK__NHANVIEN___ID_Nh__2A4B4B5E" Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E">
-            <End Role="NHANSU" EntitySet="NHANSUs" />
-            <End Role="NHANVIEN_OT" EntitySet="NHANVIEN_OT" />
-          </AssociationSet>
-          <AssociationSet Name="FK__NHANVIEN___ID_Ra__18EBB532" Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532">
-            <End Role="TYPE_RANGE_HOURS_OT" EntitySet="TYPE_RANGE_HOURS_OT" />
-            <End Role="NHANVIEN_OT" EntitySet="NHANVIEN_OT" />
-          </AssociationSet>
-          <FunctionImport Name="fnDisplayOT_AmountOTStaffOfMonth" IsComposable="true" ReturnType="Collection(TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result)">
-            <Parameter Name="HoVaTen" Mode="In" Type="String" />
-            <Parameter Name="Date" Mode="In" Type="DateTime" />
-          </FunctionImport>
         </EntityContainer>
         <ComplexType Name="sp_helpdiagramdefinition_Result">
           <Property Type="Int32" Name="version" Nullable="true" />
@@ -1218,80 +1435,6 @@
           <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
           <Property Type="Int32" Name="OwnerID" Nullable="false" />
         </ComplexType>
-        <ComplexType Name="fnDisplayWorkingDaysStaffOfMonth_Result">
-          <Property Type="String" Name="HoVaTen" Nullable="false" MaxLength="50" />
-          <Property Type="Int32" Name="WFH" Nullable="true" />
-          <Property Type="Int32" Name="LEAVES" Nullable="true" />
-          <Property Type="Int32" Name="TotalOFFDays" Nullable="true" />
-          <Property Type="Int32" Name="ID_NhanVien" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="fnDisplayInfoStaffWorkingDayInMonth_Result">
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          <Property Type="DateTime" Name="NgayGioKetThuc" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="ID_NhanVien" Nullable="true" />
-          <Property Type="DateTime" Name="NgayGioBatDau" Nullable="true" Precision="23" />
-          <Property Type="Int32" Name="ID_GioCong" Nullable="true" />
-        </ComplexType>
-        <EntityType Name="TYPE_RANGE_HOURS_OT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RangeHours" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="NHANVIEN_OT" Relationship="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" FromRole="TYPE_RANGE_HOURS_OT" ToRole="NHANVIEN_OT" />
-          <Property Name="PercentAmountOT" Type="Double" />
-        </EntityType>
-        <EntityType Name="NHANVIEN_OT">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DateDangKy" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SoGioOT" Type="Double" Nullable="false" />
-          <Property Name="ID_Project" Type="Int32" />
-          <Property Name="ID_NhanVien" Type="Int32" />
-          <Property Name="ID_Range_Hours_OT" Type="Int32" />
-          <NavigationProperty Name="NHANSU" Relationship="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" FromRole="NHANVIEN_OT" ToRole="NHANSU" />
-          <NavigationProperty Name="TYPE_RANGE_HOURS_OT" Relationship="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" FromRole="NHANVIEN_OT" ToRole="TYPE_RANGE_HOURS_OT" />
-        </EntityType>
-        <Association Name="FK__NHANVIEN___ID_Nh__2A4B4B5E">
-          <End Type="TinhTienLuongModel.NHANSU" Role="NHANSU" Multiplicity="0..1" />
-          <End Type="TinhTienLuongModel.NHANVIEN_OT" Role="NHANVIEN_OT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="NHANSU">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NHANVIEN_OT">
-              <PropertyRef Name="ID_NhanVien" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__NHANVIEN___ID_Ra__18EBB532">
-          <End Type="TinhTienLuongModel.TYPE_RANGE_HOURS_OT" Role="TYPE_RANGE_HOURS_OT" Multiplicity="0..1" />
-          <End Type="TinhTienLuongModel.NHANVIEN_OT" Role="NHANVIEN_OT" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TYPE_RANGE_HOURS_OT">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="NHANVIEN_OT">
-              <PropertyRef Name="ID_Range_Hours_OT" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <ComplexType Name="fnDisplayOT_AmountOTStaffOfMonth_Result">
-          <Property Type="String" Name="HoVaTen" Nullable="false" MaxLength="50" />
-          <Property Type="Double" Name="C17h___21h" Nullable="true" />
-          <Property Type="Double" Name="C21h___5h" Nullable="true" />
-          <Property Type="Double" Name="Saturday___Sunday" Nullable="true" />
-          <Property Type="Double" Name="Total_hours" Nullable="true" />
-          <Property Type="Double" Name="Amount_17h___21h" Nullable="true" />
-          <Property Type="Double" Name="Amount_21h___5h" Nullable="true" />
-          <Property Type="Double" Name="Amount_Saturday___Sunday" Nullable="true" />
-          <Property Type="Double" Name="TotalWithoutTax" Nullable="true" />
-          <Property Type="Double" Name="Tax" Nullable="true" />
-          <Property Type="Double" Name="TotalAmountWithTax" Nullable="true" />
-          <Property Type="Int32" Name="ID" Nullable="false" />
-          </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1304,10 +1447,21 @@
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
                 <ScalarProperty Name="LuongThang" ColumnName="LuongThang" />
-                <ScalarProperty Name="TongPhuCap" ColumnName="TongPhuCap" />
-                <ScalarProperty Name="TongKhauTruLuong" ColumnName="TongKhauTruLuong" />
                 <ScalarProperty Name="TongOT" ColumnName="TongOT" />
+                <ScalarProperty Name="TongKhauTru" ColumnName="TongKhauTru" />
+                <ScalarProperty Name="PIT" ColumnName="PIT" />
                 <ScalarProperty Name="ThucNhan" ColumnName="ThucNhan" />
+                <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BAOHIEM_THUE">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.BAOHIEM_THUE">
+              <MappingFragment StoreEntitySet="BAOHIEM_THUE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="LoaiBaoHiem" ColumnName="LoaiBaoHiem" />
+                <ScalarProperty Name="PhanTramBaoHiem" ColumnName="PhanTramBaoHiem" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1360,15 +1514,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="LOAIPHUCAPs">
-            <EntityTypeMapping TypeName="TinhTienLuongModel.LOAIPHUCAP">
-              <MappingFragment StoreEntitySet="LOAIPHUCAP">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="LoaiPhuCap1" ColumnName="LoaiPhuCap" />
-                <ScalarProperty Name="TenPhuCap" ColumnName="TenPhuCap" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="NHANSUs">
             <EntityTypeMapping TypeName="TinhTienLuongModel.NHANSU">
               <MappingFragment StoreEntitySet="NHANSU">
@@ -1404,6 +1549,17 @@
                 <ScalarProperty Name="GioiTinhNguoiLienQuan" ColumnName="GioiTinhNguoiLienQuan" />
                 <ScalarProperty Name="SoNgayNghiPhep" ColumnName="SoNgayNghiPhep" />
                 <ScalarProperty Name="NgayResetNghiCoPhep" ColumnName="NgayResetNghiCoPhep" />
+                <ScalarProperty Name="Km" ColumnName="Km" />
+                <ScalarProperty Name="SoNguoiPhuThuoc" ColumnName="SoNguoiPhuThuoc" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIEN_BAOHIEM_THUE">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_BAOHIEM_THUE">
+              <MappingFragment StoreEntitySet="NHANVIEN_BAOHIEM_THUE">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+                <ScalarProperty Name="ID_BaoHiem_Thue" ColumnName="ID_BaoHiem_Thue" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1430,13 +1586,36 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIEN_LOAIPHUCAP">
-            <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_LOAIPHUCAP">
-              <MappingFragment StoreEntitySet="NHANVIEN_LOAIPHUCAP">
+          <EntitySetMapping Name="NHANVIEN_OT">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_OT">
+              <MappingFragment StoreEntitySet="NHANVIEN_OT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DateDangKy" ColumnName="DateDangKy" />
+                <ScalarProperty Name="SoGioOT" ColumnName="SoGioOT" />
+                <ScalarProperty Name="ID_Project" ColumnName="ID_Project" />
+                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+                <ScalarProperty Name="ID_Range_Hours_OT" ColumnName="ID_Range_Hours_OT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NHANVIEN_PHUCAP">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_PHUCAP">
+              <MappingFragment StoreEntitySet="NHANVIEN_PHUCAP">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-                <ScalarProperty Name="ID_LOAIPHUCAP" ColumnName="ID_LOAIPHUCAP" />
-                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="ID_PhuCap" ColumnName="ID_PhuCap" />
+                <ScalarProperty Name="ThangNam" ColumnName="ThangNam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PHUCAPs">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.PHUCAP">
+              <MappingFragment StoreEntitySet="PHUCAP">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PC_CoDinh" ColumnName="PC_CoDinh" />
+                <ScalarProperty Name="CongThuc" ColumnName="CongThuc" />
+                <ScalarProperty Name="TenPhuCap" ColumnName="TenPhuCap" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1459,6 +1638,26 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TYPE_RANGE_HOURS_OT">
+            <EntityTypeMapping TypeName="TinhTienLuongModel.TYPE_RANGE_HOURS_OT">
+              <MappingFragment StoreEntitySet="TYPE_RANGE_HOURS_OT">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="RangeHours" ColumnName="RangeHours" />
+                <ScalarProperty Name="PercentAmountOT" ColumnName="PercentAmountOT" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayInfoStaffWorkingDayInMonth" FunctionImportName="fnDisplayInfoStaffWorkingDayInMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+                <ScalarProperty Name="ID_GioCong" ColumnName="ID_GioCong" />
+                <ScalarProperty Name="NgayGioBatDau" ColumnName="NgayGioBatDau" />
+                <ScalarProperty Name="NgayGioKetThuc" ColumnName="NgayGioKetThuc" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayOFFDayFollowCondition" FunctionImportName="fnDisplayOFFDayFollowCondition">
             <ResultMapping>
               <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOFFDayFollowCondition_Result">
@@ -1487,6 +1686,24 @@
               <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOptionTitle_Result">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="TenChucDanh" ColumnName="TenChucDanh" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayOT_AmountOTStaffOfMonth" FunctionImportName="fnDisplayOT_AmountOTStaffOfMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+                <ScalarProperty Name="C17h___21h" ColumnName="17h - 21h" />
+                <ScalarProperty Name="C21h___5h" ColumnName="21h - 5h" />
+                <ScalarProperty Name="Saturday___Sunday" ColumnName="Saturday &amp; Sunday" />
+                <ScalarProperty Name="Total_hours" ColumnName="Total hours" />
+                <ScalarProperty Name="Amount_17h___21h" ColumnName="Amount 17h - 21h" />
+                <ScalarProperty Name="Amount_21h___5h" ColumnName="Amount 21h - 5h" />
+                <ScalarProperty Name="Amount_Saturday___Sunday" ColumnName="Amount Saturday &amp; Sunday" />
+                <ScalarProperty Name="TotalWithoutTax" ColumnName="TotalWithoutTax" />
+                <ScalarProperty Name="Tax" ColumnName="Tax" />
+                <ScalarProperty Name="TotalAmountWithTax" ColumnName="TotalAmountWithTax" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1561,6 +1778,8 @@
                 <ScalarProperty Name="GioiTinhNguoiLienQuan" ColumnName="GioiTinhNguoiLienQuan" />
                 <ScalarProperty Name="SoNgayNghiPhep" ColumnName="SoNgayNghiPhep" />
                 <ScalarProperty Name="NgayResetNghiCoPhep" ColumnName="NgayResetNghiCoPhep" />
+                <ScalarProperty Name="Km" ColumnName="Km" />
+                <ScalarProperty Name="SoNguoiPhuThuoc" ColumnName="SoNguoiPhuThuoc" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1571,6 +1790,30 @@
                 <ScalarProperty Name="LoaiNgayNghi" ColumnName="LoaiNgayNghi" />
                 <ScalarProperty Name="TenNgayNghi" ColumnName="TenNgayNghi" />
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysForStaff" FunctionImportName="fnDisplayWorkingDaysForStaff">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysForStaff_Result">
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysStaffOfMonth" FunctionImportName="fnDisplayWorkingDaysStaffOfMonth">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result">
+                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="WFH" ColumnName="WFH" />
+                <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnGetAmountBenefit" FunctionImportName="fnGetAmountBenefit">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnGetAmountBenefit_Result">
+                <ScalarProperty Name="PC_CoDinh" ColumnName="PC_CoDinh" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -1602,68 +1845,6 @@
           <FunctionImportMapping FunctionImportName="spUpdateDayOfTakeLeaveForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateDayOfTakeLeaveForStaff" />
           <FunctionImportMapping FunctionImportName="spUpdateOFFDayForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateOFFDayForStaff" />
           <FunctionImportMapping FunctionImportName="TinhLuongCBTheoThang" FunctionName="TinhTienLuongModel.Store.TinhLuongCBTheoThang" />
-          <FunctionImportMapping FunctionImportName="fnDisplayWorkingDaysForStaff" FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysForStaff" />
-          <FunctionImportMapping FunctionImportName="fnDisplayWorkingDaysStaffOfMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysStaffOfMonth">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result">
-                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-                <ScalarProperty Name="WFH" ColumnName="WFH" />
-                <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
-                <ScalarProperty Name="TotalOFFDays" ColumnName="TotalOFFDays" />
-                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="fnDisplayInfoStaffWorkingDayInMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayInfoStaffWorkingDayInMonth">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="NgayGioKetThuc" ColumnName="NgayGioKetThuc" />
-                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-                <ScalarProperty Name="NgayGioBatDau" ColumnName="NgayGioBatDau" />
-                <ScalarProperty Name="ID_GioCong" ColumnName="ID_GioCong" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <EntitySetMapping Name="TYPE_RANGE_HOURS_OT">
-            <EntityTypeMapping TypeName="TinhTienLuongModel.TYPE_RANGE_HOURS_OT">
-              <MappingFragment StoreEntitySet="TYPE_RANGE_HOURS_OT">
-                <ScalarProperty Name="PercentAmountOT" ColumnName="PercentAmountOT" />
-                <ScalarProperty Name="RangeHours" ColumnName="RangeHours" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="NHANVIEN_OT">
-            <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_OT">
-              <MappingFragment StoreEntitySet="NHANVIEN_OT">
-                <ScalarProperty Name="ID_Range_Hours_OT" ColumnName="ID_Range_Hours_OT" />
-                <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-                <ScalarProperty Name="ID_Project" ColumnName="ID_Project" />
-                <ScalarProperty Name="SoGioOT" ColumnName="SoGioOT" />
-                <ScalarProperty Name="DateDangKy" ColumnName="DateDangKy" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="fnDisplayOT_AmountOTStaffOfMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayOT_AmountOTStaffOfMonth">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result">
-                <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-                <ScalarProperty Name="C17h___21h" ColumnName="17h - 21h" />
-                <ScalarProperty Name="C21h___5h" ColumnName="21h - 5h" />
-                <ScalarProperty Name="Saturday___Sunday" ColumnName="Saturday &amp; Sunday" />
-                <ScalarProperty Name="Total_hours" ColumnName="Total hours" />
-                <ScalarProperty Name="Amount_17h___21h" ColumnName="Amount 17h - 21h" />
-                <ScalarProperty Name="Amount_21h___5h" ColumnName="Amount 21h - 5h" />
-                <ScalarProperty Name="Amount_Saturday___Sunday" ColumnName="Amount Saturday &amp; Sunday" />
-                <ScalarProperty Name="TotalWithoutTax" ColumnName="TotalWithoutTax" />
-                <ScalarProperty Name="Tax" ColumnName="Tax" />
-                <ScalarProperty Name="TotalAmountWithTax" ColumnName="TotalAmountWithTax" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

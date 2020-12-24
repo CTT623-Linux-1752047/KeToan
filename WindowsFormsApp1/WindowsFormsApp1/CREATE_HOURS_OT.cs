@@ -13,6 +13,7 @@ namespace WindowsFormsApp1
     public partial class CREATE_HOURS_OT : UserControl
     {
         private TinhTienLuongEntities data = new TinhTienLuongEntities();
+        public EventHandler addDataSuccess;
         public CREATE_HOURS_OT()
         {
             InitializeComponent();
@@ -24,10 +25,11 @@ namespace WindowsFormsApp1
         }
         public void LoadData()
         {
-            List<fnDisplayStaffFollowName_Result> lstStaff = data.fnDisplayStaffFollowName("").ToList();
+            List<fnDisplayStaffFollowName_Result> lstStaff = data.fnDisplayStaffFollowName("").OrderBy(o => o.UserName).ToList();
             this.cbNameOfStaff.DataSource = lstStaff;
             this.cbNameOfStaff.DisplayMember = "HoVaTen";
             this.cbNameOfStaff.ValueMember = "ID";
+            
             
             
             this.cbRangeHoursOT.DataSource = data.TYPE_RANGE_HOURS_OT.SqlQuery("SELECT * FROM TYPE_RANGE_HOURS_OT").ToList();
@@ -72,7 +74,8 @@ namespace WindowsFormsApp1
                         this.cbRangeHoursOT.SelectedValue = -1;
                         this.cbNameOfStaff.SelectedValue = -1;
                         this.txtOTHours.Text = "";
-
+                        if (addDataSuccess != null) 
+                            addDataSuccess(this, null);
                     }
                 }
             }

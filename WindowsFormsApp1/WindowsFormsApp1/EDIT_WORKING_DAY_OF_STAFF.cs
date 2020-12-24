@@ -31,8 +31,8 @@ namespace WindowsFormsApp1
             fnDisplayWorkingDaysStaffOfMonth_Result temp = data.fnDisplayWorkingDaysStaffOfMonth(this.lbName.Text, this.ThangNam).FirstOrDefault();
             if(temp != null)
             {
-                this.lbWFH.Text = temp.WFH.ToString();
-                this.lbLeaveHours.Text = temp.LEAVES.ToString();
+                this.lbWFH.Text = (temp.WFH == null ? "0" : temp.LEAVES.ToString());
+                this.lbLeaveHours.Text = (temp.LEAVES == null ? "0" : temp.LEAVES.ToString());
             }
             this.lbOFFDayTakeLeave.Text = (CalcultDayOFFTakeLeave().ToString() == null ? "0" : CalcultDayOFFTakeLeave().ToString());
             this.lbDayOFFNoTakeLeave.Text = (CalculDayOFFNoTakeLeave().ToString() == null ? "0" : CalculDayOFFNoTakeLeave().ToString());
@@ -142,5 +142,6 @@ namespace WindowsFormsApp1
             }
             return (((tSpan.Days / 7) * 5) + Math.Min((dowEnd + 6) - Math.Min(dowStart, 6), 5));
         }
+
     }
 }

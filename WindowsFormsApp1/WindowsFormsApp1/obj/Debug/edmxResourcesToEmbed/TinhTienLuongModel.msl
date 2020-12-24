@@ -7,10 +7,21 @@
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
           <ScalarProperty Name="LuongThang" ColumnName="LuongThang" />
-          <ScalarProperty Name="TongPhuCap" ColumnName="TongPhuCap" />
-          <ScalarProperty Name="TongKhauTruLuong" ColumnName="TongKhauTruLuong" />
           <ScalarProperty Name="TongOT" ColumnName="TongOT" />
+          <ScalarProperty Name="TongKhauTru" ColumnName="TongKhauTru" />
+          <ScalarProperty Name="PIT" ColumnName="PIT" />
           <ScalarProperty Name="ThucNhan" ColumnName="ThucNhan" />
+          <ScalarProperty Name="TongTien" ColumnName="TongTien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BAOHIEM_THUE">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.BAOHIEM_THUE">
+        <MappingFragment StoreEntitySet="BAOHIEM_THUE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="LoaiBaoHiem" ColumnName="LoaiBaoHiem" />
+          <ScalarProperty Name="PhanTramBaoHiem" ColumnName="PhanTramBaoHiem" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -63,15 +74,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="LOAIPHUCAPs">
-      <EntityTypeMapping TypeName="TinhTienLuongModel.LOAIPHUCAP">
-        <MappingFragment StoreEntitySet="LOAIPHUCAP">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="LoaiPhuCap1" ColumnName="LoaiPhuCap" />
-          <ScalarProperty Name="TenPhuCap" ColumnName="TenPhuCap" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="NHANSUs">
       <EntityTypeMapping TypeName="TinhTienLuongModel.NHANSU">
         <MappingFragment StoreEntitySet="NHANSU">
@@ -107,6 +109,17 @@
           <ScalarProperty Name="GioiTinhNguoiLienQuan" ColumnName="GioiTinhNguoiLienQuan" />
           <ScalarProperty Name="SoNgayNghiPhep" ColumnName="SoNgayNghiPhep" />
           <ScalarProperty Name="NgayResetNghiCoPhep" ColumnName="NgayResetNghiCoPhep" />
+          <ScalarProperty Name="Km" ColumnName="Km" />
+          <ScalarProperty Name="SoNguoiPhuThuoc" ColumnName="SoNguoiPhuThuoc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIEN_BAOHIEM_THUE">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_BAOHIEM_THUE">
+        <MappingFragment StoreEntitySet="NHANVIEN_BAOHIEM_THUE">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+          <ScalarProperty Name="ID_BaoHiem_Thue" ColumnName="ID_BaoHiem_Thue" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -133,13 +146,36 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="NHANVIEN_LOAIPHUCAP">
-      <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_LOAIPHUCAP">
-        <MappingFragment StoreEntitySet="NHANVIEN_LOAIPHUCAP">
+    <EntitySetMapping Name="NHANVIEN_OT">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_OT">
+        <MappingFragment StoreEntitySet="NHANVIEN_OT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="DateDangKy" ColumnName="DateDangKy" />
+          <ScalarProperty Name="SoGioOT" ColumnName="SoGioOT" />
+          <ScalarProperty Name="ID_Project" ColumnName="ID_Project" />
+          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+          <ScalarProperty Name="ID_Range_Hours_OT" ColumnName="ID_Range_Hours_OT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="NHANVIEN_PHUCAP">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_PHUCAP">
+        <MappingFragment StoreEntitySet="NHANVIEN_PHUCAP">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-          <ScalarProperty Name="ID_LOAIPHUCAP" ColumnName="ID_LOAIPHUCAP" />
-          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="ID_PhuCap" ColumnName="ID_PhuCap" />
+          <ScalarProperty Name="ThangNam" ColumnName="ThangNam" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHUCAPs">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.PHUCAP">
+        <MappingFragment StoreEntitySet="PHUCAP">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PC_CoDinh" ColumnName="PC_CoDinh" />
+          <ScalarProperty Name="CongThuc" ColumnName="CongThuc" />
+          <ScalarProperty Name="TenPhuCap" ColumnName="TenPhuCap" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -162,6 +198,26 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="TYPE_RANGE_HOURS_OT">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.TYPE_RANGE_HOURS_OT">
+        <MappingFragment StoreEntitySet="TYPE_RANGE_HOURS_OT">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="RangeHours" ColumnName="RangeHours" />
+          <ScalarProperty Name="PercentAmountOT" ColumnName="PercentAmountOT" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayInfoStaffWorkingDayInMonth" FunctionImportName="fnDisplayInfoStaffWorkingDayInMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
+          <ScalarProperty Name="ID_GioCong" ColumnName="ID_GioCong" />
+          <ScalarProperty Name="NgayGioBatDau" ColumnName="NgayGioBatDau" />
+          <ScalarProperty Name="NgayGioKetThuc" ColumnName="NgayGioKetThuc" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
     <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayOFFDayFollowCondition" FunctionImportName="fnDisplayOFFDayFollowCondition">
       <ResultMapping>
         <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOFFDayFollowCondition_Result">
@@ -190,6 +246,24 @@
         <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOptionTitle_Result">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TenChucDanh" ColumnName="TenChucDanh" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayOT_AmountOTStaffOfMonth" FunctionImportName="fnDisplayOT_AmountOTStaffOfMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+          <ScalarProperty Name="C17h___21h" ColumnName="17h - 21h" />
+          <ScalarProperty Name="C21h___5h" ColumnName="21h - 5h" />
+          <ScalarProperty Name="Saturday___Sunday" ColumnName="Saturday &amp; Sunday" />
+          <ScalarProperty Name="Total_hours" ColumnName="Total hours" />
+          <ScalarProperty Name="Amount_17h___21h" ColumnName="Amount 17h - 21h" />
+          <ScalarProperty Name="Amount_21h___5h" ColumnName="Amount 21h - 5h" />
+          <ScalarProperty Name="Amount_Saturday___Sunday" ColumnName="Amount Saturday &amp; Sunday" />
+          <ScalarProperty Name="TotalWithoutTax" ColumnName="TotalWithoutTax" />
+          <ScalarProperty Name="Tax" ColumnName="Tax" />
+          <ScalarProperty Name="TotalAmountWithTax" ColumnName="TotalAmountWithTax" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -264,6 +338,8 @@
           <ScalarProperty Name="GioiTinhNguoiLienQuan" ColumnName="GioiTinhNguoiLienQuan" />
           <ScalarProperty Name="SoNgayNghiPhep" ColumnName="SoNgayNghiPhep" />
           <ScalarProperty Name="NgayResetNghiCoPhep" ColumnName="NgayResetNghiCoPhep" />
+          <ScalarProperty Name="Km" ColumnName="Km" />
+          <ScalarProperty Name="SoNguoiPhuThuoc" ColumnName="SoNguoiPhuThuoc" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -274,6 +350,30 @@
           <ScalarProperty Name="LoaiNgayNghi" ColumnName="LoaiNgayNghi" />
           <ScalarProperty Name="TenNgayNghi" ColumnName="TenNgayNghi" />
           <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysForStaff" FunctionImportName="fnDisplayWorkingDaysForStaff">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysForStaff_Result">
+          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysStaffOfMonth" FunctionImportName="fnDisplayWorkingDaysStaffOfMonth">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result">
+          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="WFH" ColumnName="WFH" />
+          <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionName="TinhTienLuongModel.Store.fnGetAmountBenefit" FunctionImportName="fnGetAmountBenefit">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnGetAmountBenefit_Result">
+          <ScalarProperty Name="PC_CoDinh" ColumnName="PC_CoDinh" />
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
@@ -305,67 +405,5 @@
     <FunctionImportMapping FunctionImportName="spUpdateDayOfTakeLeaveForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateDayOfTakeLeaveForStaff" />
     <FunctionImportMapping FunctionImportName="spUpdateOFFDayForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateOFFDayForStaff" />
     <FunctionImportMapping FunctionImportName="TinhLuongCBTheoThang" FunctionName="TinhTienLuongModel.Store.TinhLuongCBTheoThang" />
-    <FunctionImportMapping FunctionImportName="fnDisplayWorkingDaysForStaff" FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysForStaff" />
-    <FunctionImportMapping FunctionImportName="fnDisplayWorkingDaysStaffOfMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayWorkingDaysStaffOfMonth">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayWorkingDaysStaffOfMonth_Result">
-          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-          <ScalarProperty Name="WFH" ColumnName="WFH" />
-          <ScalarProperty Name="LEAVES" ColumnName="LEAVES" />
-          <ScalarProperty Name="TotalOFFDays" ColumnName="TotalOFFDays" />
-          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="fnDisplayInfoStaffWorkingDayInMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayInfoStaffWorkingDayInMonth">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayInfoStaffWorkingDayInMonth_Result">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="NgayGioKetThuc" ColumnName="NgayGioKetThuc" />
-          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-          <ScalarProperty Name="NgayGioBatDau" ColumnName="NgayGioBatDau" />
-          <ScalarProperty Name="ID_GioCong" ColumnName="ID_GioCong" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
-    <EntitySetMapping Name="TYPE_RANGE_HOURS_OT">
-      <EntityTypeMapping TypeName="TinhTienLuongModel.TYPE_RANGE_HOURS_OT">
-        <MappingFragment StoreEntitySet="TYPE_RANGE_HOURS_OT">
-          <ScalarProperty Name="PercentAmountOT" ColumnName="PercentAmountOT" />
-          <ScalarProperty Name="RangeHours" ColumnName="RangeHours" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="NHANVIEN_OT">
-      <EntityTypeMapping TypeName="TinhTienLuongModel.NHANVIEN_OT">
-        <MappingFragment StoreEntitySet="NHANVIEN_OT">
-          <ScalarProperty Name="ID_Range_Hours_OT" ColumnName="ID_Range_Hours_OT" />
-          <ScalarProperty Name="ID_NhanVien" ColumnName="ID_NhanVien" />
-          <ScalarProperty Name="ID_Project" ColumnName="ID_Project" />
-          <ScalarProperty Name="SoGioOT" ColumnName="SoGioOT" />
-          <ScalarProperty Name="DateDangKy" ColumnName="DateDangKy" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="fnDisplayOT_AmountOTStaffOfMonth" FunctionName="TinhTienLuongModel.Store.fnDisplayOT_AmountOTStaffOfMonth">
-      <ResultMapping>
-        <ComplexTypeMapping TypeName="TinhTienLuongModel.fnDisplayOT_AmountOTStaffOfMonth_Result">
-          <ScalarProperty Name="HoVaTen" ColumnName="HoVaTen" />
-          <ScalarProperty Name="C17h___21h" ColumnName="17h - 21h" />
-          <ScalarProperty Name="C21h___5h" ColumnName="21h - 5h" />
-          <ScalarProperty Name="Saturday___Sunday" ColumnName="Saturday &amp; Sunday" />
-          <ScalarProperty Name="Total_hours" ColumnName="Total hours" />
-          <ScalarProperty Name="Amount_17h___21h" ColumnName="Amount 17h - 21h" />
-          <ScalarProperty Name="Amount_21h___5h" ColumnName="Amount 21h - 5h" />
-          <ScalarProperty Name="Amount_Saturday___Sunday" ColumnName="Amount Saturday &amp; Sunday" />
-          <ScalarProperty Name="TotalWithoutTax" ColumnName="TotalWithoutTax" />
-          <ScalarProperty Name="Tax" ColumnName="Tax" />
-          <ScalarProperty Name="TotalAmountWithTax" ColumnName="TotalAmountWithTax" />
-          <ScalarProperty Name="ID" ColumnName="ID" />
-        </ComplexTypeMapping>
-      </ResultMapping>
-    </FunctionImportMapping>
   </EntityContainerMapping>
 </Mapping>

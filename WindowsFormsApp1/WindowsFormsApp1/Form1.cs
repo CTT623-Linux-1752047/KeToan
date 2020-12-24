@@ -7,18 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Properties;
 
 namespace WindowsFormsApp1
 {
     public partial class Form1 : Form
     {
         private TinhTienLuongEntities data = new TinhTienLuongEntities();
+        private bool isCollapsed;
         bool drag = false;
         Point start_point = new Point(0, 0);
         public Form1()
         {
             InitializeComponent();
-            data.spUpdateDayOfTakeLeaveForStaff();
+            //data.spUpdateDayOfTakeLeaveForStaff();
         }
         protected override void WndProc(ref Message m)
         {
@@ -33,112 +35,18 @@ namespace WindowsFormsApp1
 
             base.WndProc(ref m);
         }
-        private void button1_Click_1(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Show();
-            this.ngaynghi1.Hide();
-            this.bangluongnhanvien1.Hide();
-            this.quanlygiocong1.Hide();
-            this.quanlyot1.Hide();
-
-            this.button1.BackColor = Color.FromArgb(69, 69, 69);            
-            this.button2.BackColor = Color.FromArgb(21, 23, 22);           
-            this.button3.BackColor = Color.FromArgb(21, 23, 22);            
-            this.button4.BackColor = Color.FromArgb(21, 23, 22);            
-            this.button5.BackColor = Color.FromArgb(21, 23, 22);           
-            this.button6.BackColor = Color.FromArgb(21, 23, 22);
-        }
-
-        private void button2_Click_1(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Hide();
-            this.ngaynghi1.Show();
-            this.ngaynghi1.LoadData();
-            this.bangluongnhanvien1.Hide();
-            this.quanlygiocong1.Hide();
-            this.quanlyot1.Hide();
-
-            this.button2.BackColor = Color.FromArgb(69, 69, 69);
-            this.button1.BackColor = Color.FromArgb(21, 23, 22);
-            this.button3.BackColor = Color.FromArgb(21, 23, 22);
-            this.button4.BackColor = Color.FromArgb(21, 23, 22);
-            this.button5.BackColor = Color.FromArgb(21, 23, 22);
-            this.button6.BackColor = Color.FromArgb(21, 23, 22);
-        }
-
-        private void button3_Click_1(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Hide();
-            this.ngaynghi1.Hide();
-            this.bangluongnhanvien1.Show();
-            this.quanlygiocong1.Hide();
-            this.quanlyot1.Hide();
-
-            this.button3.BackColor = Color.FromArgb(69, 69, 69);
-            this.button2.BackColor = Color.FromArgb(21, 23, 22);
-            this.button1.BackColor = Color.FromArgb(21, 23, 22);
-            this.button4.BackColor = Color.FromArgb(21, 23, 22);
-            this.button5.BackColor = Color.FromArgb(21, 23, 22);
-            this.button6.BackColor = Color.FromArgb(21, 23, 22);
-        }
-
-        private void button4_Click_1(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Hide();
-            this.ngaynghi1.Hide();
-            this.quanlygiocong1.Show();
-            this.quanlygiocong1.LoadData();
-            this.bangluongnhanvien1.Hide();
-            this.quanlyot1.Hide();
-
-            this.button4.BackColor = Color.FromArgb(69, 69, 69);
-            this.button2.BackColor = Color.FromArgb(21, 23, 22);
-            this.button3.BackColor = Color.FromArgb(21, 23, 22);
-            this.button1.BackColor = Color.FromArgb(21, 23, 22);
-            this.button5.BackColor = Color.FromArgb(21, 23, 22);
-            this.button6.BackColor = Color.FromArgb(21, 23, 22);
-        }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             this.quanlynhansu1.Show();
             this.quanlynhansu1.LoadData();
-            this.ngaynghi1.Hide();
+            this.quanlyngaynghi1.Hide();
             this.quanlygiocong1.Hide();
-            this.bangluongnhanvien1.Hide();
+            this.quanlyluong1.Hide();
             this.quanlyot1.Hide();
-        }
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Hide();
-            this.ngaynghi1.Hide();
-            this.quanlygiocong1.Hide();
-            this.bangluongnhanvien1.Hide();
-            this.quanlyot1.Show();
-            this.quanlyot1.LoadData();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
 
-            this.button6.BackColor = Color.FromArgb(69, 69, 69);
-            this.button2.BackColor = Color.FromArgb(21, 23, 22);
-            this.button3.BackColor = Color.FromArgb(21, 23, 22);
-            this.button4.BackColor = Color.FromArgb(21, 23, 22);
-            this.button5.BackColor = Color.FromArgb(21, 23, 22);
-            this.button1.BackColor = Color.FromArgb(21, 23, 22);
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.quanlynhansu1.Hide();
-            this.ngaynghi1.Hide();
-            this.quanlygiocong1.Hide();
-            this.bangluongnhanvien1.Hide();
-            this.quanlyot1.Hide();
-
-            this.button5.BackColor = Color.FromArgb(69, 69, 69);
-            this.button2.BackColor = Color.FromArgb(21, 23, 22);
-            this.button3.BackColor = Color.FromArgb(21, 23, 22);
-            this.button4.BackColor = Color.FromArgb(21, 23, 22);
-            this.button1.BackColor = Color.FromArgb(21, 23, 22);
-            this.button6.BackColor = Color.FromArgb(21, 23, 22);
         }
         private void header_MouseDown(object sender, MouseEventArgs e)
         {
@@ -158,19 +66,204 @@ namespace WindowsFormsApp1
         {
             drag = false;
         }
-
-        private void MinimumWindow_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Minimized;
+            if (isCollapsed)
+            {
+                btnPayroll.Image = Resources.icons8_chevron_down_24;
+                panelDropDown.Height += 10;
+                if(panelDropDown.Size == panelDropDown.MaximumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = false;
+                }
+            }
+            else
+            {
+                btnPayroll.Image = Resources.icons8_chevron_up_24;
+                panelDropDown.Height -= 10;
+                if (panelDropDown.Size == panelDropDown.MinimumSize)
+                {
+                    timer1.Stop();
+                    isCollapsed = true;
+                }
+            }
+                
+
+        }
+        private void btnDashBoard_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Show();
+            this.quanlyngaynghi1.Hide();
+            this.quanlyluong1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.btnDashBoard.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
         }
 
-        private void CloseWindow_Click(object sender, EventArgs e)
+        private void btnDayOFF_Click(object sender, EventArgs e)
         {
-            Close();
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Show();
+            this.quanlyngaynghi1.LoadData();
+            this.quanlyluong1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.btnDayOFF.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
         }
-        private void MaximumSize_Click(object sender, EventArgs e)
+
+        private void btnPayroll_Click(object sender, EventArgs e)
         {
-            this.WindowState = FormWindowState.Maximized;
+            this.timer1.Start();
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlyluong1.Show();
+            this.quanlyluong1.LoadData();
+            this.quanlygiocong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.btnPayroll.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void btnWorkingHours_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlygiocong1.Show();
+            this.quanlygiocong1.LoadData();
+            this.quanlyluong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.btnWorkingHours.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void btnOT_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyluong1.Hide();
+            this.quanlyot1.Show();
+            this.quanlyot1.LoadData();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.btnOT.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void tbnSetting_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyluong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Show();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Hide();
+
+            this.tbnSetting.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
+        }
+
+        private void btnInsurance_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyluong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Show();
+            this.quanlybaohiem1.LoadData();
+            this.quanlythuetncn1.Hide();
+
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(88, 88, 88);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnInsurance.BackColor = Color.FromArgb(69, 69, 69);
+            this.btnPIT.BackColor = Color.FromArgb(44, 44, 44);
+        }
+
+        private void btnPIT_Click(object sender, EventArgs e)
+        {
+            this.quanlynhansu1.Hide();
+            this.quanlyngaynghi1.Hide();
+            this.quanlygiocong1.Hide();
+            this.quanlyluong1.Hide();
+            this.quanlyot1.Hide();
+            this.quanlythietlap1.Hide();
+            this.quanlybaohiem1.Hide();
+            this.quanlythuetncn1.Show();
+            this.quanlythuetncn1.LoadData();
+
+            this.tbnSetting.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDayOFF.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnPayroll.BackColor = Color.FromArgb(88, 88, 88);
+            this.btnWorkingHours.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnDashBoard.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnOT.BackColor = Color.FromArgb(21, 23, 22);
+            this.btnInsurance.BackColor = Color.FromArgb(55, 55, 55);
+            this.btnPIT.BackColor = Color.FromArgb(69, 69, 69);
         }
     }
 }

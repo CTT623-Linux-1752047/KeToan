@@ -4,35 +4,39 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="758f7dd83ae3494cb237d505f13ea1ee" Name="Diagram1">
-        <EntityTypeShape EntityType="TinhTienLuongModel.BANGLUONG" Width="1.5" PointX="5.25" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.CHUCDANH" Width="1.5" PointX="0.75" PointY="11.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.HISTORY_RESET_DAY_OF_TAKE_LEAVE" Width="1.5" PointX="5.25" PointY="9.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.KHAUTRULUONG" Width="1.5" PointX="5.25" PointY="12.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.LOAI_GIO_CONG" Width="1.5" PointX="6" PointY="16.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.LOAINGAYNGHI" Width="1.5" PointX="6" PointY="3.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.LOAIPHUCAP" Width="1.5" PointX="6" PointY="19.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANSU" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_GIOCONG" Width="1.5" PointX="8.25" PointY="11.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_LOAINGAYNGHI" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_LOAIPHUCAP" Width="1.5" PointX="8.25" PointY="14.25" IsExpanded="true" />
+      <Diagram DiagramId="781d3abf85be42859a3471313c439c10" Name="Diagram1">
+        <EntityTypeShape EntityType="TinhTienLuongModel.BANGLUONG" Width="1.5" PointX="5.25" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.BAOHIEM_THUE" Width="1.5" PointX="6" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.CHUCDANH" Width="1.5" PointX="0.75" PointY="13.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.HISTORY_RESET_DAY_OF_TAKE_LEAVE" Width="1.5" PointX="5.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.KHAUTRULUONG" Width="1.5" PointX="5.25" PointY="16" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.LOAI_GIO_CONG" Width="1.5" PointX="6" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.LOAINGAYNGHI" Width="1.5" PointX="6" PointY="23.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANSU" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_BAOHIEM_THUE" Width="1.5" PointX="8.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_GIOCONG" Width="1.5" PointX="8.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_LOAINGAYNGHI" Width="1.5" PointX="8.25" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_OT" Width="1.5" PointX="11.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_PHUCAP" Width="1.5" PointX="8.25" PointY="7" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.PHUCAP" Width="1.5" PointX="6" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="TinhTienLuongModel.sysdiagram" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.TRANGTHAILAMVIEC" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.TRANGTHAILAMVIEC" Width="1.5" PointX="0.75" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.TYPE_RANGE_HOURS_OT" Width="1.5" PointX="9" PointY="19.25" IsExpanded="true" />
         <AssociationConnector Association="TinhTienLuongModel.FK__BANGLUONG__ID_Nh__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ba__2645B050" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANSU__ChucDanh__74AE54BC" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__HISTORY_R__ID_Nh__06CD04F7" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__KHAUTRULU__ID_Nh__403A8C7D" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Gi__0B91BA14" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Lo__3D5E1FD2" ManuallyRouted="false" />
-        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_LO__45F365D3" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANSU__TrangTha__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__245D67DE" ManuallyRouted="false" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__3C69FB99" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__44FF419A" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHAVIEN_G__ID_Nh__37A5467C" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.TYPE_RANGE_HOURS_OT" Width="1.5" PointX="0.75" PointY="3.875" />
-        <EntityTypeShape EntityType="TinhTienLuongModel.NHANVIEN_OT" Width="1.5" PointX="8.25" PointY="3" />
-        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Nh__2A4B4B5E" />
-        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" ManuallyRouted="false" />
+        <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ph__1DB06A4F" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

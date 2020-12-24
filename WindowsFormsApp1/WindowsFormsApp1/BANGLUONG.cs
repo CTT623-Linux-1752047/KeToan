@@ -16,11 +16,12 @@ namespace WindowsFormsApp1
     {
         public int ID { get; set; }
         public int ID_NhanVien { get; set; }
-        public Nullable<double> LuongThang { get; set; }
-        public Nullable<double> TongPhuCap { get; set; }
-        public Nullable<double> TongKhauTruLuong { get; set; }
+        public Nullable<System.DateTime> LuongThang { get; set; }
         public Nullable<double> TongOT { get; set; }
-        public Nullable<double> ThucNhan { get; set; }
+        public Nullable<decimal> TongKhauTru { get; set; }
+        public Nullable<decimal> PIT { get; set; }
+        public Nullable<decimal> ThucNhan { get; set; }
+        public Nullable<decimal> TongTien { get; set; }
     
         public virtual NHANSU NHANSU { get; set; }
     }

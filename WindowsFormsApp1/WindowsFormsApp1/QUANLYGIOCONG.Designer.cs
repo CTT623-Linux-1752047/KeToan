@@ -397,9 +397,9 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 3;
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.30303F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80.60606F));
-            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 9.090908F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 80F));
+            this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10F));
             this.tableLayoutPanel5.Size = new System.Drawing.Size(1032, 166);
             this.tableLayoutPanel5.TabIndex = 13;
             // 
@@ -411,13 +411,13 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel6.Controls.Add(this.tableLayoutPanel7, 0, 0);
             this.tableLayoutPanel6.Controls.Add(this.label2, 0, 1);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(51, 17);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(51, 16);
             this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 133);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(206, 132);
             this.tableLayoutPanel6.TabIndex = 0;
             // 
             // tableLayoutPanel7
@@ -435,6 +435,8 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel7.Size = new System.Drawing.Size(206, 96);
             this.tableLayoutPanel7.TabIndex = 0;
+            this.tableLayoutPanel7.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.tableLayoutPanel7.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
             // 
             // pictureBox1
             // 
@@ -446,6 +448,8 @@ namespace WindowsFormsApp1
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
+            this.pictureBox1.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.pictureBox1.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
             // 
             // label1
             // 
@@ -458,6 +462,8 @@ namespace WindowsFormsApp1
             this.label1.Size = new System.Drawing.Size(104, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "EXCEL";
+            this.label1.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.label1.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
             // 
             // label2
             // 
@@ -472,10 +478,12 @@ namespace WindowsFormsApp1
             this.label2.Margin = new System.Windows.Forms.Padding(0);
             this.label2.Name = "label2";
             this.label2.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label2.Size = new System.Drawing.Size(206, 37);
+            this.label2.Size = new System.Drawing.Size(206, 36);
             this.label2.TabIndex = 1;
             this.label2.Text = "      Xuất báo cáo giờ công";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label2.MouseEnter += new System.EventHandler(this.tableLayoutPanel7_MouseEnter);
+            this.label2.MouseLeave += new System.EventHandler(this.tableLayoutPanel7_MouseLeave);
             // 
             // tableLayoutPanel8
             // 
@@ -485,13 +493,13 @@ namespace WindowsFormsApp1
             this.tableLayoutPanel8.Controls.Add(this.tableLayoutPanel9, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.label5, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(308, 17);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(308, 16);
             this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 96F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(206, 133);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(206, 132);
             this.tableLayoutPanel8.TabIndex = 1;
             // 
             // tableLayoutPanel9
@@ -556,7 +564,7 @@ namespace WindowsFormsApp1
             this.label5.Margin = new System.Windows.Forms.Padding(0);
             this.label5.Name = "label5";
             this.label5.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.label5.Size = new System.Drawing.Size(206, 37);
+            this.label5.Size = new System.Drawing.Size(206, 36);
             this.label5.TabIndex = 1;
             this.label5.Text = "Tạo giờ công ";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

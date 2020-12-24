@@ -6,11 +6,21 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="ID_NhanVien" Type="int" Nullable="false" />
-    <Property Name="LuongThang" Type="float" />
-    <Property Name="TongPhuCap" Type="float" />
-    <Property Name="TongKhauTruLuong" Type="float" />
+    <Property Name="LuongThang" Type="datetime" />
     <Property Name="TongOT" Type="float" />
-    <Property Name="ThucNhan" Type="float" />
+    <Property Name="TongKhauTru" Type="money" />
+    <Property Name="PIT" Type="money" />
+    <Property Name="ThucNhan" Type="money" />
+    <Property Name="TongTien" Type="money" />
+  </EntityType>
+  <EntityType Name="BAOHIEM_THUE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="LoaiBaoHiem" Type="nvarchar" MaxLength="255" />
+    <Property Name="PhanTramBaoHiem" Type="float" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="CHUCDANH">
     <Key>
@@ -56,14 +66,6 @@
     <Property Name="TenNgayNghi" Type="nvarchar" MaxLength="50" />
     <Property Name="ThoiGian" Type="float" />
   </EntityType>
-  <EntityType Name="LOAIPHUCAP">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="LoaiPhuCap" Type="nchar" MaxLength="20" />
-    <Property Name="TenPhuCap" Type="nvarchar" MaxLength="50" />
-  </EntityType>
   <EntityType Name="NHANSU">
     <Key>
       <PropertyRef Name="ID" />
@@ -100,6 +102,16 @@
     <Property Name="GioiTinhNguoiLienQuan" Type="nvarchar" MaxLength="10" />
     <Property Name="SoNgayNghiPhep" Type="int" />
     <Property Name="NgayResetNghiCoPhep" Type="date" />
+    <Property Name="Km" Type="float" />
+    <Property Name="SoNguoiPhuThuoc" Type="int" />
+  </EntityType>
+  <EntityType Name="NHANVIEN_BAOHIEM_THUE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NhanVien" Type="int" />
+    <Property Name="ID_BaoHiem_Thue" Type="int" />
   </EntityType>
   <EntityType Name="NHANVIEN_GIOCONG">
     <Key>
@@ -122,15 +134,6 @@
     <Property Name="NgayKetThuc" Type="datetime" />
     <Property Name="LyDo" Type="nvarchar" MaxLength="255" />
   </EntityType>
-  <EntityType Name="NHANVIEN_LOAIPHUCAP">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID_NhanVien" Type="int" Nullable="false" />
-    <Property Name="ID_LOAIPHUCAP" Type="int" Nullable="false" />
-    <Property Name="Thang" Type="int" />
-  </EntityType>
   <EntityType Name="NHANVIEN_OT">
     <Key>
       <PropertyRef Name="ID" />
@@ -141,6 +144,25 @@
     <Property Name="ID_Project" Type="int" />
     <Property Name="ID_NhanVien" Type="int" />
     <Property Name="ID_Range_Hours_OT" Type="int" />
+  </EntityType>
+  <EntityType Name="NHANVIEN_PHUCAP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ID_NhanVien" Type="int" Nullable="false" />
+    <Property Name="ID_PhuCap" Type="int" Nullable="false" />
+    <Property Name="ThangNam" Type="date" />
+  </EntityType>
+  <EntityType Name="PHUCAP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PC_CoDinh" Type="money" />
+    <Property Name="CongThuc" Type="nchar" MaxLength="255" />
+    <Property Name="TenPhuCap" Type="nvarchar" MaxLength="255" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -227,6 +249,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK__NHANVIEN___ID_Ba__2645B050">
+    <End Role="BAOHIEM_THUE" Type="Self.BAOHIEM_THUE" Multiplicity="0..1" />
+    <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="BAOHIEM_THUE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+        <PropertyRef Name="ID_BaoHiem_Thue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK__NHANVIEN___ID_Gi__0B91BA14">
     <End Role="LOAI_GIO_CONG" Type="Self.LOAI_GIO_CONG" Multiplicity="0..1" />
     <End Role="NHANVIEN_GIOCONG" Type="Self.NHANVIEN_GIOCONG" Multiplicity="*" />
@@ -251,15 +285,15 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__NHANVIEN___ID_LO__45F365D3">
-    <End Role="LOAIPHUCAP" Type="Self.LOAIPHUCAP" Multiplicity="1" />
-    <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
+  <Association Name="FK__NHANVIEN___ID_Nh__245D67DE">
+    <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="0..1" />
+    <End Role="NHANVIEN_BAOHIEM_THUE" Type="Self.NHANVIEN_BAOHIEM_THUE" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="LOAIPHUCAP">
+      <Principal Role="NHANSU">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="NHANVIEN_LOAIPHUCAP">
-        <PropertyRef Name="ID_LOAIPHUCAP" />
+      <Dependent Role="NHANVIEN_BAOHIEM_THUE">
+        <PropertyRef Name="ID_NhanVien" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -289,13 +323,25 @@
   </Association>
   <Association Name="FK__NHANVIEN___ID_Nh__44FF419A">
     <End Role="NHANSU" Type="Self.NHANSU" Multiplicity="1" />
-    <End Role="NHANVIEN_LOAIPHUCAP" Type="Self.NHANVIEN_LOAIPHUCAP" Multiplicity="*" />
+    <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="NHANSU">
         <PropertyRef Name="ID" />
       </Principal>
-      <Dependent Role="NHANVIEN_LOAIPHUCAP">
+      <Dependent Role="NHANVIEN_PHUCAP">
         <PropertyRef Name="ID_NhanVien" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__NHANVIEN___ID_Ph__1DB06A4F">
+    <End Role="PHUCAP" Type="Self.PHUCAP" Multiplicity="1" />
+    <End Role="NHANVIEN_PHUCAP" Type="Self.NHANVIEN_PHUCAP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHUCAP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="NHANVIEN_PHUCAP">
+        <PropertyRef Name="ID_PhuCap" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -488,6 +534,8 @@
           <Property Name="GioiTinhNguoiLienQuan" Type="nvarchar" MaxLength="10" />
           <Property Name="SoNgayNghiPhep" Type="int" />
           <Property Name="NgayResetNghiCoPhep" Type="date" />
+          <Property Name="Km" Type="float" />
+          <Property Name="SoNguoiPhuThuoc" Type="int" />
         </RowType>
       </CollectionType>
     </ReturnType>
@@ -523,10 +571,9 @@
       <CollectionType>
         <RowType>
           <Property Name="HoVaTen" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="ID_NhanVien" Type="int" />
+          <Property Name="ID" Type="int" Nullable="false" />
           <Property Name="WFH" Type="int" />
           <Property Name="LEAVES" Type="int" />
-          <Property Name="TotalOFFDays" Type="int" />
         </RowType>
       </CollectionType>
     </ReturnType>
@@ -534,6 +581,19 @@
   <Function Name="fnFullMonthsSeparation" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int">
     <Parameter Name="DateA" Type="datetime" Mode="In" />
     <Parameter Name="DateB" Type="datetime" Mode="In" />
+  </Function>
+  <Function Name="fnGetAmountBenefit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="HoVaTen" Type="nvarchar" Mode="In" />
+    <Parameter Name="Startdate" Type="date" Mode="In" />
+    <Parameter Name="LoaiPhuCap" Type="int" Mode="In" />
+    <Parameter Name="Enddate" Type="date" Mode="In" />
+    <ReturnType>
+      <CollectionType>
+        <RowType>
+          <Property Name="PC_CoDinh" Type="money" />
+        </RowType>
+      </CollectionType>
+    </ReturnType>
   </Function>
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -587,17 +647,19 @@
   </Function>
   <EntityContainer Name="TinhTienLuongModelStoreContainer">
     <EntitySet Name="BANGLUONG" EntityType="Self.BANGLUONG" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="BAOHIEM_THUE" EntityType="Self.BAOHIEM_THUE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUCDANH" EntityType="Self.CHUCDANH" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE" EntityType="Self.HISTORY_RESET_DAY_OF_TAKE_LEAVE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KHAUTRULUONG" EntityType="Self.KHAUTRULUONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAI_GIO_CONG" EntityType="Self.LOAI_GIO_CONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAINGAYNGHI" EntityType="Self.LOAINGAYNGHI" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="LOAIPHUCAP" EntityType="Self.LOAIPHUCAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANSU" EntityType="Self.NHANSU" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN_BAOHIEM_THUE" EntityType="Self.NHANVIEN_BAOHIEM_THUE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN_GIOCONG" EntityType="Self.NHANVIEN_GIOCONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN_LOAINGAYNGHI" EntityType="Self.NHANVIEN_LOAINGAYNGHI" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="NHANVIEN_LOAIPHUCAP" EntityType="Self.NHANVIEN_LOAIPHUCAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN_OT" EntityType="Self.NHANVIEN_OT" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN_PHUCAP" EntityType="Self.NHANVIEN_PHUCAP" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHUCAP" EntityType="Self.PHUCAP" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TRANGTHAILAMVIEC" EntityType="Self.TRANGTHAILAMVIEC" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TYPE_RANGE_HOURS_OT" EntityType="Self.TYPE_RANGE_HOURS_OT" Schema="dbo" store:Type="Tables" />
@@ -621,6 +683,10 @@
       <End Role="TRANGTHAILAMVIEC" EntitySet="TRANGTHAILAMVIEC" />
       <End Role="NHANSU" EntitySet="NHANSU" />
     </AssociationSet>
+    <AssociationSet Name="FK__NHANVIEN___ID_Ba__2645B050" Association="Self.FK__NHANVIEN___ID_Ba__2645B050">
+      <End Role="BAOHIEM_THUE" EntitySet="BAOHIEM_THUE" />
+      <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
+    </AssociationSet>
     <AssociationSet Name="FK__NHANVIEN___ID_Gi__0B91BA14" Association="Self.FK__NHANVIEN___ID_Gi__0B91BA14">
       <End Role="LOAI_GIO_CONG" EntitySet="LOAI_GIO_CONG" />
       <End Role="NHANVIEN_GIOCONG" EntitySet="NHANVIEN_GIOCONG" />
@@ -629,9 +695,9 @@
       <End Role="LOAINGAYNGHI" EntitySet="LOAINGAYNGHI" />
       <End Role="NHANVIEN_LOAINGAYNGHI" EntitySet="NHANVIEN_LOAINGAYNGHI" />
     </AssociationSet>
-    <AssociationSet Name="FK__NHANVIEN___ID_LO__45F365D3" Association="Self.FK__NHANVIEN___ID_LO__45F365D3">
-      <End Role="LOAIPHUCAP" EntitySet="LOAIPHUCAP" />
-      <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+    <AssociationSet Name="FK__NHANVIEN___ID_Nh__245D67DE" Association="Self.FK__NHANVIEN___ID_Nh__245D67DE">
+      <End Role="NHANSU" EntitySet="NHANSU" />
+      <End Role="NHANVIEN_BAOHIEM_THUE" EntitySet="NHANVIEN_BAOHIEM_THUE" />
     </AssociationSet>
     <AssociationSet Name="FK__NHANVIEN___ID_Nh__2A4B4B5E" Association="Self.FK__NHANVIEN___ID_Nh__2A4B4B5E">
       <End Role="NHANSU" EntitySet="NHANSU" />
@@ -643,7 +709,11 @@
     </AssociationSet>
     <AssociationSet Name="FK__NHANVIEN___ID_Nh__44FF419A" Association="Self.FK__NHANVIEN___ID_Nh__44FF419A">
       <End Role="NHANSU" EntitySet="NHANSU" />
-      <End Role="NHANVIEN_LOAIPHUCAP" EntitySet="NHANVIEN_LOAIPHUCAP" />
+      <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
+    </AssociationSet>
+    <AssociationSet Name="FK__NHANVIEN___ID_Ph__1DB06A4F" Association="Self.FK__NHANVIEN___ID_Ph__1DB06A4F">
+      <End Role="PHUCAP" EntitySet="PHUCAP" />
+      <End Role="NHANVIEN_PHUCAP" EntitySet="NHANVIEN_PHUCAP" />
     </AssociationSet>
     <AssociationSet Name="FK__NHANVIEN___ID_Ra__18EBB532" Association="Self.FK__NHANVIEN___ID_Ra__18EBB532">
       <End Role="TYPE_RANGE_HOURS_OT" EntitySet="TYPE_RANGE_HOURS_OT" />
