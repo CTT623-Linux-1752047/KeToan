@@ -61,6 +61,7 @@ namespace WindowsFormsApp1
         public Nullable<System.DateTime> NgayResetNghiCoPhep { get; set; }
         public Nullable<double> Km { get; set; }
         public Nullable<int> SoNguoiPhuThuoc { get; set; }
+        public Nullable<decimal> PayBack { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<BANGLUONG> BANGLUONGs { get; set; }

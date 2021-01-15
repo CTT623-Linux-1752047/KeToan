@@ -77,6 +77,7 @@
     <EntitySetMapping Name="NHANSUs">
       <EntityTypeMapping TypeName="TinhTienLuongModel.NHANSU">
         <MappingFragment StoreEntitySet="NHANSU">
+          <ScalarProperty Name="PayBack" ColumnName="PayBack" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
@@ -405,5 +406,21 @@
     <FunctionImportMapping FunctionImportName="spUpdateDayOfTakeLeaveForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateDayOfTakeLeaveForStaff" />
     <FunctionImportMapping FunctionImportName="spUpdateOFFDayForStaff" FunctionName="TinhTienLuongModel.Store.spUpdateOFFDayForStaff" />
     <FunctionImportMapping FunctionImportName="TinhLuongCBTheoThang" FunctionName="TinhTienLuongModel.Store.TinhLuongCBTheoThang" />
+    <EntitySetMapping Name="FORMULA_OF_PAYROLL">
+      <EntityTypeMapping TypeName="TinhTienLuongModel.FORMULA_OF_PAYROLL">
+        <MappingFragment StoreEntitySet="FORMULA_OF_PAYROLL">
+          <ScalarProperty Name="Update_Date" ColumnName="Update_Date" />
+          <ScalarProperty Name="Insert_Date" ColumnName="Insert_Date" />
+          <ScalarProperty Name="Delete_Date" ColumnName="Delete_Date" />
+          <ScalarProperty Name="Formula" ColumnName="Formula" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Type_Of_Salary" ColumnName="Type_Of_Salary" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="spGetBenefit" FunctionName="TinhTienLuongModel.Store.spGetBenefit" />
+    <FunctionImportMapping FunctionImportName="spGetInfoStaff" FunctionName="TinhTienLuongModel.Store.spGetInfoStaff" />
   </EntityContainerMapping>
 </Mapping>

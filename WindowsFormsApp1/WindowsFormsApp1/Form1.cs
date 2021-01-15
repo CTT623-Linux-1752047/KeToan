@@ -140,7 +140,12 @@ namespace WindowsFormsApp1
             this.quanlynhansu1.Hide();
             this.quanlyngaynghi1.Hide();
             this.quanlyluong1.Show();
+            var watch = System.Diagnostics.Stopwatch.StartNew();
             this.quanlyluong1.LoadData();
+            watch.Stop();
+            var elapsedMs = watch.ElapsedMilliseconds;
+            Console.WriteLine(elapsedMs);
+
             this.quanlygiocong1.Hide();
             this.quanlyot1.Hide();
             this.quanlythietlap1.Hide();

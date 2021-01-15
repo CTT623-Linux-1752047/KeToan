@@ -29,6 +29,19 @@
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenChucDanh" Type="nvarchar" MaxLength="255" />
   </EntityType>
+  <EntityType Name="FORMULA_OF_PAYROLL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Type_Of_Salary" Type="nchar" MaxLength="1" />
+    <Property Name="Code" Type="nchar" MaxLength="255" />
+    <Property Name="FullName" Type="nchar" MaxLength="255" />
+    <Property Name="Formula" Type="nvarchar(max)" />
+    <Property Name="Delete_Date" Type="date" />
+    <Property Name="Insert_Date" Type="date" />
+    <Property Name="Update_Date" Type="date" />
+  </EntityType>
   <EntityType Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE">
     <Key>
       <PropertyRef Name="ID" />
@@ -104,6 +117,7 @@
     <Property Name="NgayResetNghiCoPhep" Type="date" />
     <Property Name="Km" Type="float" />
     <Property Name="SoNguoiPhuThuoc" Type="int" />
+    <Property Name="PayBack" Type="decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="NHANVIEN_BAOHIEM_THUE">
     <Key>
@@ -632,6 +646,14 @@
     <Parameter Name="NgayKetThuc" Type="datetime" Mode="In" />
     <Parameter Name="LyDo" Type="nvarchar" Mode="In" />
   </Function>
+  <Function Name="spGetBenefit" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ID_NhanVien" Type="int" Mode="In" />
+    <Parameter Name="ID_PhuCap" Type="int" Mode="In" />
+  </Function>
+  <Function Name="spGetInfoStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="nameColumn" Type="nchar" Mode="In" />
+    <Parameter Name="IDNhanVien" Type="int" Mode="In" />
+  </Function>
   <Function Name="spUpdateDayOfTakeLeaveForStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="spUpdateOFFDayForStaff" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="IDNhanVienNgayNghi" Type="int" Mode="In" />
@@ -649,6 +671,7 @@
     <EntitySet Name="BANGLUONG" EntityType="Self.BANGLUONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="BAOHIEM_THUE" EntityType="Self.BAOHIEM_THUE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUCDANH" EntityType="Self.CHUCDANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FORMULA_OF_PAYROLL" EntityType="Self.FORMULA_OF_PAYROLL" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HISTORY_RESET_DAY_OF_TAKE_LEAVE" EntityType="Self.HISTORY_RESET_DAY_OF_TAKE_LEAVE" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="KHAUTRULUONG" EntityType="Self.KHAUTRULUONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAI_GIO_CONG" EntityType="Self.LOAI_GIO_CONG" Schema="dbo" store:Type="Tables" />

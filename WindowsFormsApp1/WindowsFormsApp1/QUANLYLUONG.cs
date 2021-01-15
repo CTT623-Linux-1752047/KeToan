@@ -42,7 +42,7 @@ namespace WindowsFormsApp1
                                                          payrollStaff.BENEFIT.ToString("#,##0"),
                                                          payrollStaff.BONUS.ToString("#,##0"),
                                                          payrollStaff.PAYBACK.ToString("#,##0"),
-                                                         (payrollStaff.PARKING + payrollStaff.GASOLINE).ToString("#,##0"),
+                                                         (payrollStaff.PARKING_GASOLINE).ToString("#,##0"),
                                                          payrollStaff.TOTAL_AMOUNT.ToString("#,##0"),
                                                          payrollStaff.TOTAL_AMOUNT_IN_VND.ToString("#,##0"),
                                                          (payrollStaff.HEALTHY_INSURANCE_STAFF
@@ -69,3 +69,4 @@ namespace WindowsFormsApp1
         }
     }
 }
+                                                                                                                                                                                                                                                                                                                                                 

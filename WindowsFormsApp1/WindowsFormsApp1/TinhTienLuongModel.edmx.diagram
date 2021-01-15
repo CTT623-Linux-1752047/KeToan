@@ -37,6 +37,7 @@
         <AssociationConnector Association="TinhTienLuongModel.FK__NHAVIEN_G__ID_Nh__37A5467C" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ra__18EBB532" ManuallyRouted="false" />
         <AssociationConnector Association="TinhTienLuongModel.FK__NHANVIEN___ID_Ph__1DB06A4F" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="TinhTienLuongModel.FORMULA_OF_PAYROLL" Width="1.5" PointX="8.25" PointY="4.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

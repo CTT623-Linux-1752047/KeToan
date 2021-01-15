@@ -58,21 +58,22 @@ namespace WindowsFormsApp1
             Image img = Properties.Resources.icons8_edit_calendar_24;
             for (int i = 0; i < this.lstWorkingDaysForStaffOfMonth.Count; i++)
             {
-                int tmpWorkingdays = Weekdays(  new DateTime(this.MonthYear.Value.Year, this.MonthYear.Value.Month,1),
+                int Workingdays = Weekdays(  new DateTime(this.MonthYear.Value.Year, this.MonthYear.Value.Month,1),
                                                 new DateTime(this.MonthYear.Value.Year,this.MonthYear.Value.Month,1).AddMonths(1).AddDays(-1)); 
                 
-                int tmpPresentWorkingDays =(tmpWorkingdays - CalculateTotalOFFDayInWeekdays(this.lstWorkingDaysForStaffOfMonth[i].ID, 
+                int PresentWorkingDays =(Workingdays - CalculateTotalOFFDayInWeekdays(this.lstWorkingDaysForStaffOfMonth[i].ID, 
                                                                                             new DateTime(this.MonthYear.Value.Year, this.MonthYear.Value.Month, 1), 
                                                                                             new DateTime(this.MonthYear.Value.Year, this.MonthYear.Value.Month, 1).AddMonths(1).AddDays(-1)));
-                int tmpWFH = this.lstWorkingDaysForStaffOfMonth[i].WFH.HasValue ? (int)this.lstWorkingDaysForStaffOfMonth[i].WFH.Value : 0;
-                int tmpLeaves = this.lstWorkingDaysForStaffOfMonth[i].LEAVES.HasValue ? (int)this.lstWorkingDaysForStaffOfMonth[i].LEAVES.Value : 0;
+                int WFH = this.lstWorkingDaysForStaffOfMonth[i].WFH.HasValue ? (int)this.lstWorkingDaysForStaffOfMonth[i].WFH.Value : 0;
+                
+                int Leaves = this.lstWorkingDaysForStaffOfMonth[i].LEAVES.HasValue ? (int)this.lstWorkingDaysForStaffOfMonth[i].LEAVES.Value : 0;
                 this.bunifuCustomDataGrid1.Rows.Add(i + 1,
                                                     this.lstWorkingDaysForStaffOfMonth[i].HoVaTen,
-                                                    tmpWorkingdays,
-                                                    tmpPresentWorkingDays,
-                                                    tmpWFH,
-                                                    tmpPresentWorkingDays - tmpWFH,
-                                                    tmpLeaves
+                                                    Workingdays,
+                                                    PresentWorkingDays,
+                                                    WFH,
+                                                    PresentWorkingDays - WFH,
+                                                    Leaves
                                                     ) ;
             }
             if (lstWorkingDaysForStaffOfMonth.Count == 0)

@@ -44,6 +44,7 @@ namespace WindowsFormsApp1
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<TRANGTHAILAMVIEC> TRANGTHAILAMVIECs { get; set; }
         public virtual DbSet<TYPE_RANGE_HOURS_OT> TYPE_RANGE_HOURS_OT { get; set; }
+        public virtual DbSet<FORMULA_OF_PAYROLL> FORMULA_OF_PAYROLL { get; set; }
     
         [DbFunction("TinhTienLuongEntities", "fnDisplayInfoStaffWorkingDayInMonth")]
         public virtual IQueryable<fnDisplayInfoStaffWorkingDayInMonth_Result> fnDisplayInfoStaffWorkingDayInMonth(Nullable<int> iD_NhanVien, Nullable<System.DateTime> thangNam)
@@ -356,6 +357,32 @@ namespace WindowsFormsApp1
                 new ObjectParameter("Date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("TinhLuongCBTheoThang", userIDParameter, dateParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> spGetBenefit(Nullable<int> iD_NhanVien, Nullable<int> iD_PhuCap)
+        {
+            var iD_NhanVienParameter = iD_NhanVien.HasValue ?
+                new ObjectParameter("ID_NhanVien", iD_NhanVien) :
+                new ObjectParameter("ID_NhanVien", typeof(int));
+    
+            var iD_PhuCapParameter = iD_PhuCap.HasValue ?
+                new ObjectParameter("ID_PhuCap", iD_PhuCap) :
+                new ObjectParameter("ID_PhuCap", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("spGetBenefit", iD_NhanVienParameter, iD_PhuCapParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> spGetInfoStaff(string nameColumn, Nullable<int> iDNhanVien)
+        {
+            var nameColumnParameter = nameColumn != null ?
+                new ObjectParameter("nameColumn", nameColumn) :
+                new ObjectParameter("nameColumn", typeof(string));
+    
+            var iDNhanVienParameter = iDNhanVien.HasValue ?
+                new ObjectParameter("IDNhanVien", iDNhanVien) :
+                new ObjectParameter("IDNhanVien", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("spGetInfoStaff", nameColumnParameter, iDNhanVienParameter);
         }
     }
 }

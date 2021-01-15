@@ -247,6 +247,7 @@
     <NavigationProperty Name="NHANVIEN_LOAINGAYNGHI" Relationship="Self.FK__NHANVIEN___ID_Nh__3C69FB99" FromRole="NHANSU" ToRole="NHANVIEN_LOAINGAYNGHI" />
     <NavigationProperty Name="NHANVIEN_PHUCAP" Relationship="Self.FK__NHANVIEN___ID_Nh__44FF419A" FromRole="NHANSU" ToRole="NHANVIEN_PHUCAP" />
     <NavigationProperty Name="NHANVIEN_GIOCONG" Relationship="Self.FK__NHAVIEN_G__ID_Nh__37A5467C" FromRole="NHANSU" ToRole="NHANVIEN_GIOCONG" />
+    <Property Name="PayBack" Type="Decimal" Precision="18" Scale="0" />
   </EntityType>
   <EntityType Name="NHANVIEN_BAOHIEM_THUE">
     <Key>
@@ -690,6 +691,15 @@
       <Parameter Name="UserID" Mode="In" Type="String" />
       <Parameter Name="Date" Mode="In" Type="DateTime" />
     </FunctionImport>
+    <EntitySet Name="FORMULA_OF_PAYROLL" EntityType="TinhTienLuongModel.FORMULA_OF_PAYROLL" />
+    <FunctionImport Name="spGetBenefit" ReturnType="Collection(Decimal)">
+      <Parameter Name="ID_NhanVien" Mode="In" Type="Int32" />
+      <Parameter Name="ID_PhuCap" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="spGetInfoStaff" ReturnType="Collection(Decimal)">
+      <Parameter Name="nameColumn" Mode="In" Type="String" />
+      <Parameter Name="IDNhanVien" Mode="In" Type="Int32" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="sp_helpdiagramdefinition_Result">
     <Property Type="Int32" Name="version" Nullable="true" />
@@ -702,4 +712,17 @@
     <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
     <Property Type="Int32" Name="OwnerID" Nullable="false" />
   </ComplexType>
+  <EntityType Name="FORMULA_OF_PAYROLL">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type_Of_Salary" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+    <Property Name="Code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="FullName" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="Formula" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Delete_Date" Type="DateTime" Precision="0" />
+    <Property Name="Insert_Date" Type="DateTime" Precision="0" />
+    <Property Name="Update_Date" Type="DateTime" Precision="0" />
+  </EntityType>
 </Schema>

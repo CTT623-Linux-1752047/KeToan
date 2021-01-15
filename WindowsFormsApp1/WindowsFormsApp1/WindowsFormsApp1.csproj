@@ -150,6 +150,7 @@
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
     <Compile Include="BenefitStaff.cs" />
+    <Compile Include="Calculate.cs" />
     <Compile Include="CHUCDANH.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
@@ -184,6 +185,9 @@
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
     <Compile Include="fnGetAmountBenefit_Result.cs">
+      <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FORMULA_OF_PAYROLL.cs">
       <DependentUpon>TinhTienLuongModel.tt</DependentUpon>
     </Compile>
     <Compile Include="HISTORY_RESET_DAY_OF_TAKE_LEAVE.cs">
